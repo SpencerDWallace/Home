@@ -9,7 +9,7 @@ function setup(){
     photo = loadImage('./wedding_jacket_tryon.jpeg');
     bio = createElement('h2', "My name is Spencer Wallace, I am a third-year computer science major at Cal State San Bernardino. " +
         "I am interested in graphics and rendering techniques, game design, and machine learning/neural networks." +
-        "Outside of programming my hobbies include rock-climbing, hiking and camping, playing piano, and spending time" +
+        " Outside of programming my hobbies include rock-climbing, hiking and camping, playing piano, and spending time" +
         " with my wife and our chickens and dog. Listed below are some of my projects with links containing their descriptions.<br>\n" +
         "    <br>\n" +
         "    Contact Info: (email is preferred)<br>\n" +

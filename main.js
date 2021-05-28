@@ -21,7 +21,7 @@ function setup(){
             circleColor[s][i] = random(100, 255);
         }
     }
-    x = random( width1*0.2, (width1*0.2 + textWidth(bio)/4) - 10 );
+    x = random( width1*0.25 + 10, (width1*0.25 + textWidth(bio)/4.5) - 10 );
     fontsize = width1/80;
     console.log('fontsize is ' + fontsize);
 
@@ -38,15 +38,15 @@ function draw(){
 
 function _header_bio(){
     ttl.position(width1*0.02,height1*0.01);
-    image(photo, width1*0.02, height1 * 0.08, width1*0.14,  height1 * 0.392);
+    image(photo, width1*0.02, height1 * 0.08, width1*0.14,  height1*0.02 + textWidth(bio)/fontsize);
 
     fill('#003388')
-    rect(width1*0.2, height1*0.08, textWidth(bio)/4, height1*0.02 + textWidth(bio)/fontsize)
+    rect(width1*0.25, height1*0.08, textWidth(bio)/4.5, height1*0.02 + textWidth(bio)/fontsize)
 
     fill(255);
     textStyle(BOLD);
     textSize(fontsize);
-    text(bio, width1*0.22, height1*0.1, width1*0.72, height1*0.35);
+    text(bio, width1*0.27, height1*0.1, width1*0.72, height1*0.35);
 }
 function projects(){
     fill(25);
@@ -71,7 +71,7 @@ function ball(){
     y += yGrowth;
     fill(circleColor[circleBounceCount][0], circleColor[circleBounceCount][1], circleColor[circleBounceCount][2]);
 
-    if(x< width1*0.2 + 10) {
+    if(x< width1*0.25 + 10) {
         xGrowth = -1 * xGrowth;
 
         circleBounceCount++;
@@ -80,7 +80,7 @@ function ball(){
 
     }
 
-    if(x > (width1*0.2 + textWidth(bio)/4) - 10 ) {
+    if(x > (width1*0.25 + textWidth(bio)/4.5) - 10 ) {
         xGrowth = -1 * xGrowth;
         circleBounceCount++;
         if(circleBounceCount >= 20)

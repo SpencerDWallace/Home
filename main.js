@@ -4,7 +4,7 @@ var ttl; let x; let y = 20; let xGrowth = 5; let yGrowth = 1;
 var photo; var bio; var circleColor = [20]; var circleBounceCount = 0;
 
 function setup(){
-    createCanvas(width1, height1);
+    createCanvas(width1, height1*0.5);
     ttl = createElement('h1', "Home Page");
     photo = loadImage('./wedding_jacket_tryon.jpeg');
     bio = 'My name is Spencer Wallace, I am a third-year computer science major at Cal State San Bernardino.\n' +
@@ -27,7 +27,7 @@ function setup(){
 }
 
 function draw(){
-   //clear();
+    clear();
     background(255);
     photo.width = 210; photo.height = 275;
     ttl.position(width1*0.02,height1*0.01);
@@ -43,7 +43,7 @@ function draw(){
     fill(255);
     text(bio, width1*0.22, height1*0.1, width1*0.72, height1*0.35);
 
-    projects();
+    //projects();
 
     //ball();
 

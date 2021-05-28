@@ -21,7 +21,7 @@ function setup(){
             circleColor[s][i] = random(100, 255);
         }
     }
-    x = random( width1*0.15, width1 - width1*0.15 );
+    x = random( width1*0.2, (width1*0.2 + textWidth(bio)/4) - 10 );
     fontsize = width1/80;
     console.log('fontsize is ' + fontsize);
 
@@ -41,7 +41,7 @@ function _header_bio(){
     image(photo, width1*0.02, height1 * 0.08, width1*0.14,  height1 * 0.392);
 
     fill('#003388')
-    rect(width1*0.2, height1*0.08, textWidth(bio)/2.6, height1*0.02 + textWidth(bio)/fontsize)
+    rect(width1*0.2, height1*0.08, textWidth(bio)/4, height1*0.02 + textWidth(bio)/fontsize)
 
     fill(255);
     textStyle(BOLD);
@@ -75,11 +75,16 @@ function ball(){
         xGrowth = -1 * xGrowth;
 
         circleBounceCount++;
+        if(circleBounceCount >= 20)
+            circleBounceCount = 0;
+
     }
 
-    if(x > width1*0.94 - 10) {
+    if(x > (width1*0.2 + textWidth(bio)/4) - 10 ) {
         xGrowth = -1 * xGrowth;
         circleBounceCount++;
+        if(circleBounceCount >= 20)
+            circleBounceCount = 0;
     }
     if(y > height1*0.08 - 10)
         yGrowth = -1*yGrowth;

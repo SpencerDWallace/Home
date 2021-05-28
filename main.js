@@ -38,7 +38,7 @@ function draw(){
 
 function _header_bio(){
     ttl.position(width1*0.02,height1*0.01);
-    image(photo, width1*0.02, height1 * 0.08, width1*0.14,  height1*0.02 + textWidth(bio)/fontsize);
+    image(photo, width1*0.02, height1 * 0.08, width1*0.18,  height1*0.02 + textWidth(bio)/fontsize);
 
     fill('#003388')
     rect(width1*0.25, height1*0.08, textWidth(bio)/4.5, height1*0.02 + textWidth(bio)/fontsize)

@@ -24,11 +24,7 @@ function setup(){
     x = random( width1*0.25 + 10, (width1*0.25 + textWidth(bio)/4.5) - 10 );
     fontsize = width1/80;
     console.log('fontsize is ' + fontsize);
-    if(height1 > width1){
-        let temp = width1;
-        width1 = height1;
-        height1 = temp;
-    }
+
     projects();
 
 }
@@ -55,16 +51,21 @@ function _header_bio(){
 function projects(){
     fill(25);
     textStyle(NORMAL);
+    let _width;
+    let _height;
+    if(height1 > width1) { _width = height1; _height = width1; }
+    else { _width = width1; _height = height1; }
+
     let projectHeader = createElement('h1', "Projects");
-    projectHeader.position(width1*0.025, height1* 0.25 + textWidth(bio)/fontsize)
+    projectHeader.position(_width*0.025, _height* 0.25 + textWidth(bio)/fontsize)
 
     spaceGame = createA('https://spencerdwallace.github.io/UnitySpaceGame/', 'Space Game using Unity', "_blank");
-    spaceGame.position(width1*0.025, height1* 0.35 + textWidth(bio)/fontsize);
+    spaceGame.position(_width*0.025, _height* 0.35 + textWidth(bio)/fontsize);
     raycast = createA('https://spencerdwallace.github.io/RaycastingExperiment/', 'Javascript Raycasting Demo (Mobile Friendly)', "_blank");
-    raycast.position(width1*0.025, height1* 0.4 + textWidth(bio)/fontsize);
+    raycast.position(_width*0.025, _height* 0.4 + textWidth(bio)/fontsize);
 
     sorting = createA('https://spencerdwallace.github.io/sorting_algorithms/', 'Sorting Algorithms (Mobile Friendly)', "_blank");
-    sorting.position(width1*0.025, height1* 0.45 + textWidth(bio)/fontsize);
+    sorting.position(_width*0.025, _height* 0.45 + textWidth(bio)/fontsize);
 
 
 

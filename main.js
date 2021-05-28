@@ -2,7 +2,7 @@ let width1 = $(window).width()*0.98; let height1 = $(window).height()*0.97;
 let imgWidth = width1/5.6; let imgHeight = height1/2.4;
 var ttl; let x; let y = 20; let xGrowth = 5; let yGrowth = 1;
 var photo; var bio; var circleColor = [20]; var circleBounceCount = 0;
-
+var fontsize;
 function setup(){
     createCanvas(width1, height1);
     ttl = createElement('h1', "Home Page");
@@ -24,6 +24,8 @@ function setup(){
         }
     }
     x = random( width1*0.15, width1 - width1*0.15 );
+    fontsize = width1/80;
+    console.log('fontsize is ' + fontsize);
 }
 
 function draw(){
@@ -33,14 +35,12 @@ function draw(){
     ttl.position(width1*0.02,height1*0.01);
     image(photo, width1*0.02, height1 * 0.08, width1*0.14,  height1 * 0.392);
 
-    //bio.position(40+210,40);
-
-    textStyle(BOLD);
-    textSize(20);
     fill('#003388')
-    //fill(20,80,170);
     rect(width1*0.2, height1*0.08, width1*0.76, height1*0.35)
+
     fill(255);
+    textStyle(BOLD);
+    textSize(fontsize);
     text(bio, width1*0.22, height1*0.1, width1*0.72, height1*0.35);
 
     projects();
@@ -60,6 +60,11 @@ function projects(){
     raycast.position(width1*0.025, height1* 0.6);
     let sorting = createA('https://spencerdwallace.github.io/sorting_algorithms/', 'Sorting Algorithms (Mobile Friendly)');
     sorting.position(width1*0.025, height1* 0.65);
+
+    spaceGame.mouseClicked(window.open('https://spencerdwallace.github.io/UnitySpaceGame/'))
+    raycast.mouseClicked(window.open('https://spencerdwallace.github.io/RaycastingExperiment/'))
+    sorting.mouseClicked(window.open('https://spencerdwallace.github.io/sorting_algorithms/'))
+
 }
 function ball(){
 

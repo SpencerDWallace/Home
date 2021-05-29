@@ -2,10 +2,36 @@ let width1 = $(window).width()*0.98; let height1 = $(window).height()*0.97;
 let imgWidth = width1/5.6; let imgHeight = height1/2.4;
 var ttl; let x; let y = 20; let xGrowth = 5; let yGrowth = 1;
 var photo; var bio; var circleColor = [20]; var circleBounceCount = 0;
-var fontsize; var spaceGame; var raycast; var sorting; var bioHREF; var bouncyBall;
+var fontsize; var spaceGame; var raycast; var sorting;
+var button; var input; var greeting; var numOfEmailsRemaining; var userAddress;
+var user; let _width; let _height;
+
+function getUserID() {
+
+    $.getJSON("https://api.ipify.org?format=json", async function (data) {
+        userAddress = data.ip;
+        //alert("IP address is: " + userAddress);
+        await createUser(userAddress)
+        var _id = JSON.stringify( userAddress )
+        $.post('getData.php', { _id }, function(result) {
+            console.log('made it');
+            user.numEmails = result;
+            alert(result);
+        });
+
+
+    });
+}
+
+async function createUser(id){ user = {address: id, numEmails: 3}; }
+
+
 function setup(){
+
+    getUserID();
     createCanvas(width1, height1);
     ttl = createElement('h1', "Home Page");
+    numOfEmailsRemaining = 3;
     photo = loadImage('./wedding_jacket_tryon.jpeg');
     bio = 'My name is Spencer Wallace, I am a third-year computer science major at Cal State San Bernardino.\n' +
         'I am interested in graphics and rendering techniques, game design, and machine learning/neural networks.\n' +
@@ -25,15 +51,30 @@ function setup(){
     fontsize = width1/80;
     console.log('fontsize is ' + fontsize);
 
+
+    //identifyUser();
     projects();
+    emailBox();
+
 
 }
 
-function draw(){
+/*function identifyUser()
+{
+
+}*/
+
+
+function draw() {
     clear();
     background(255);
     _header_bio();
     ball();
+    if (user != null && greeting == null) {
+        greeting = createElement('h2', 'Send me an email, Number of emails remaining: ' + user.numEmails);
+        greeting.position(width / 4, input.y + (textAscent('Send me an email, Number of emails remaining: ') + textDescent('Send me an email, Number of emails remaining: ')) - 5 - input.height/2);
+
+    }
 }
 
 function _header_bio(){
@@ -51,8 +92,7 @@ function _header_bio(){
 function projects(){
     fill(25);
     textStyle(NORMAL);
-    let _width;
-    let _height;
+
     if(height1 > width1) { _width = height1; _height = width1; }
     else { _width = width1; _height = height1; }
 
@@ -70,6 +110,35 @@ function projects(){
 
 
 }
+
+function emailBox()
+{
+
+    input = createInput();
+    input.position(width/4, _height* 0.55 + textWidth(bio)/fontsize );
+    input.size(_width/2, _height*0.2);
+
+    button = createButton('send');
+    button.position(input.x + input.width - button.width - 1, _height* 0.75 + textWidth(bio)/fontsize - button.height/1.3 );
+    button.mouseClicked(sendEmail);
+
+
+    textAlign(CENTER);
+    textSize(50);
+}
+
+function sendEmail()
+{
+    if(user.numEmails > 0) {
+        user.numEmails--;
+        input.value('');
+        greeting.html('Send me an email, Number of emails remaining: ' + user.numEmails, false);
+    }
+    else{
+        alert("Maximum number of emails sent, please feel free to email me directly at the email listed below.")
+    }
+}
+
 function ball(){
 
     x += xGrowth;
@@ -82,7 +151,6 @@ function ball(){
         circleBounceCount++;
         if(circleBounceCount >= 20)
             circleBounceCount = 0;
-
     }
 
     if(x > (width1*0.25 + textWidth(bio)/4.5) - 10 ) {

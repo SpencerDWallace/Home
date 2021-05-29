@@ -1,4 +1,10 @@
 <?php
+$id  = $_POST['address'];
+$_nE = $_POST['numEmails'];
+$_nE = 10;
+echo $_nE;
+?>
+/*
    $jsonString = file_get_contents('users.json');
     $data = json_decode($jsonString, true);
 
@@ -17,7 +23,7 @@
 
             echo 3;
         }
-    }
+    }*/
 
 
 

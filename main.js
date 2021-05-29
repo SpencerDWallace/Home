@@ -11,7 +11,7 @@ function getUserID() {
     $.getJSON("https://api.ipify.org?format=json", async function (data) {
         userAddress = data.ip;
         //alert("IP address is: " + userAddress);
-        await createUser(userAddress)
+        user = {address: userAddress, numEmails: 3};
         var _id = JSON.stringify( userAddress )
         $.post('getData.php', { _id }, function(result) {
             console.log('made it');
@@ -23,7 +23,7 @@ function getUserID() {
     });
 }
 
-async function createUser(id){ user = {address: id, numEmails: 3}; }
+
 
 
 function setup(){

@@ -142,7 +142,7 @@ function sendEmail()
         greeting.html('Send me an email, Number of emails remaining: ' + user.numEmails, false);
     }
     else{
-        alert("Maximum number of emails sent, please feel free to email me directly at the email listed below.")
+        alert("Maximum number of emails sent, please email me directly at the email listed below.")
     }
 }
 

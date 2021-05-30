@@ -72,7 +72,7 @@ function draw() {
     ball();
     if (user != null && greeting == null) {
         greeting = createElement('h2', 'Send me an email, Number of emails remaining: ' + user.numEmails);
-        greeting.position(width / 4, input.y + (textAscent('Send me an email, Number of emails remaining: ') + textDescent('Send me an email, Number of emails remaining: ')) - 5 - input.height/2);
+        greeting.position(input.x, input.y + (textAscent('Send me an email, Number of emails remaining: ') + textDescent('Send me an email, Number of emails remaining: ')) - 5 - input.height/2);
 
     }
 }
@@ -114,12 +114,19 @@ function projects(){
 function emailBox()
 {
 
+
     input = createInput();
-    input.position(width1/4, _height* 0.55 + textWidth(bio)/fontsize );
+    if(height1 > width1)
+        input.position(width1*0.35, _height* 0.65 + textWidth(bio)/fontsize );
+    else
+        input.position(width1*0.35, _height* 0.55 + textWidth(bio)/fontsize );
     input.size(width1/2, _height*0.2);
 
     button = createButton('send');
-    button.position(input.x + input.width - button.width - 1, _height* 0.75 + textWidth(bio)/fontsize - button.height/1.3 );
+    if(height1 > width1)
+        button.position(input.x + input.width - button.width - 1, _height* 0.85 + textWidth(bio)/fontsize - button.height/1.3 );
+    else
+        button.position(input.x + input.width - button.width - 1, _height* 0.75 + textWidth(bio)/fontsize - button.height/1.3 );
     button.mouseClicked(sendEmail);
 
 
@@ -161,7 +168,7 @@ function ball(){
     }
     if(y > height1*0.08 - 10)
         yGrowth = -1*yGrowth;
-    if(y < 12)
+    if(y < 10)
         yGrowth = -1*yGrowth;
     circle(x,y,20);
 }

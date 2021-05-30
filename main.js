@@ -66,7 +66,7 @@ function draw() {
     if (user != null && greeting == null) {
         greeting = createElement('h2', 'Send me an email, Number of emails remaining: ' + user.numEmails);
         if(height1 > width1)
-            greeting.position(width1*0.35, _height* 0.45 + textWidth(bio)/fontsize );
+            greeting.position(width1*0.35, _height* 0.6 + textWidth(bio)/fontsize );
         else
             greeting.position(width1*0.35, _height* 0.35 + textWidth(bio)/fontsize );//+ (textAscent('Send me an email, Number of emails remaining: ') + textDescent('Send me an email, Number of emails remaining: ')) - 5 - input.height/2);
 

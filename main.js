@@ -4,7 +4,7 @@ var ttl; let x; let y = 20; let xGrowth = 5; let yGrowth = 1;
 var photo; var bio; var circleColor = [20]; var circleBounceCount = 0;
 var fontsize; var spaceGame; var raycast; var sorting;
 var button; var input; var greeting; var numOfEmailsRemaining; var userAddress;
-var user; let _width; let _height;
+var user; let _width; let _height; var inp;
 
 function getUserID() {
 
@@ -12,14 +12,7 @@ function getUserID() {
         userAddress = data.ip;
         //alert("IP address is: " + userAddress);
         user = {address: userAddress, numEmails: 3};
-/*        var _id = JSON.stringify( userAddress )
-        $.post('http://spencerdwallace.github.io/Home/getData.php', { _id }, function(result) {
-            console.log('made it');
-            user.numEmails = result;
-            alert(result);
-        });*/
-
-
+        var _id = JSON.stringify( userAddress )
     });
 }
 
@@ -72,7 +65,10 @@ function draw() {
     ball();
     if (user != null && greeting == null) {
         greeting = createElement('h2', 'Send me an email, Number of emails remaining: ' + user.numEmails);
-        greeting.position(input.x, input.y + (textAscent('Send me an email, Number of emails remaining: ') + textDescent('Send me an email, Number of emails remaining: ')) - 5 - input.height/2);
+        if(height1 > width1)
+            greeting.position(width1*0.35, height1* 0.45 + textWidth(bio)/fontsize );
+        else
+            greeting.position(width1*0.35, height1* 0.35 + textWidth(bio)/fontsize );//+ (textAscent('Send me an email, Number of emails remaining: ') + textDescent('Send me an email, Number of emails remaining: ')) - 5 - input.height/2);
 
     }
 }
@@ -114,19 +110,22 @@ function projects(){
 function emailBox()
 {
 
+    inp = document.createElement("INPUT");
+    inp.setAttribute("type", "text");
+    inp.size = "500";
 
     input = createInput();
     if(height1 > width1)
         input.position(width1*0.35, _height* 0.65 + textWidth(bio)/fontsize );
     else
-        input.position(width1*0.35, _height* 0.55 + textWidth(bio)/fontsize );
+        input.position(width1*0.35, height1* 0.55 + textWidth(bio)/fontsize );
     input.size(width1/2, _height*0.2);
 
     button = createButton('send');
     if(height1 > width1)
         button.position(input.x + input.width - button.width - 1, _height* 0.85 + textWidth(bio)/fontsize - button.height/1.3 );
     else
-        button.position(input.x + input.width - button.width - 1, _height* 0.75 + textWidth(bio)/fontsize - button.height/1.3 );
+        button.position(input.x + input.width - button.width - 1, height1* 0.75 + textWidth(bio)/fontsize - button.height/1.3 );
     button.mouseClicked(sendEmail);
 
 
@@ -138,11 +137,14 @@ function sendEmail()
 {
     if(user.numEmails > 0) {
         user.numEmails--;
+        console.log('input value is: ' + input.html());
         input.value('');
+        //$.post("https://formspree.io/f/meqvgzgo", { input });
         greeting.html('Send me an email, Number of emails remaining: ' + user.numEmails, false);
     }
     else{
-        alert("Maximum number of emails sent, please email me directly at the email listed below.")
+        greeting.html('Maximum emails sent, please email me directly at the email listed above', false);
+        //alert("Maximum number of emails sent, please email me directly at the email listed below.")
     }
 }
 
@@ -172,3 +174,14 @@ function ball(){
         yGrowth = -1*yGrowth;
     circle(x,y,20);
 }
+/*
+function ValidateEmail(mail)
+{
+ if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(myForm.emailAddr.value))
+  {
+    return (true)
+  }
+    alert("You have entered an invalid email address!")
+    return (false)
+}
+*/

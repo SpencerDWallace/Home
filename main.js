@@ -12,12 +12,12 @@ function getUserID() {
         userAddress = data.ip;
         //alert("IP address is: " + userAddress);
         user = {address: userAddress, numEmails: 3};
-        var _id = JSON.stringify( userAddress )
-        $.post('getData.php', { _id }, function(result) {
+/*        var _id = JSON.stringify( userAddress )
+        $.post('http://spencerdwallace.github.io/Home/getData.php', { _id }, function(result) {
             console.log('made it');
             user.numEmails = result;
             alert(result);
-        });
+        });*/
 
 
     });
@@ -47,7 +47,7 @@ function setup(){
             circleColor[s][i] = random(100, 255);
         }
     }
-    x = random( width1*0.25 + 10, (width1*0.25 + textWidth(bio)/4.5) - 10 );
+    x = random( width1*0.25 + 10, width1*0.74 - 10 );
     fontsize = width1/80;
     console.log('fontsize is ' + fontsize);
 
@@ -79,15 +79,15 @@ function draw() {
 
 function _header_bio(){
     ttl.position(width1*0.02,height1*0.01);
-    image(photo, width1*0.02, height1 * 0.08, width1*0.18,  height1*0.02 + textWidth(bio)/fontsize);
+    image(photo, width1*0.02, height1 * 0.08, width1*0.20,  height1*0.02 + textWidth(bio)/fontsize);
 
     fill('#003388')
-    rect(width1*0.25, height1*0.08, textWidth(bio)/4.5, height1*0.02 + textWidth(bio)/fontsize)
+    rect(width1*0.25, height1*0.08, width1*0.74, height1*0.02 + textWidth(bio)/fontsize)
 
     fill(255);
     textStyle(BOLD);
     textSize(fontsize);
-    text(bio, width1*0.27, height1*0.1, width1*0.72, height1*0.35);
+    text(bio, width1*0.26, height1*0.1, width1*0.72, height1*0.35);
 }
 function projects(){
     fill(25);
@@ -115,8 +115,8 @@ function emailBox()
 {
 
     input = createInput();
-    input.position(width/4, _height* 0.55 + textWidth(bio)/fontsize );
-    input.size(_width/2, _height*0.2);
+    input.position(width1/4, _height* 0.55 + textWidth(bio)/fontsize );
+    input.size(width1/2, _height*0.2);
 
     button = createButton('send');
     button.position(input.x + input.width - button.width - 1, _height* 0.75 + textWidth(bio)/fontsize - button.height/1.3 );
@@ -153,7 +153,7 @@ function ball(){
             circleBounceCount = 0;
     }
 
-    if(x > (width1*0.25 + textWidth(bio)/4.5) - 10 ) {
+    if(x > width1*0.25 + width1*0.74 - 10 ) {
         xGrowth = -1 * xGrowth;
         circleBounceCount++;
         if(circleBounceCount >= 20)

@@ -95,7 +95,7 @@ function projects(){
     let projectHeader = createElement('h1', "Projects");
     projectHeader.position(_width*0.025, _height* 0.25 + textWidth(bio)/fontsize)
 
-    spaceGame = createA('https://spencerdwallace.github.io/UnitySpaceGame/', 'Space Game using Unity', "_self");
+    spaceGame = createA('https://spencerdwallace.github.io/UnitySpaceGame/', 'Space Game using Unity', "_blank");
     spaceGame.position(_width*0.025, _height* 0.35 + textWidth(bio)/fontsize);
     raycast = createA('https://spencerdwallace.github.io/RaycastingExperiment/', 'Javascript Raycasting Demo (Mobile Friendly)', "_blank");
     raycast.position(_width*0.025, _height* 0.4 + textWidth(bio)/fontsize);

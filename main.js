@@ -85,8 +85,11 @@ function mouseClicked()
     }
     else
     {
-     if(sender.value() == '')
-         sender.value('Please enter your email: ');
+        if(sender.value() == '')
+        {
+            sender.value('Please enter your email: ');
+            emailNotClicked = true;      
+        }
     }
 }
 

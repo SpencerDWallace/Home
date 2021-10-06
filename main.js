@@ -4,10 +4,10 @@ var ttl; let x; let y = 20; let xGrowth = 5; let yGrowth = 1;
 var photo; var bio; var circleColor = [20]; var circleBounceCount = 0;
 var fontsize; var spaceGame; var raycast; var sorting;
 var button; var input; var sender; var greeting; var numOfEmailsRemaining; var userAddress;
-var user; let _width; let _height; var inp;
+var user; let _width; let _height; var inp; var emailNotClicked = true;
 
-function getUserID() {
-
+function getUserID() 
+{
     $.getJSON("https://api.ipify.org?format=json", async function (data) {
         userAddress = data.ip;
         //alert("IP address is: " + userAddress);
@@ -19,8 +19,8 @@ function getUserID() {
 
 
 
-function setup(){
-
+function setup()
+{
     getUserID();
     createCanvas(width1, height1);
     ttl = createElement('h1', "Home Page");
@@ -49,7 +49,6 @@ function setup(){
     projects();
     emailBox();
 
-
 }
 
 /*function identifyUser()
@@ -58,7 +57,8 @@ function setup(){
 }*/
 
 
-function draw() {
+function draw() 
+{
     clear();
     background(255);
     _header_bio();
@@ -71,9 +71,20 @@ function draw() {
             greeting.position(width1*0.35, _height* 0.15 + textWidth(bio)/fontsize );//+ (textAscent('Send me an email, Number of emails remaining: ') + textDescent('Send me an email, Number of emails remaining: ')) - 5 - input.height/2);
 
     }
+    
 }
 
-function _header_bio(){
+function mouseClicked()
+{
+    if(sender.mouseClicked && emailNotClicked)
+    {
+        sender.value('');
+        emailNotClicked = false;
+    }
+}
+
+function _header_bio()
+{
     ttl.position(width1*0.02,height1*0.01);
     image(photo, width1*0.02, height1 * 0.08, width1*0.20,  height1*0.02 + textWidth(bio)/fontsize);
 
@@ -85,7 +96,9 @@ function _header_bio(){
     textSize(fontsize);
     text(bio, width1*0.26, height1*0.1, width1*0.72, height1*0.35);
 }
-function projects(){
+
+function projects()
+{
     fill(25);
     textStyle(NORMAL);
 
@@ -163,7 +176,8 @@ function sendEmail()
     }
 }
 
-function ball(){
+function ball()
+{
 
     x += xGrowth;
     y += yGrowth;

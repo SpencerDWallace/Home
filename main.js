@@ -76,10 +76,17 @@ function draw()
 
 function mouseClicked()
 {
-    if(sender.mouseClicked && emailNotClicked)
+    if(sender.mouseClicked)
     {
+        if(emailNotClicked){
         sender.value('');
         emailNotClicked = false;
+        }
+    }
+    else
+    {
+     if(sender.value() == '')
+         sender.value('Please enter your email: ');
     }
 }
 

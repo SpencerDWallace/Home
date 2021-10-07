@@ -98,19 +98,10 @@ function mouseClicked()
 function updateEmail() {
     if(emailNotClicked)
     {
+        
         sender.value('');
         emailNotClicked = false;
     }
-    else
-    {
-        if(sender.value() == '')
-        {
-            emailNotClicked = true;
-            sender.value('Please enter your email: ');
-        }
-
-    }
-
 }
 
 function _header_bio()
@@ -205,7 +196,7 @@ function sendEmail()
             alert('Invalid email address, please check that your email address is entered correctly.');
         }
 
-        greeting.html('Send me an email, Number of emails remaining: ' + user.numEmails, false);
+        greeting.html('Send me an email:', false);
     }
     else{
         greeting.html('Maximum emails sent, please email me directly at the email listed above', false);

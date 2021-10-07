@@ -76,7 +76,7 @@ function draw()
 
 function mouseClicked()
 {
-    if(sender.mouseClicked)
+    if(mouseX > sender.x && mouseX < sender.x + sender.width && mouseY > sender.y && mouseY < sender.y + sender.height)
     {
         if(emailNotClicked){
         sender.value('');

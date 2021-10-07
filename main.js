@@ -64,7 +64,7 @@ function draw() {
     _header_bio();
     ball();
     if (user != null && greeting == null) {
-        greeting = createElement('h2', 'Send me an email, Number of emails remaining: ' + user.numEmails);
+        greeting = createElement('h2', 'Send me an email:');
         if(height1 > width1)
             greeting.position(width1*0.35, _height* 0.45 + textWidth(bio)/fontsize );
         else

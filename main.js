@@ -1,10 +1,10 @@
 let width1 = $(window).width()*0.98; let height1 = $(window).height()*0.97;
-let imgWidth = width1/5.6; let imgHeight = height1/2.4;
+let imgWidth = width1/9;
 var ttl; let x; let y = 20; let xGrowth = 5; let yGrowth = 1;
 var photo; var bio; var circleColor = [20]; var circleBounceCount = 0;
 var fontsize; var spaceGame; var raycast; var sorting;
 var button; var input; var sender; var greeting; var numOfEmailsRemaining; var userAddress;
-var user; let _width; let _height; var inp; var res = 828/970;
+var user; let _width; let _height; var inp; var res = 970/828; let imgHeight = imgWidth*res;
 
 function getUserID() {
 
@@ -75,7 +75,7 @@ function draw() {
 
 function _header_bio(){
     ttl.position(width1*0.02,height1*0.01);
-    image(photo, width1*0.02, height1 * 0.08, width1*0.10,  width1*0.10*res);
+    image(photo, width1*0.02, height1 * 0.08, imgWidth,  imgHeight);
 
     fill('#003388')
     rect(width1*0.25, height1*0.08, width1*0.74, height1*0.06 + textWidth(bio)/fontsize)
@@ -93,15 +93,16 @@ function projects(){
     else { _width = width1; _height = height1; }
 
     let projectHeader = createElement('h1', "Projects");
-    projectHeader.position(_width*0.025, _height* 0.25 + textWidth(bio)/fontsize)
+    projectHeader.position(_width*0.025, _height* 0.15 + imgHeight);
 
     spaceGame = createA('https://spencerdwallace.github.io/UnitySpaceGame/', 'Space Game using Unity', "_self");
-    spaceGame.position(_width*0.025, _height* 0.35 + textWidth(bio)/fontsize);
+    spaceGame.position(_width*0.025, _height* 0.25 + imgHeight);
     raycast = createA('https://spencerdwallace.github.io/RaycastingExperiment/', 'Javascript Raycasting Demo (Mobile Friendly)', "_blank");
-    raycast.position(_width*0.025, _height* 0.4 + textWidth(bio)/fontsize);
+    raycast.position(_width*0.025, _height* 0.3 + imgHeight);
 
     sorting = createA('https://spencerdwallace.github.io/sorting_algorithms/', 'Sorting Algorithms (Mobile Friendly)', "_self");
-    sorting.position(_width*0.025, _height* 0.45 + textWidth(bio)/fontsize);
+    sorting.position(_width*0.025, _height* 0.35 + imgHeight);
+
 
 
 

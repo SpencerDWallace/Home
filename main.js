@@ -1,8 +1,8 @@
 let width1 = $(window).width()*0.98; let height1 = $(window).height()*0.97;
-let imgWidth = width1/9; var scale1 = 'scale(1)';
-var ttl; let x; let y = 20; let xGrowth = 5; let yGrowth = 1;
+let imgWidth = width1/8; var browserZoomLevel; var eleFont;
+var ttl; let x; let y; let xGrowth = 5; let yGrowth = 1;
 var photo; var bio; var circleColor = [20]; var circleBounceCount = 0;
-var fontsize; var spaceGame; var raycast; var sorting;
+var fontsize; var spaceGame; var raycast; var sorting; var projectHeader;
 var button; var input; var sender; var greeting; var numOfEmailsRemaining; var userAddress;
 var user; let _width; let _height; var inp; var res = 970/828; let imgHeight = imgWidth*res; var emailNotClicked = true;
 
@@ -20,14 +20,13 @@ function getUserID() {
 
 
 function setup(){
-    $("input, textarea").focusout(function(){
-        $('meta[name=viewport]').remove();
-        $('head').append('<meta name="viewport" content="width=device-width*0.98, maximum-scale=1.0, user-scalable=0">');
 
-        $('meta[name=viewport]').remove();
-        $('head').append('<meta name="viewport" content="width=device-width*0.97, initial-scale=yes">' );
-    });
-
+    browserZoomLevel = (Math.round(window.devicePixelRatio * 100))/100;
+    eleFont = height1/25;
+    y = 20/browserZoomLevel;
+    // width1 = width1/browserZoomLevel;
+    // height1 = height1/browserZoomLevel;
+    console.log('Browser zoom is: ' + browserZoomLevel);
     getUserID();
     createCanvas(width1, height1);
     ttl = createElement('h1', "Home Page");
@@ -69,14 +68,16 @@ function draw() {
     clear();
     background(255);
     _header_bio();
-    ball();
-    if (user != null && greeting == null) {
-        greeting = createElement('h2', 'Send me an email:');
-        if(height1 > width1)
-            greeting.position(width1*0.35, _height* 0.45 + imgHeight );
-        else
-            greeting.position(width1*0.35, _height* 0.15 + imgHeight );//+ (textAscent('Send me an email, Number of emails remaining: ') + textDescent('Send me an email, Number of emails remaining: ')) - 5 - input.height/2);
-
+    //ball();
+    browserZoomLevel = (Math.round(window.devicePixelRatio * 100)) / 100;
+    if (width1 != $(window).width() * 0.98 || height1 != $(window).height() * 0.97) {
+        width1 = $(window).width() * 0.98;
+        height1 = $(window).height() * 0.97;
+        eleFont = height1 / 25;
+        fontsize = width1 / 100;
+        resizeCanvas(width1, height1);
+        imgWidth = width1/8; imgHeight = imgWidth*res;
+        projects(); emailBox();
     }
 }
 
@@ -102,7 +103,7 @@ function mouseClicked()
 }
 
 function _header_bio(){
-    ttl.position(width1*0.02,height1*0.01);
+
     image(photo, width1*0.02, height1 * 0.08, imgWidth,  imgHeight);
 
     fill('#003388')
@@ -112,6 +113,9 @@ function _header_bio(){
     textStyle(BOLD);
     textSize(fontsize);
     text(bio, width1*0.26, height1*0.09, width1*0.72, imgHeight - 0.01);
+
+    ttl.position(width1*0.02,height1*0.01);
+    ttl.style('font-size', eleFont + 'px');
 }
 function projects(){
     fill(25);
@@ -120,16 +124,26 @@ function projects(){
     if(height1 > width1) { _width = height1; _height = width1; }
     else { _width = width1; _height = height1; }
 
-    let projectHeader = createElement('h1', "Projects");
+    if(projectHeader != null)
+    {
+     projectHeader.remove(); spaceGame.remove();
+     raycast.remove(); sorting.remove();
+    }
+    projectHeader = createElement('h1', "Projects");
     projectHeader.position(_width*0.025, _height* 0.15 + imgHeight);
+    projectHeader.style('font-size', eleFont + 'px')
 
     spaceGame = createA('https://spencerdwallace.github.io/UnitySpaceGame/', 'Space Game using Unity', "_self");
     spaceGame.position(_width*0.025, _height* 0.25 + imgHeight);
+    spaceGame.style('font-size', height1/40 + 'px');
+
     raycast = createA('https://spencerdwallace.github.io/RaycastingExperiment/', 'Javascript Raycasting Demo (Mobile Friendly)', "_blank");
     raycast.position(_width*0.025, _height* 0.3 + imgHeight);
+    raycast.style('font-size', height1/40 + 'px');
 
     sorting = createA('https://spencerdwallace.github.io/sorting_algorithms/', 'Sorting Algorithms (Mobile Friendly)', "_self");
     sorting.position(_width*0.025, _height* 0.35 + imgHeight);
+    sorting.style('font-size', height1/40 + 'px');
 
 
 
@@ -139,31 +153,38 @@ function projects(){
 function emailBox()
 {
 
+    if(inp != null)
+    {
+        inp.remove(); greeting.remove(); input.remove();
+        sender.remove(); button.remove();
+    }
     inp = document.createElement("INPUT");
     inp.setAttribute("type", "text");
     inp.size = "500";
 
-    input = createInput();
-    sender = createInput();
+    greeting = createElement('h1', 'Send me an email:');
+    greeting.position(width1*0.35, _height* 0.15 + imgHeight );
+    greeting.style('font-size', eleFont + 'px');
 
+    sender = createInput();
     sender.size(width1/2, _height * 0.08);
     sender.value('Please enter your email: ');
-    if(height1 > width1)
-        input.position(width1*0.35, _height* 0.65 + textWidth(bio)/fontsize );
-    else
-        input.position(width1*0.35, height1* 0.45 + textWidth(bio)/fontsize );
+    sender.position(width1*0.35, _height* 0.15 + imgHeight + eleFont*2);
+    sender.style('font-size', eleFont*0.5 + 'px');
+
+    input = createInput();
+    input.position(width1*0.35, _height* 0.2 + imgHeight + eleFont*4);
     input.size(width1/2, _height*0.2);
-    sender.position(width1*0.35, input.y - _height*0.09);
+
     button = createButton('send');
-    if(height1 > width1)
-        button.position(input.x + input.width - button.width - 1, _height* 0.85 + textWidth(bio)/fontsize - button.height/1.3 );
-    else
-        button.position(input.x + input.width - button.width - 1, height1* 0.65 + textWidth(bio)/fontsize - button.height/1.3 );
+    button.size(width1/50, height1/40);
+    button.style('font-size', eleFont*0.30 + 'px');
+    button.position(input.x + input.width - button.width - 1, _height* 0.2 + imgHeight + eleFont*4 + _height*0.18);
     button.mouseClicked(sendEmail);
 
 
-    textAlign(CENTER);
-    textSize(50);
+     textAlign(CENTER);
+     //textSize(50);
 }
 
 function sendEmail()
@@ -194,8 +215,8 @@ function sendEmail()
 
 function ball(){
 
-    x += xGrowth;
-    y += yGrowth;
+    x += (xGrowth/browserZoomLevel);
+    y += (yGrowth/browserZoomLevel);
     fill(circleColor[circleBounceCount][0], circleColor[circleBounceCount][1], circleColor[circleBounceCount][2]);
 
     if(x< width1*0.25 + 10) {
@@ -212,11 +233,11 @@ function ball(){
         if(circleBounceCount >= 20)
             circleBounceCount = 0;
     }
-    if(y > height1*0.08 - 10)
+    if(y > height1*0.08 - (10/browserZoomLevel))
         yGrowth = -1*yGrowth;
-    if(y < 10)
+    if(y < (10/browserZoomLevel))
         yGrowth = -1*yGrowth;
-    circle(x,y,20);
+    circle(x,y,(20/browserZoomLevel));
 }
 
 function ValidateEmail(mail)

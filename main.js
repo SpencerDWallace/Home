@@ -1,5 +1,5 @@
 let width1 = $(window).width()*0.98; let height1 = $(window).height()*0.97;
-let imgWidth = width1/9;
+let imgWidth = width1/9; var scale1 = 'scale(1)';
 var ttl; let x; let y = 20; let xGrowth = 5; let yGrowth = 1;
 var photo; var bio; var circleColor = [20]; var circleBounceCount = 0;
 var fontsize; var spaceGame; var raycast; var sorting;
@@ -20,6 +20,13 @@ function getUserID() {
 
 
 function setup(){
+    $("input, textarea").focusout(function(){
+        $('meta[name=viewport]').remove();
+        $('head').append('<meta name="viewport" content="width=device-width*0.98, maximum-scale=1.0, user-scalable=0">');
+
+        $('meta[name=viewport]').remove();
+        $('head').append('<meta name="viewport" content="width=device-width*0.97, initial-scale=yes">' );
+    });
 
     getUserID();
     createCanvas(width1, height1);
@@ -66,9 +73,9 @@ function draw() {
     if (user != null && greeting == null) {
         greeting = createElement('h2', 'Send me an email:');
         if(height1 > width1)
-            greeting.position(width1*0.35, _height* 0.45 + textWidth(bio)/fontsize );
+            greeting.position(width1*0.35, _height* 0.45 + imgHeight );
         else
-            greeting.position(width1*0.35, _height* 0.15 + textWidth(bio)/fontsize );//+ (textAscent('Send me an email, Number of emails remaining: ') + textDescent('Send me an email, Number of emails remaining: ')) - 5 - input.height/2);
+            greeting.position(width1*0.35, _height* 0.15 + imgHeight );//+ (textAscent('Send me an email, Number of emails remaining: ') + textDescent('Send me an email, Number of emails remaining: ')) - 5 - input.height/2);
 
     }
 }

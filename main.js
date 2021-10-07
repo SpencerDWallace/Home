@@ -78,12 +78,12 @@ function _header_bio(){
     image(photo, width1*0.02, height1 * 0.08, imgWidth,  imgHeight);
 
     fill('#003388')
-    rect(width1*0.25, height1*0.08, width1*0.74, height1*0.06 + textWidth(bio)/fontsize)
+    rect(width1*0.25, height1*0.08, width1*0.74, imgHeight)
 
     fill(255);
     textStyle(BOLD);
     textSize(fontsize);
-    text(bio, width1*0.26, height1*0.1, width1*0.72, height1*0.35);
+    text(bio, width1*0.26, height1*0.09, width1*0.72, imgHeight - 0.01);
 }
 function projects(){
     fill(25);

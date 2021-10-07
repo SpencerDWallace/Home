@@ -4,9 +4,9 @@ var ttl; let x; let y = 20; let xGrowth = 5; let yGrowth = 1;
 var photo; var bio; var circleColor = [20]; var circleBounceCount = 0;
 var fontsize; var spaceGame; var raycast; var sorting;
 var button; var input; var sender; var greeting; var numOfEmailsRemaining; var userAddress;
-var user; let _width; let _height; var inp; var emailNotClicked = true;
+var user; let _width; let _height; var inp; var emailNotClicked = true; var cnv;
 
-function getUserID() 
+function getUserID()
 {
     $.getJSON("https://api.ipify.org?format=json", async function (data) {
         userAddress = data.ip;
@@ -22,7 +22,7 @@ function getUserID()
 function setup()
 {
     getUserID();
-    createCanvas(width1, height1);
+    cnv = createCanvas(width1, height1);
     ttl = createElement('h1', "Home Page");
     numOfEmailsRemaining = 3;
     photo = loadImage('./wedding_jacket_tryon.jpeg');
@@ -57,7 +57,7 @@ function setup()
 }*/
 
 
-function draw() 
+function draw()
 {
     clear();
     background(255);
@@ -71,7 +71,7 @@ function draw()
             greeting.position(width1*0.35, _height* 0.15 + textWidth(bio)/fontsize );//+ (textAscent('Send me an email, Number of emails remaining: ') + textDescent('Send me an email, Number of emails remaining: ')) - 5 - input.height/2);
 
     }
-    
+
 }
 
 function mouseClicked()
@@ -79,8 +79,8 @@ function mouseClicked()
     if(mouseX > sender.x && mouseX < sender.x + sender.width && mouseY > sender.y && mouseY < sender.y + sender.height)
     {
         if(emailNotClicked){
-        sender.value('');
-        emailNotClicked = false;
+            sender.value('');
+            emailNotClicked = false;
         }
     }
     else
@@ -88,9 +88,29 @@ function mouseClicked()
         if(sender.value() == '')
         {
             sender.value('Please enter your email: ');
-            emailNotClicked = true;      
+            emailNotClicked = true;
         }
     }
+    button.mouseClicked(sendEmail);
+
+}
+
+function updateEmail() {
+    if(emailNotClicked)
+    {
+        sender.value('');
+        emailNotClicked = false;
+    }
+    else
+    {
+        if(sender.value() == '')
+        {
+            emailNotClicked = true;
+            sender.value('Please enter your email: ');
+        }
+
+    }
+
 }
 
 function _header_bio()
@@ -153,7 +173,7 @@ function emailBox()
         button.position(input.x + input.width - button.width - 1, _height* 0.85 + textWidth(bio)/fontsize - button.height/1.3 );
     else
         button.position(input.x + input.width - button.width - 1, height1* 0.65 + textWidth(bio)/fontsize - button.height/1.3 );
-    button.mouseClicked(sendEmail);
+
 
 
     textAlign(CENTER);
@@ -168,10 +188,17 @@ function sendEmail()
         let validAdd = ValidateEmail(sender.value())
 
         if(validAdd) {
-            user.numEmails--;
-            let emailMsg = sender.value() + '\n\nMessage: ' + input.value();
-            $.post("https://formspree.io/f/meqvgzgo", {emailMsg});
-            input.value('');
+            if(input.value() != '') {
+                user.numEmails--;
+                let emailMsg = sender.value() + '\n\nMessage: ' + input.value();
+                $.post("https://formspree.io/f/meqvgzgo", {emailMsg});
+                input.value('');
+                alert('Email sent.');
+            }
+            else
+            {
+                alert('Invalid message.');
+            }
         }
         else
         {
@@ -216,13 +243,12 @@ function ball()
 
 function ValidateEmail(mail)
 {
-    let address = mail.substring(25, mail.size);
+    let address = mail.substring(0, mail.size);
 
- if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(address))
-  {
-    return (true)
-  }
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(address))
+    {
+        return (true)
+    }
 
     return (false)
 }
-

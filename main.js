@@ -4,7 +4,7 @@ var ttl; let x; let y = 20; let xGrowth = 5; let yGrowth = 1;
 var photo; var bio; var circleColor = [20]; var circleBounceCount = 0;
 var fontsize; var spaceGame; var raycast; var sorting;
 var button; var input; var sender; var greeting; var numOfEmailsRemaining; var userAddress;
-var user; let _width; let _height; var inp; var res = 970/828; let imgHeight = imgWidth*res;
+var user; let _width; let _height; var inp; var res = 970/828; let imgHeight = imgWidth*res; var emailNotClicked = true;
 
 function getUserID() {
 
@@ -75,7 +75,7 @@ function draw() {
 
 function mouseClicked()
 {
-    if(mouseX > sender.x && mouseX < sender.x + sender.width && mouseY > sender.y && mouseY < sender.y + sender.height)
+    if(mouseX > width1*0.347 && mouseX < width*0.35 + width1/2 && mouseY > input.y - _height*0.097 && mouseY < input.y - _height*0.01)
     {
         if(emailNotClicked){
             sender.value('');
@@ -216,10 +216,10 @@ function ValidateEmail(mail)
 {
     let address = mail.substring(25, mail.size);
 
- if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(address))
-  {
-    return (true)
-  }
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(address))
+    {
+        return (true)
+    }
 
     return (false)
 }

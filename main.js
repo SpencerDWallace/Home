@@ -120,9 +120,7 @@ function _header_bio(){
 function projects(){
     fill(25);
     textStyle(NORMAL);
-
-    if(height1 > width1) { _width = height1; _height = width1; }
-    else { _width = width1; _height = height1; }
+    _width = width1; _height = height1;
 
     if(projectHeader != null)
     {

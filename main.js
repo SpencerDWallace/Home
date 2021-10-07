@@ -4,10 +4,10 @@ var ttl; let x; let y = 20; let xGrowth = 5; let yGrowth = 1;
 var photo; var bio; var circleColor = [20]; var circleBounceCount = 0;
 var fontsize; var spaceGame; var raycast; var sorting;
 var button; var input; var sender; var greeting; var numOfEmailsRemaining; var userAddress;
-var user; let _width; let _height; var inp; var emailNotClicked = true; var cnv;
+var user; let _width; let _height; var inp;
 
-function getUserID()
-{
+function getUserID() {
+
     $.getJSON("https://api.ipify.org?format=json", async function (data) {
         userAddress = data.ip;
         //alert("IP address is: " + userAddress);
@@ -19,14 +19,14 @@ function getUserID()
 
 
 
-function setup()
-{
+function setup(){
+
     getUserID();
-    cnv = createCanvas(width1, height1);
+    createCanvas(width1, height1);
     ttl = createElement('h1', "Home Page");
     numOfEmailsRemaining = 3;
     photo = loadImage('./wedding_jacket_tryon.jpeg');
-    bio = 'My name is Spencer Wallace, I am a fourth-year computer science major at Cal State San Bernardino.\n' +
+    bio = 'My name is Spencer Wallace, I am a third-year computer science major at Cal State San Bernardino.\n' +
         'I am interested in graphics and rendering techniques, game design, and machine learning/neural networks.\n' +
         'Outside of programming my hobbies include rock-climbing, hiking, camping, playing piano, and spending time\n' +
         'with my wife, our chickens, and our dog. Listed below are some of my projects with links to their demos.\n' +
@@ -41,13 +41,14 @@ function setup()
         }
     }
     x = random( width1*0.25 + 10, width1*0.74 - 10 );
-    fontsize = width1/80;
+    fontsize = width1/100;
     console.log('fontsize is ' + fontsize);
 
 
     //identifyUser();
     projects();
     emailBox();
+
 
 }
 
@@ -57,8 +58,7 @@ function setup()
 }*/
 
 
-function draw()
-{
+function draw() {
     clear();
     background(255);
     _header_bio();
@@ -71,55 +71,21 @@ function draw()
             greeting.position(width1*0.35, _height* 0.15 + textWidth(bio)/fontsize );//+ (textAscent('Send me an email, Number of emails remaining: ') + textDescent('Send me an email, Number of emails remaining: ')) - 5 - input.height/2);
 
     }
-
 }
 
-function mouseClicked()
-{
-    if(mouseX > sender.x && mouseX < sender.x + sender.width && mouseY > sender.y && mouseY < sender.y + sender.height)
-    {
-        if(emailNotClicked){
-            sender.value('');
-            emailNotClicked = false;
-        }
-    }
-    else
-    {
-        if(sender.value() == '')
-        {
-            sender.value('Please enter your email: ');
-            emailNotClicked = true;
-        }
-    }
-    button.mouseClicked(sendEmail);
-
-}
-
-function updateEmail() {
-    if(emailNotClicked)
-    {
-        
-        sender.value('');
-        emailNotClicked = false;
-    }
-}
-
-function _header_bio()
-{
+function _header_bio(){
     ttl.position(width1*0.02,height1*0.01);
-    image(photo, width1*0.02, height1 * 0.08, width1*0.20,  height1*0.02 + textWidth(bio)/fontsize);
+    image(photo, width1*0.02, height1 * 0.08, width1*0.10,  height*0.33);
 
     fill('#003388')
-    rect(width1*0.25, height1*0.08, width1*0.74, height1*0.02 + textWidth(bio)/fontsize)
+    rect(width1*0.25, height1*0.08, width1*0.74, height1*0.06 + textWidth(bio)/fontsize)
 
     fill(255);
     textStyle(BOLD);
     textSize(fontsize);
     text(bio, width1*0.26, height1*0.1, width1*0.72, height1*0.35);
 }
-
-function projects()
-{
+function projects(){
     fill(25);
     textStyle(NORMAL);
 
@@ -129,7 +95,7 @@ function projects()
     let projectHeader = createElement('h1', "Projects");
     projectHeader.position(_width*0.025, _height* 0.25 + textWidth(bio)/fontsize)
 
-    spaceGame = createA('https://spencerdwallace.github.io/UnitySpaceGame/', 'Space Game using Unity', "_blank");
+    spaceGame = createA('https://spencerdwallace.github.io/UnitySpaceGame/', 'Space Game using Unity', "_self");
     spaceGame.position(_width*0.025, _height* 0.35 + textWidth(bio)/fontsize);
     raycast = createA('https://spencerdwallace.github.io/RaycastingExperiment/', 'Javascript Raycasting Demo (Mobile Friendly)', "_blank");
     raycast.position(_width*0.025, _height* 0.4 + textWidth(bio)/fontsize);
@@ -164,7 +130,7 @@ function emailBox()
         button.position(input.x + input.width - button.width - 1, _height* 0.85 + textWidth(bio)/fontsize - button.height/1.3 );
     else
         button.position(input.x + input.width - button.width - 1, height1* 0.65 + textWidth(bio)/fontsize - button.height/1.3 );
-
+    button.mouseClicked(sendEmail);
 
 
     textAlign(CENTER);
@@ -179,24 +145,17 @@ function sendEmail()
         let validAdd = ValidateEmail(sender.value())
 
         if(validAdd) {
-            if(input.value() != '') {
-                user.numEmails--;
-                let emailMsg = sender.value() + '\n\nMessage: ' + input.value();
-                $.post("https://formspree.io/f/meqvgzgo", {emailMsg});
-                input.value('');
-                alert('Email sent.');
-            }
-            else
-            {
-                alert('Invalid message.');
-            }
+            user.numEmails--;
+            let emailMsg = sender.value() + '\n\nMessage: ' + input.value();
+            $.post("https://formspree.io/f/meqvgzgo", {emailMsg});
+            input.value('');
         }
         else
         {
             alert('Invalid email address, please check that your email address is entered correctly.');
         }
 
-        greeting.html('Send me an email:', false);
+        greeting.html('Send me an email, Number of emails remaining: ' + user.numEmails, false);
     }
     else{
         greeting.html('Maximum emails sent, please email me directly at the email listed above', false);
@@ -204,8 +163,7 @@ function sendEmail()
     }
 }
 
-function ball()
-{
+function ball(){
 
     x += xGrowth;
     y += yGrowth;
@@ -234,12 +192,13 @@ function ball()
 
 function ValidateEmail(mail)
 {
-    let address = mail.substring(0, mail.size);
+    let address = mail.substring(25, mail.size);
 
-    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(address))
-    {
-        return (true)
-    }
+ if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(address))
+  {
+    return (true)
+  }
 
     return (false)
 }
+

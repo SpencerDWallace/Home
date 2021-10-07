@@ -73,6 +73,27 @@ function draw() {
     }
 }
 
+function mouseClicked()
+{
+    if(mouseX > sender.x && mouseX < sender.x + sender.width && mouseY > sender.y && mouseY < sender.y + sender.height)
+    {
+        if(emailNotClicked){
+            sender.value('');
+            emailNotClicked = false;
+        }
+    }
+    else
+    {
+        if(sender.value() == '')
+        {
+            sender.value('Please enter your email: ');
+            emailNotClicked = true;
+        }
+    }
+    button.mouseClicked(sendEmail);
+
+}
+
 function _header_bio(){
     ttl.position(width1*0.02,height1*0.01);
     image(photo, width1*0.02, height1 * 0.08, imgWidth,  imgHeight);
@@ -156,7 +177,7 @@ function sendEmail()
             alert('Invalid email address, please check that your email address is entered correctly.');
         }
 
-        greeting.html('Send me an email, Number of emails remaining: ' + user.numEmails, false);
+        greeting.html('Send me an email: ' + user.numEmails, false);
     }
     else{
         greeting.html('Maximum emails sent, please email me directly at the email listed above', false);

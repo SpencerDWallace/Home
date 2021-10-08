@@ -1,10 +1,10 @@
 let width1 = $(window).width()*0.98; let height1 = $(window).height()*0.97;
-let imgWidth = width1/5.6; let imgHeight = height1/2.4;
-var ttl; let x; let y = 20; let xGrowth = 5; let yGrowth = 1;
-var photo; var bio; var circleColor = [20]; var circleBounceCount = 0;
-var fontsize; var spaceGame; var raycast; var sorting;
+var imgWidth; var imgHeight; var browserZoomLevel; var eleFont;
+var ttl; let x; let y; let xGrowth = 5; let yGrowth = 1; var mobile;
+var photo; var bio; var circleColor = [20]; var circleBounceCount = 0; var ballSize;
+var fontsize; var spaceGame; var raycast; var sorting; var projectHeader;
 var button; var input; var sender; var greeting; var numOfEmailsRemaining; var userAddress;
-var user; let _width; let _height; var inp;
+var user; let _width; let _height; var inp; var res = 970/828;  var emailNotClicked = true;
 
 function getUserID() {
 
@@ -20,17 +20,29 @@ function getUserID() {
 
 
 function setup(){
-
+    if(width1 > height1) { _width = width1; _height = height1; mobile = false; } //desktop or landscape
+    else { _width = height1; _height = width1; mobile = true;} //mobile or portrait
+    browserZoomLevel = (Math.round(window.devicePixelRatio * 100))/100;
+    ballSize = 20/browserZoomLevel;
+    eleFont = _height/25;
+    y = 20/browserZoomLevel;
+    imgWidth = width1/8;
+    if(mobile)
+        imgWidth = width1/6;
+    imgHeight = imgWidth*res;
+    // width1 = width1/browserZoomLevel;
+    // height1 = height1/browserZoomLevel;
+    console.log('Browser zoom is: ' + browserZoomLevel);
     getUserID();
     createCanvas(width1, height1);
     ttl = createElement('h1', "Home Page");
     numOfEmailsRemaining = 3;
     photo = loadImage('./wedding_jacket_tryon.jpeg');
-    bio = 'My name is Spencer Wallace, I am a third-year computer science major at Cal State San Bernardino.\n' +
-        'I am interested in graphics and rendering techniques, game design, and machine learning/neural networks.\n' +
-        'Outside of programming my hobbies include rock-climbing, hiking, camping, playing piano, and spending time\n' +
-        'with my wife, our chickens, and our dog. Listed below are some of my projects with links to their demos.\n' +
-        '    \n' +
+    bio = 'My name is Spencer Wallace, I am a fourth-year computer science major at Cal State San Bernardino. ' +
+        'I am interested in graphics and rendering techniques, game design, and machine learning/neural networks. ' +
+        'Outside of programming my hobbies include rock-climbing, hiking, camping, playing piano, and spending time ' +
+        'with my wife, our chickens, and our dog. Listed below are some of my projects with links to their demos. ' +
+        '    \n\n\n' +
         '    Contact Info: (email is preferred)\n' +
         '    Email: spencerdwallace@gmail.com\n' +
         '    Phone: (951) 623-4164';
@@ -41,7 +53,7 @@ function setup(){
         }
     }
     x = random( width1*0.25 + 10, width1*0.74 - 10 );
-    fontsize = width1/80;
+    fontsize = _width/100;
     console.log('fontsize is ' + fontsize);
 
 
@@ -54,7 +66,6 @@ function setup(){
 
 /*function identifyUser()
 {
-
 }*/
 
 
@@ -63,78 +74,147 @@ function draw() {
     background(255);
     _header_bio();
     ball();
-    if (user != null && greeting == null) {
-        greeting = createElement('h2', 'Send me an email, Number of emails remaining: ' + user.numEmails);
-        if(height1 > width1)
-            greeting.position(width1*0.35, _height* 0.45 + textWidth(bio)/fontsize );
-        else
-            greeting.position(width1*0.35, _height* 0.15 + textWidth(bio)/fontsize );//+ (textAscent('Send me an email, Number of emails remaining: ') + textDescent('Send me an email, Number of emails remaining: ')) - 5 - input.height/2);
+    browserZoomLevel = (Math.round(window.devicePixelRatio * 100)) / 100;
 
+    /*if (width1 != $(window).width() * 0.98 || height1 != $(window).height() * 0.97) {
+        width1 = $(window).width() * 0.98;
+        height1 = $(window).height() * 0.97;
+        eleFont = height1 / 25;
+        fontsize = width1 / 100;
+        resizeCanvas(width1, height1);
+        imgWidth = width1/8; imgHeight = imgWidth*res;
+        projects(); emailBox();
+    }*/
+}
+
+function mouseClicked()
+{
+    if(mouseX > width1*0.347 && mouseX < width*0.35 + width1/2 && mouseY > input.y - _height*0.097 && mouseY < input.y - _height*0.01)
+    {
+        if(emailNotClicked){
+            sender.value('');
+            emailNotClicked = false;
+        }
     }
+    else
+    {
+        if(sender.value() == '')
+        {
+            sender.value('Please enter your email: ');
+            emailNotClicked = true;
+        }
+    }
+    button.mouseClicked(sendEmail);
+
 }
 
 function _header_bio(){
-    ttl.position(width1*0.02,height1*0.01);
-    image(photo, width1*0.02, height1 * 0.08, width1*0.20,  height1*0.02 + textWidth(bio)/fontsize);
+
+    image(photo, width1*0.02, height1 * 0.08, imgWidth,  imgHeight);
 
     fill('#003388')
-    rect(width1*0.25, height1*0.08, width1*0.74, height1*0.02 + textWidth(bio)/fontsize)
+    if(mobile)
+        rect(width1*0.25, height1*0.08, width1*0.74, imgHeight*2);
+    else
+    rect(width1*0.25, height1*0.08, width1*0.74, imgHeight);
 
     fill(255);
     textStyle(BOLD);
-    textSize(fontsize);
-    text(bio, width1*0.26, height1*0.1, width1*0.72, height1*0.35);
+
+    if(mobile){
+        textSize(fontsize*1.3);
+        text(bio, width1 * 0.26, height1 * 0.09, width1 * 0.72, 2*imgHeight - 0.01);
+    }
+    else
+    {
+        textSize(fontsize);
+        text(bio, width1 * 0.26, height1 * 0.09, width1 * 0.72, imgHeight - 0.01);
+    }
+    ttl.position(width1*0.02,height1*0.01);
+    ttl.style('font-size', eleFont + 'px');
 }
 function projects(){
     fill(25);
     textStyle(NORMAL);
 
-    if(height1 > width1) { _width = height1; _height = width1; }
-    else { _width = width1; _height = height1; }
 
-    let projectHeader = createElement('h1', "Projects");
-    projectHeader.position(_width*0.025, _height* 0.25 + textWidth(bio)/fontsize)
+    if(projectHeader != null)
+    {
+        projectHeader.remove(); spaceGame.remove();
+        raycast.remove(); sorting.remove();
+    }
+    projectHeader = createElement('h1', "Projects");
+    projectHeader.style('font-size', eleFont + 'px')
 
     spaceGame = createA('https://spencerdwallace.github.io/UnitySpaceGame/', 'Space Game using Unity', "_self");
-    spaceGame.position(_width*0.025, _height* 0.35 + textWidth(bio)/fontsize);
+    spaceGame.style('font-size', height1/40 + 'px');
+
     raycast = createA('https://spencerdwallace.github.io/RaycastingExperiment/', 'Javascript Raycasting Demo (Mobile Friendly)', "_blank");
-    raycast.position(_width*0.025, _height* 0.4 + textWidth(bio)/fontsize);
+    raycast.style('font-size', height1/40 + 'px');
 
     sorting = createA('https://spencerdwallace.github.io/sorting_algorithms/', 'Sorting Algorithms (Mobile Friendly)', "_self");
-    sorting.position(_width*0.025, _height* 0.45 + textWidth(bio)/fontsize);
+    sorting.style('font-size', height1/40 + 'px');
 
-
-
+    if(mobile) {
+        projectHeader.position(_width * 0.025, _height * 0.15 + imgHeight*2);
+        spaceGame.position(_width * 0.025, _height * 0.25 + imgHeight*2);
+        raycast.position(_width * 0.025, _height * 0.3 + imgHeight*2);
+        sorting.position(_width * 0.025, _height * 0.35 + imgHeight*2);
+    }
+    else{
+        projectHeader.position(_width * 0.025, _height * 0.15 + imgHeight);
+        spaceGame.position(_width * 0.025, _height * 0.25 + imgHeight);
+        raycast.position(_width * 0.025, _height * 0.3 + imgHeight);
+        sorting.position(_width * 0.025, _height * 0.35 + imgHeight);
+    }
 }
 
 function emailBox()
 {
 
+    if(inp != null)
+    {
+        inp.remove(); greeting.remove(); input.remove();
+        sender.remove(); button.remove();
+    }
     inp = document.createElement("INPUT");
     inp.setAttribute("type", "text");
     inp.size = "500";
 
-    input = createInput();
-    sender = createInput();
+    greeting = createElement('h1', 'Send me an email:');
+    greeting.style('font-size', eleFont + 'px');
 
+    sender = createInput();
     sender.size(width1/2, _height * 0.08);
     sender.value('Please enter your email: ');
-    if(height1 > width1)
-        input.position(width1*0.35, _height* 0.65 + textWidth(bio)/fontsize );
-    else
-        input.position(width1*0.35, height1* 0.45 + textWidth(bio)/fontsize );
+
+    sender.style('font-size', eleFont*0.5 + 'px');
+
+    input = createInput();
     input.size(width1/2, _height*0.2);
-    sender.position(width1*0.35, input.y - _height*0.09);
+    input.style('font-size', eleFont*0.5 + 'px');
+
     button = createButton('send');
-    if(height1 > width1)
-        button.position(input.x + input.width - button.width - 1, _height* 0.85 + textWidth(bio)/fontsize - button.height/1.3 );
+    if(browserZoomLevel > 1 && mobile)
+        button.size(browserZoomLevel * 0.8 * _width/50, _height/40);
     else
-        button.position(input.x + input.width - button.width - 1, height1* 0.65 + textWidth(bio)/fontsize - button.height/1.3 );
-    button.mouseClicked(sendEmail);
-
-
+        button.size(eleFont*1.25, _height/40);
+    button.style('font-size', eleFont*0.30 + 'px');
+    if(!mobile) //desktop
+    {
+        greeting.position(width1 * 0.35, _height * 0.15 + imgHeight);
+        sender.position(width1 * 0.35, _height * 0.15 + imgHeight + eleFont * 2);
+        input.position(width1 * 0.35, _height * 0.2 + imgHeight + eleFont * 4);
+        button.position(width1 * 0.85 - eleFont*1.25, _height * 0.2 + imgHeight + eleFont * 4 + _height * 0.175);
+    }
+    else //mobile
+    {
+        greeting.position(width1 * 0.25, _height * 0.65 + imgHeight);
+        sender.position(width1 * 0.25, _height * 0.65 + imgHeight + eleFont * 2);
+        input.position(width1 * 0.25, _height * 0.7 + imgHeight + eleFont * 4);
+        button.position(width1 * 0.25 + (eleFont/3)*(sender.value().length), _height * 0.595 + imgHeight + eleFont * 2 + _width/100);
+    }
     textAlign(CENTER);
-    textSize(50);
 }
 
 function sendEmail()
@@ -149,24 +229,36 @@ function sendEmail()
             let emailMsg = sender.value() + '\n\nMessage: ' + input.value();
             $.post("https://formspree.io/f/meqvgzgo", {emailMsg});
             input.value('');
+            alert('Email sent!');
         }
         else
         {
             alert('Invalid email address, please check that your email address is entered correctly.');
         }
 
-        greeting.html('Send me an email, Number of emails remaining: ' + user.numEmails, false);
+        //greeting.html('Send me an email:', false);
     }
     else{
-        greeting.html('Maximum emails sent, please email me directly at the email listed above', false);
-        //alert("Maximum number of emails sent, please email me directly at the email listed below.")
+        alert('Maximum emails sent, please email me directly at the email listed above');
     }
+}
+
+function keyPressed()
+{
+    if(keyCode === 13){
+
+        input.input(detectNewline());
+    }
+}
+function detectNewline()
+{
+        input.value(input.value() + '\n');
 }
 
 function ball(){
 
-    x += xGrowth;
-    y += yGrowth;
+    x += (xGrowth/browserZoomLevel);
+    y += (yGrowth/browserZoomLevel);
     fill(circleColor[circleBounceCount][0], circleColor[circleBounceCount][1], circleColor[circleBounceCount][2]);
 
     if(x< width1*0.25 + 10) {
@@ -183,22 +275,25 @@ function ball(){
         if(circleBounceCount >= 20)
             circleBounceCount = 0;
     }
-    if(y > height1*0.08 - 10)
+    if(y > height1*0.08 - ballSize/2)
         yGrowth = -1*yGrowth;
-    if(y < 10)
+    if(y < ballSize/2)
         yGrowth = -1*yGrowth;
-    circle(x,y,20);
+    circle(x,y,ballSize);
 }
 
 function ValidateEmail(mail)
 {
-    let address = mail.substring(25, mail.size);
+    let address;
+    if(emailNotClicked)
+        address = mail.substring(25, mail.size);
+    else
+        address = mail.substring(0, mail.size);
 
- if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(address))
-  {
-    return (true)
-  }
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(address))
+    {
+        return (true)
+    }
 
     return (false)
 }
-

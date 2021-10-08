@@ -20,10 +20,11 @@ function getUserID() {
 
 
 function setup(){
-
+    if(width1 > height1) { _width = width1; _height = height1; } //desktop or landscape
+    else { _width = height1; _height = width1; } //mobile or portrait
     browserZoomLevel = (Math.round(window.devicePixelRatio * 100))/100;
     ballSize = 20/browserZoomLevel;
-    eleFont = height1/25;
+    eleFont = _height/25;
     y = 20/browserZoomLevel;
     // width1 = width1/browserZoomLevel;
     // height1 = height1/browserZoomLevel;
@@ -121,7 +122,7 @@ function _header_bio(){
 function projects(){
     fill(25);
     textStyle(NORMAL);
-    _width = width1; _height = height1;
+
 
     if(projectHeader != null)
     {
@@ -162,28 +163,40 @@ function emailBox()
     inp.size = "500";
 
     greeting = createElement('h1', 'Send me an email:');
-    greeting.position(width1*0.35, _height* 0.15 + imgHeight );
     greeting.style('font-size', eleFont + 'px');
 
     sender = createInput();
     sender.size(width1/2, _height * 0.08);
     sender.value('Please enter your email: ');
-    sender.position(width1*0.35, _height* 0.15 + imgHeight + eleFont*2);
+
     sender.style('font-size', eleFont*0.5 + 'px');
 
     input = createInput();
-    input.position(width1*0.35, _height* 0.2 + imgHeight + eleFont*4);
     input.size(width1/2, _height*0.2);
 
     button = createButton('send');
-    button.size(width1/50, height1/40);
+    if(browserZoomLevel > 1 && width1 != _width)
+        button.size(browserZoomLevel * 0.75 * _width/50, _height/40);
+    else
+        button.size(eleFont*1.25, _height/40);
     button.style('font-size', eleFont*0.30 + 'px');
-    button.position(width*0.85 - width1/50, _height* 0.2 + imgHeight + eleFont*4 + _height*0.175);
+    if(width1 == _width) //desktop
+    {
+        greeting.position(width1 * 0.35, _height * 0.15 + imgHeight);
+        sender.position(width1 * 0.35, _height * 0.15 + imgHeight + eleFont * 2);
+        input.position(width1 * 0.35, _height * 0.2 + imgHeight + eleFont * 4);
+        button.position(width1 * 0.85 - eleFont*1.25, _height * 0.2 + imgHeight + eleFont * 4 + _height * 0.175);
+    }
+    else //mobile
+    {
+        greeting.position(width1 * 0.25, _height * 0.55 + imgHeight);
+        sender.position(width1 * 0.25, _height * 0.55 + imgHeight + eleFont * 2);
+        input.position(width1 * 0.25, _height * 0.6 + imgHeight + eleFont * 4);
+        button.position(width1 * 0.25 + (eleFont/3)*(sender.value().length), _height * 0.5 + imgHeight + eleFont * 2 + _width/100);
+    }
     button.mouseClicked(sendEmail);
 
-
     textAlign(CENTER);
-    //textSize(50);
 }
 
 function sendEmail()

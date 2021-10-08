@@ -178,7 +178,7 @@ function emailBox()
     button = createButton('send');
     button.size(width1/50, height1/40);
     button.style('font-size', eleFont*0.30 + 'px');
-    button.position(input.x + input.width - button.width - 1, _height* 0.2 + imgHeight + eleFont*4 + _height*0.18);
+    button.position(width*0.85 - width1/50, _height* 0.2 + imgHeight + eleFont*4 + _height*0.175);
     button.mouseClicked(sendEmail);
 
 

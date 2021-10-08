@@ -1,7 +1,7 @@
 let width1 = $(window).width()*0.98; let height1 = $(window).height()*0.97;
 let imgWidth = width1/8; var browserZoomLevel; var eleFont;
 var ttl; let x; let y; let xGrowth = 5; let yGrowth = 1;
-var photo; var bio; var circleColor = [20]; var circleBounceCount = 0;
+var photo; var bio; var circleColor = [20]; var circleBounceCount = 0; var ballSize;
 var fontsize; var spaceGame; var raycast; var sorting; var projectHeader;
 var button; var input; var sender; var greeting; var numOfEmailsRemaining; var userAddress;
 var user; let _width; let _height; var inp; var res = 970/828; let imgHeight = imgWidth*res; var emailNotClicked = true;
@@ -22,6 +22,7 @@ function getUserID() {
 function setup(){
 
     browserZoomLevel = (Math.round(window.devicePixelRatio * 100))/100;
+    ballSize = 20/browserZoomLevel;
     eleFont = height1/25;
     y = 20/browserZoomLevel;
     // width1 = width1/browserZoomLevel;
@@ -60,7 +61,6 @@ function setup(){
 
 /*function identifyUser()
 {
-
 }*/
 
 
@@ -68,9 +68,10 @@ function draw() {
     clear();
     background(255);
     _header_bio();
-    //ball();
+    ball();
     browserZoomLevel = (Math.round(window.devicePixelRatio * 100)) / 100;
-    if (width1 != $(window).width() * 0.98 || height1 != $(window).height() * 0.97) {
+
+    /*if (width1 != $(window).width() * 0.98 || height1 != $(window).height() * 0.97) {
         width1 = $(window).width() * 0.98;
         height1 = $(window).height() * 0.97;
         eleFont = height1 / 25;
@@ -78,7 +79,7 @@ function draw() {
         resizeCanvas(width1, height1);
         imgWidth = width1/8; imgHeight = imgWidth*res;
         projects(); emailBox();
-    }
+    }*/
 }
 
 function mouseClicked()
@@ -124,8 +125,8 @@ function projects(){
 
     if(projectHeader != null)
     {
-     projectHeader.remove(); spaceGame.remove();
-     raycast.remove(); sorting.remove();
+        projectHeader.remove(); spaceGame.remove();
+        raycast.remove(); sorting.remove();
     }
     projectHeader = createElement('h1', "Projects");
     projectHeader.position(_width*0.025, _height* 0.15 + imgHeight);
@@ -181,8 +182,8 @@ function emailBox()
     button.mouseClicked(sendEmail);
 
 
-     textAlign(CENTER);
-     //textSize(50);
+    textAlign(CENTER);
+    //textSize(50);
 }
 
 function sendEmail()
@@ -231,11 +232,11 @@ function ball(){
         if(circleBounceCount >= 20)
             circleBounceCount = 0;
     }
-    if(y > height1*0.08 - (10/browserZoomLevel))
+    if(y > height1*0.08 - ballSize/2)
         yGrowth = -1*yGrowth;
-    if(y < (10/browserZoomLevel))
+    if(y < ballSize/2)
         yGrowth = -1*yGrowth;
-    circle(x,y,(20/browserZoomLevel));
+    circle(x,y,ballSize);
 }
 
 function ValidateEmail(mail)
@@ -249,4 +250,3 @@ function ValidateEmail(mail)
 
     return (false)
 }
-

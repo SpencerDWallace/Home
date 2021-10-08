@@ -192,6 +192,7 @@ function emailBox()
 
     input = createInput();
     input.size(width1/2, _height*0.2);
+    input.style('font-size', eleFont*0.5 + 'px');
 
     button = createButton('send');
     if(browserZoomLevel > 1 && mobile)
@@ -213,8 +214,6 @@ function emailBox()
         input.position(width1 * 0.25, _height * 0.7 + imgHeight + eleFont * 4);
         button.position(width1 * 0.25 + (eleFont/3)*(sender.value().length), _height * 0.595 + imgHeight + eleFont * 2 + _width/100);
     }
-    button.mouseClicked(sendEmail);
-
     textAlign(CENTER);
 }
 
@@ -230,18 +229,30 @@ function sendEmail()
             let emailMsg = sender.value() + '\n\nMessage: ' + input.value();
             $.post("https://formspree.io/f/meqvgzgo", {emailMsg});
             input.value('');
+            alert('Email sent!');
         }
         else
         {
             alert('Invalid email address, please check that your email address is entered correctly.');
         }
 
-        greeting.html('Send me an email: ' + user.numEmails, false);
+        //greeting.html('Send me an email:', false);
     }
     else{
-        greeting.html('Maximum emails sent, please email me directly at the email listed above', false);
-        //alert("Maximum number of emails sent, please email me directly at the email listed below.")
+        alert('Maximum emails sent, please email me directly at the email listed above');
     }
+}
+
+function keyPressed()
+{
+    if(keyCode === 13){
+
+        input.input(detectNewline());
+    }
+}
+function detectNewline()
+{
+        input.value(input.value() + '\n');
 }
 
 function ball(){
@@ -273,7 +284,11 @@ function ball(){
 
 function ValidateEmail(mail)
 {
-    let address = mail.substring(25, mail.size);
+    let address;
+    if(emailNotClicked)
+        address = mail.substring(25, mail.size);
+    else
+        address = mail.substring(0, mail.size);
 
     if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(address))
     {

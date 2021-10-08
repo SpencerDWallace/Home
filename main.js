@@ -38,10 +38,10 @@ function setup(){
     ttl = createElement('h1', "Home Page");
     numOfEmailsRemaining = 3;
     photo = loadImage('./wedding_jacket_tryon.jpeg');
-    bio = 'My name is Spencer Wallace, I am a third-year computer science major at Cal State San Bernardino.' +
-        'I am interested in graphics and rendering techniques, game design, and machine learning/neural networks.' +
-        'Outside of programming my hobbies include rock-climbing, hiking, camping, playing piano, and spending time' +
-        'with my wife, our chickens, and our dog. Listed below are some of my projects with links to their demos.' +
+    bio = 'My name is Spencer Wallace, I am a third-year computer science major at Cal State San Bernardino. ' +
+        'I am interested in graphics and rendering techniques, game design, and machine learning/neural networks. ' +
+        'Outside of programming my hobbies include rock-climbing, hiking, camping, playing piano, and spending time ' +
+        'with my wife, our chickens, and our dog. Listed below are some of my projects with links to their demos. ' +
         '    \n\n\n' +
         '    Contact Info: (email is preferred)\n' +
         '    Email: spencerdwallace@gmail.com\n' +

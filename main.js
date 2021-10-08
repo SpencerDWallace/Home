@@ -225,11 +225,16 @@ function sendEmail()
         let validAdd = ValidateEmail(sender.value())
 
         if(validAdd) {
-            user.numEmails--;
-            let emailMsg = sender.value() + '\n\nMessage: ' + input.value();
-            $.post("https://formspree.io/f/meqvgzgo", {emailMsg});
-            input.value('');
-            alert('Email sent!');
+            if(input.value() != '')
+            {
+                user.numEmails--;
+                let emailMsg = sender.value() + '\n\nMessage: ' + input.value();
+                $.post("https://formspree.io/f/meqvgzgo", {emailMsg});
+                input.value('');
+                alert('Email sent!');
+            }
+            else
+                alert('Invalid message.');
         }
         else
         {
@@ -249,6 +254,7 @@ function keyPressed()
 
         input.input(detectNewline());
     }
+
 }
 function detectNewline()
 {

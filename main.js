@@ -1,10 +1,10 @@
 let width1 = $(window).width()*0.98; let height1 = $(window).height()*0.97;
-let imgWidth = width1/8; var browserZoomLevel; var eleFont;
-var ttl; let x; let y; let xGrowth = 5; let yGrowth = 1;
+var imgWidth; var imgHeight; var browserZoomLevel; var eleFont;
+var ttl; let x; let y; let xGrowth = 5; let yGrowth = 1; var mobile;
 var photo; var bio; var circleColor = [20]; var circleBounceCount = 0; var ballSize;
 var fontsize; var spaceGame; var raycast; var sorting; var projectHeader;
 var button; var input; var sender; var greeting; var numOfEmailsRemaining; var userAddress;
-var user; let _width; let _height; var inp; var res = 970/828; let imgHeight = imgWidth*res; var emailNotClicked = true;
+var user; let _width; let _height; var inp; var res = 970/828;  var emailNotClicked = true;
 
 function getUserID() {
 
@@ -20,12 +20,16 @@ function getUserID() {
 
 
 function setup(){
-    if(width1 > height1) { _width = width1; _height = height1; } //desktop or landscape
-    else { _width = height1; _height = width1; } //mobile or portrait
+    if(width1 > height1) { _width = width1; _height = height1; mobile = false; } //desktop or landscape
+    else { _width = height1; _height = width1; mobile = true;} //mobile or portrait
     browserZoomLevel = (Math.round(window.devicePixelRatio * 100))/100;
     ballSize = 20/browserZoomLevel;
     eleFont = _height/25;
     y = 20/browserZoomLevel;
+    imgWidth = width1/8;
+    if(mobile)
+        imgWidth = width1/6;
+    imgHeight = imgWidth*res;
     // width1 = width1/browserZoomLevel;
     // height1 = height1/browserZoomLevel;
     console.log('Browser zoom is: ' + browserZoomLevel);
@@ -34,11 +38,11 @@ function setup(){
     ttl = createElement('h1', "Home Page");
     numOfEmailsRemaining = 3;
     photo = loadImage('./wedding_jacket_tryon.jpeg');
-    bio = 'My name is Spencer Wallace, I am a third-year computer science major at Cal State San Bernardino.\n' +
-        'I am interested in graphics and rendering techniques, game design, and machine learning/neural networks.\n' +
-        'Outside of programming my hobbies include rock-climbing, hiking, camping, playing piano, and spending time\n' +
-        'with my wife, our chickens, and our dog. Listed below are some of my projects with links to their demos.\n' +
-        '    \n' +
+    bio = 'My name is Spencer Wallace, I am a third-year computer science major at Cal State San Bernardino.' +
+        'I am interested in graphics and rendering techniques, game design, and machine learning/neural networks.' +
+        'Outside of programming my hobbies include rock-climbing, hiking, camping, playing piano, and spending time' +
+        'with my wife, our chickens, and our dog. Listed below are some of my projects with links to their demos.' +
+        '    \n\n\n' +
         '    Contact Info: (email is preferred)\n' +
         '    Email: spencerdwallace@gmail.com\n' +
         '    Phone: (951) 623-4164';
@@ -49,7 +53,7 @@ function setup(){
         }
     }
     x = random( width1*0.25 + 10, width1*0.74 - 10 );
-    fontsize = width1/100;
+    fontsize = _width/100;
     console.log('fontsize is ' + fontsize);
 
 
@@ -109,13 +113,23 @@ function _header_bio(){
     image(photo, width1*0.02, height1 * 0.08, imgWidth,  imgHeight);
 
     fill('#003388')
-    rect(width1*0.25, height1*0.08, width1*0.74, imgHeight)
+    if(mobile)
+        rect(width1*0.25, height1*0.08, width1*0.74, imgHeight*2);
+    else
+    rect(width1*0.25, height1*0.08, width1*0.74, imgHeight);
 
     fill(255);
     textStyle(BOLD);
-    textSize(fontsize);
-    text(bio, width1*0.26, height1*0.09, width1*0.72, imgHeight - 0.01);
 
+    if(mobile){
+        textSize(fontsize*1.3);
+        text(bio, width1 * 0.26, height1 * 0.09, width1 * 0.72, 2*imgHeight - 0.01);
+    }
+    else
+    {
+        textSize(fontsize);
+        text(bio, width1 * 0.26, height1 * 0.09, width1 * 0.72, imgHeight - 0.01);
+    }
     ttl.position(width1*0.02,height1*0.01);
     ttl.style('font-size', eleFont + 'px');
 }
@@ -130,24 +144,29 @@ function projects(){
         raycast.remove(); sorting.remove();
     }
     projectHeader = createElement('h1', "Projects");
-    projectHeader.position(_width*0.025, _height* 0.15 + imgHeight);
     projectHeader.style('font-size', eleFont + 'px')
 
     spaceGame = createA('https://spencerdwallace.github.io/UnitySpaceGame/', 'Space Game using Unity', "_self");
-    spaceGame.position(_width*0.025, _height* 0.25 + imgHeight);
     spaceGame.style('font-size', height1/40 + 'px');
 
     raycast = createA('https://spencerdwallace.github.io/RaycastingExperiment/', 'Javascript Raycasting Demo (Mobile Friendly)', "_blank");
-    raycast.position(_width*0.025, _height* 0.3 + imgHeight);
     raycast.style('font-size', height1/40 + 'px');
 
     sorting = createA('https://spencerdwallace.github.io/sorting_algorithms/', 'Sorting Algorithms (Mobile Friendly)', "_self");
-    sorting.position(_width*0.025, _height* 0.35 + imgHeight);
     sorting.style('font-size', height1/40 + 'px');
 
-
-
-
+    if(mobile) {
+        projectHeader.position(_width * 0.025, _height * 0.15 + imgHeight*2);
+        spaceGame.position(_width * 0.025, _height * 0.25 + imgHeight*2);
+        raycast.position(_width * 0.025, _height * 0.3 + imgHeight*2);
+        sorting.position(_width * 0.025, _height * 0.35 + imgHeight*2);
+    }
+    else{
+        projectHeader.position(_width * 0.025, _height * 0.15 + imgHeight);
+        spaceGame.position(_width * 0.025, _height * 0.25 + imgHeight);
+        raycast.position(_width * 0.025, _height * 0.3 + imgHeight);
+        sorting.position(_width * 0.025, _height * 0.35 + imgHeight);
+    }
 }
 
 function emailBox()
@@ -175,12 +194,12 @@ function emailBox()
     input.size(width1/2, _height*0.2);
 
     button = createButton('send');
-    if(browserZoomLevel > 1 && width1 != _width)
-        button.size(browserZoomLevel * 0.75 * _width/50, _height/40);
+    if(browserZoomLevel > 1 && mobile)
+        button.size(browserZoomLevel * 0.8 * _width/50, _height/40);
     else
         button.size(eleFont*1.25, _height/40);
     button.style('font-size', eleFont*0.30 + 'px');
-    if(width1 == _width) //desktop
+    if(!mobile) //desktop
     {
         greeting.position(width1 * 0.35, _height * 0.15 + imgHeight);
         sender.position(width1 * 0.35, _height * 0.15 + imgHeight + eleFont * 2);
@@ -189,10 +208,10 @@ function emailBox()
     }
     else //mobile
     {
-        greeting.position(width1 * 0.25, _height * 0.55 + imgHeight);
-        sender.position(width1 * 0.25, _height * 0.55 + imgHeight + eleFont * 2);
-        input.position(width1 * 0.25, _height * 0.6 + imgHeight + eleFont * 4);
-        button.position(width1 * 0.25 + (eleFont/3)*(sender.value().length), _height * 0.5 + imgHeight + eleFont * 2 + _width/100);
+        greeting.position(width1 * 0.25, _height * 0.65 + imgHeight);
+        sender.position(width1 * 0.25, _height * 0.65 + imgHeight + eleFont * 2);
+        input.position(width1 * 0.25, _height * 0.7 + imgHeight + eleFont * 4);
+        button.position(width1 * 0.25 + (eleFont/3)*(sender.value().length), _height * 0.595 + imgHeight + eleFont * 2 + _width/100);
     }
     button.mouseClicked(sendEmail);
 

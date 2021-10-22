@@ -2,7 +2,7 @@ let width1 = $(window).width()*0.98; let height1 = $(window).height()*0.97;
 var imgWidth; var imgHeight; var browserZoomLevel; var eleFont;
 var ttl; let x; let y; let xGrowth = 5; let yGrowth = 1; var mobile;
 var photo; var bio; var circleColor = [20]; var circleBounceCount = 0; var ballSize;
-var fontsize; var spaceGame; var raycast; var sorting; var projectHeader;
+var fontsize; var spaceGame; var raycast; var sorting; var photoAlbum; var projectHeader;
 var button; var input; var sender; var greeting; var numOfEmailsRemaining; var userAddress;
 var user; let _width; let _height; var inp; var res = 970/828;  var emailNotClicked = true;
 
@@ -10,7 +10,7 @@ function getUserID() {
 
     $.getJSON("https://api.ipify.org?format=json", async function (data) {
         userAddress = data.ip;
-        //alert("IP address is: " + userAddress);
+        alert("IP address is: " + userAddress);
         user = {address: userAddress, numEmails: 3};
         var _id = JSON.stringify( userAddress )
     });
@@ -33,7 +33,7 @@ function setup(){
     // width1 = width1/browserZoomLevel;
     // height1 = height1/browserZoomLevel;
     console.log('Browser zoom is: ' + browserZoomLevel);
-    getUserID();
+    //getUserID();
     createCanvas(width1, height1);
     ttl = createElement('h1', "Home Page");
     numOfEmailsRemaining = 3;
@@ -146,7 +146,7 @@ function projects(){
     projectHeader = createElement('h1', "Projects");
     projectHeader.style('font-size', eleFont + 'px')
 
-    spaceGame = createA('https://spencerdwallace.github.io/UnitySpaceGame/', 'Space Game using Unity', "_blank");
+    spaceGame = createA('https://spencerdwallace.github.io/UnitySpaceGame/', 'Space Game using Unity', "_self");
     spaceGame.style('font-size', height1/40 + 'px');
 
     raycast = createA('https://spencerdwallace.github.io/RaycastingExperiment/', 'Javascript Raycasting Demo (Mobile Friendly)', "_blank");
@@ -155,17 +155,23 @@ function projects(){
     sorting = createA('https://spencerdwallace.github.io/sorting_algorithms/', 'Sorting Algorithms (Mobile Friendly)', "_self");
     sorting.style('font-size', height1/40 + 'px');
 
+    photoAlbum = createA('https://spencerdwallace.github.io/PhotoAlbum/', 'Photo Album - In Progress, 10/22/21', "_self");
+    photoAlbum.style('font-size', height1/40 + 'px');
+
+
     if(mobile) {
         projectHeader.position(_width * 0.025, _height * 0.15 + imgHeight*2);
         spaceGame.position(_width * 0.025, _height * 0.25 + imgHeight*2);
         raycast.position(_width * 0.025, _height * 0.3 + imgHeight*2);
         sorting.position(_width * 0.025, _height * 0.35 + imgHeight*2);
+        photoAlbum.position(_width * 0.025, _height * 0.4 + imgHeight*2);
     }
     else{
         projectHeader.position(_width * 0.025, _height * 0.15 + imgHeight);
         spaceGame.position(_width * 0.025, _height * 0.25 + imgHeight);
         raycast.position(_width * 0.025, _height * 0.3 + imgHeight);
         sorting.position(_width * 0.025, _height * 0.35 + imgHeight);
+        photoAlbum.position(_width * 0.025, _height * 0.4 + imgHeight);
     }
 }
 

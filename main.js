@@ -34,10 +34,11 @@ function setup(){
     // height1 = height1/browserZoomLevel;
     console.log('Browser zoom is: ' + browserZoomLevel);
     //getUserID();
-    createCanvas(width1, height1);
-    ttl = createElement('h1', "Home Page");
+    let cnv = createCanvas(width1, height1);
+    cnv.position(0,0);
+    //ttl = createElement('h1', "Home Page");
     numOfEmailsRemaining = 3;
-    photo = loadImage('./wedding_jacket_tryon.jpeg');
+    photo = loadImage('https://spencerdwallace.github.io/Home/wedding_jacket_tryon.jpeg');
     bio = 'My name is Spencer Wallace, I am a fourth-year computer science major at Cal State San Bernardino. ' +
         'I am interested in graphics and rendering techniques, game design, and machine learning/neural networks. ' +
         'Outside of programming my hobbies include rock-climbing, hiking, camping, playing piano, and spending time ' +
@@ -110,17 +111,40 @@ function mouseClicked()
 
 function _header_bio(){
 
-    image(photo, width1*0.02, height1 * 0.08, imgWidth,  imgHeight);
+    stroke(200,160,0);
+    fill(20);
+    let x; let y;
+    x = width1*0.05;
+    y = height1 * 0.08;
 
+    if(mobile)
+        y += 10;
+    strokeWeight(1/browserZoomLevel);
+    rect(x - 20/browserZoomLevel, y - 20/browserZoomLevel, imgWidth + 40/browserZoomLevel,  imgHeight + 40/browserZoomLevel);
+    strokeWeight(3/browserZoomLevel);
+    fill('rgba(70%,40%,0%,0.6)');
+    rect(x - 20/browserZoomLevel, y - 20/browserZoomLevel, imgWidth + 40/browserZoomLevel,  imgHeight + 40/browserZoomLevel);
+    strokeWeight(1/browserZoomLevel);
+    fill('rgba(100%,40%,0%,0.4)');
+    rect(x - 15/browserZoomLevel, y - 15/browserZoomLevel, imgWidth + 30/browserZoomLevel,  imgHeight + 30/browserZoomLevel);
+    fill('rgba(50%,30%,0%,0.6)');
+    rect(x - 5/browserZoomLevel, y - 5/browserZoomLevel, imgWidth + 10/browserZoomLevel, imgHeight + 10/browserZoomLevel);
+    fill(200,160,0);
+
+    rect(x - 1/browserZoomLevel, y - 1/browserZoomLevel, imgWidth+2/browserZoomLevel,  imgHeight+2/browserZoomLevel);
+    image(photo, x, y, imgWidth,  imgHeight);
+
+    stroke(150);
+    strokeWeight(3/browserZoomLevel);
     fill('#003388')
     if(mobile)
-        rect(width1*0.25, height1*0.08, width1*0.74, imgHeight*2);
+        rect(width1*0.25, y - 20/browserZoomLevel, width1*0.74, imgHeight*2);
     else
-    rect(width1*0.25, height1*0.08, width1*0.74, imgHeight);
+    rect(width1*0.25, y - 20/browserZoomLevel, width1*0.74, imgHeight + 40/browserZoomLevel);
 
     fill(255);
     textStyle(BOLD);
-
+    noStroke();
     if(mobile){
         textSize(fontsize*1.3);
         text(bio, width1 * 0.26, height1 * 0.09, width1 * 0.72, 2*imgHeight - 0.01);
@@ -130,8 +154,10 @@ function _header_bio(){
         textSize(fontsize);
         text(bio, width1 * 0.26, height1 * 0.09, width1 * 0.72, imgHeight - 0.01);
     }
-    ttl.position(width1*0.02,height1*0.01);
-    ttl.style('font-size', eleFont + 'px');
+    strokeWeight(1/browserZoomLevel);
+    stroke(150);
+    /*    ttl.position(width1*0.02,height1*0.01);
+    ttl.style('font-size', eleFont + 'px');*/
 }
 function projects(){
     fill(25);
@@ -288,7 +314,7 @@ function ball(){
         if(circleBounceCount >= 20)
             circleBounceCount = 0;
     }
-    if(y > height1*0.08 - ballSize/2)
+    if(y > height1*0.08 - ballSize/2 - 23/browserZoomLevel)
         yGrowth = -1*yGrowth;
     if(y < ballSize/2)
         yGrowth = -1*yGrowth;

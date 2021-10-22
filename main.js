@@ -191,7 +191,7 @@ function emailBox()
     greeting.style('font-size', eleFont + 'px');
 
     sender = createInput();
-    sender.size(width1/2, _height * 0.08);
+    sender.size(width1*0.5, _height * 0.08);
     sender.value('Please enter your email: ');
 
     sender.style('font-size', eleFont*0.5 + 'px');
@@ -199,10 +199,11 @@ function emailBox()
     input = createInput();
     input.size(width1/2, _height*0.2);
     input.style('font-size', eleFont*0.5 + 'px');
+    input.value('(In progress)');
 
     button = createButton('send');
     if(browserZoomLevel > 1 && mobile)
-        button.size(browserZoomLevel * 0.8 * _width/50, _height/40);
+        button.size(browserZoomLevel * 1 * _width/50, _height/40);
     else
         button.size(eleFont*1.25, _height/40);
     button.style('font-size', eleFont*0.30 + 'px');
@@ -215,10 +216,10 @@ function emailBox()
     }
     else //mobile
     {
-        greeting.position(width1 * 0.25, _height * 0.65 + imgHeight);
-        sender.position(width1 * 0.25, _height * 0.65 + imgHeight + eleFont * 2);
-        input.position(width1 * 0.25, _height * 0.7 + imgHeight + eleFont * 4);
-        button.position(width1 * 0.25 + (eleFont/3)*(sender.value().length), _height * 0.595 + imgHeight + eleFont * 2 + _width/100);
+        greeting.position(width1 * 0.35, _height * 0.7 + imgHeight);
+        sender.position(width1 * 0.35, _height * 0.7 + imgHeight + eleFont * 2);
+        input.position(width1 * 0.35, _height * 0.75 + imgHeight + eleFont * 4);
+        button.position(width1 * 0.35 + (eleFont/3)*(sender.value().length), _height * 0.645 + imgHeight + eleFont * 2 + _width/100);
     }
     textAlign(CENTER);
 }

@@ -181,7 +181,7 @@ function projects(){
     sorting = createA('https://spencerdwallace.github.io/sorting_algorithms/', 'Sorting Algorithms (Mobile Friendly)', "_self");
     sorting.style('font-size', height1/40 + 'px');
 
-    photoAlbum = createA('https://spencerdwallace.github.io/PhotoAlbum/', 'Photo Album - In Progress, 10/22/21', "_self");
+    photoAlbum = createA('https://spencerdwallace.github.io/PhotoAlbum/', 'Photo Album - In Progress, (Last update: 10/24/21)', "_self");
     photoAlbum.style('font-size', height1/40 + 'px');
 
 

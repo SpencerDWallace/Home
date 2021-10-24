@@ -2,7 +2,7 @@ let width1 = $(window).width()*0.98; let height1 = $(window).height()*0.97;
 var imgWidth; var imgHeight; var browserZoomLevel; var eleFont;
 var ttl; let x; let y; let xGrowth = 5; let yGrowth = 1; var mobile;
 var photo; var bio; var circleColor = [20]; var circleBounceCount = 0; var ballSize;
-var fontsize; var spaceGame; var raycast; var sorting; var projectHeader;
+var fontsize; var spaceGame; var raycast; var sorting; var photoAlbum; var projectHeader;
 var button; var input; var sender; var greeting; var numOfEmailsRemaining; var userAddress;
 var user; let _width; let _height; var inp; var res = 970/828;  var emailNotClicked = true;
 
@@ -10,7 +10,7 @@ function getUserID() {
 
     $.getJSON("https://api.ipify.org?format=json", async function (data) {
         userAddress = data.ip;
-        //alert("IP address is: " + userAddress);
+        alert("IP address is: " + userAddress);
         user = {address: userAddress, numEmails: 3};
         var _id = JSON.stringify( userAddress )
     });
@@ -33,11 +33,12 @@ function setup(){
     // width1 = width1/browserZoomLevel;
     // height1 = height1/browserZoomLevel;
     console.log('Browser zoom is: ' + browserZoomLevel);
-    getUserID();
-    createCanvas(width1, height1);
-    ttl = createElement('h1', "Home Page");
+    //getUserID();
+    let cnv = createCanvas(width1, height1);
+    cnv.position(0,0);
+    //ttl = createElement('h1', "Home Page");
     numOfEmailsRemaining = 3;
-    photo = loadImage('./wedding_jacket_tryon.jpeg');
+    photo = loadImage('https://spencerdwallace.github.io/Home/wedding_jacket_tryon.jpeg');
     bio = 'My name is Spencer Wallace, I am a fourth-year computer science major at Cal State San Bernardino. ' +
         'I am interested in graphics and rendering techniques, game design, and machine learning/neural networks. ' +
         'Outside of programming my hobbies include rock-climbing, hiking, camping, playing piano, and spending time ' +
@@ -110,17 +111,40 @@ function mouseClicked()
 
 function _header_bio(){
 
-    image(photo, width1*0.02, height1 * 0.08, imgWidth,  imgHeight);
+    stroke(200,160,0);
+    fill(20);
+    let x; let y;
+    x = width1*0.05;
+    y = height1 * 0.08;
 
+    if(mobile)
+        y += 10;
+    strokeWeight(1/browserZoomLevel);
+    rect(x - 20/browserZoomLevel, y - 20/browserZoomLevel, imgWidth + 40/browserZoomLevel,  imgHeight + 40/browserZoomLevel);
+    strokeWeight(3/browserZoomLevel);
+    fill('rgba(70%,40%,0%,0.6)');
+    rect(x - 20/browserZoomLevel, y - 20/browserZoomLevel, imgWidth + 40/browserZoomLevel,  imgHeight + 40/browserZoomLevel);
+    strokeWeight(1/browserZoomLevel);
+    fill('rgba(100%,40%,0%,0.4)');
+    rect(x - 15/browserZoomLevel, y - 15/browserZoomLevel, imgWidth + 30/browserZoomLevel,  imgHeight + 30/browserZoomLevel);
+    fill('rgba(50%,30%,0%,0.6)');
+    rect(x - 5/browserZoomLevel, y - 5/browserZoomLevel, imgWidth + 10/browserZoomLevel, imgHeight + 10/browserZoomLevel);
+    fill(200,160,0);
+
+    rect(x - 1/browserZoomLevel, y - 1/browserZoomLevel, imgWidth+2/browserZoomLevel,  imgHeight+2/browserZoomLevel);
+    image(photo, x, y, imgWidth,  imgHeight);
+
+    stroke(150);
+    strokeWeight(3/browserZoomLevel);
     fill('#003388')
     if(mobile)
-        rect(width1*0.25, height1*0.08, width1*0.74, imgHeight*2);
+        rect(width1*0.25, y - 20/browserZoomLevel, width1*0.74, imgHeight*2);
     else
-    rect(width1*0.25, height1*0.08, width1*0.74, imgHeight);
+    rect(width1*0.25, y - 20/browserZoomLevel, width1*0.74, imgHeight + 40/browserZoomLevel);
 
     fill(255);
     textStyle(BOLD);
-
+    noStroke();
     if(mobile){
         textSize(fontsize*1.3);
         text(bio, width1 * 0.26, height1 * 0.09, width1 * 0.72, 2*imgHeight - 0.01);
@@ -130,8 +154,10 @@ function _header_bio(){
         textSize(fontsize);
         text(bio, width1 * 0.26, height1 * 0.09, width1 * 0.72, imgHeight - 0.01);
     }
-    ttl.position(width1*0.02,height1*0.01);
-    ttl.style('font-size', eleFont + 'px');
+    strokeWeight(1/browserZoomLevel);
+    stroke(150);
+    /*    ttl.position(width1*0.02,height1*0.01);
+    ttl.style('font-size', eleFont + 'px');*/
 }
 function projects(){
     fill(25);
@@ -155,17 +181,23 @@ function projects(){
     sorting = createA('https://spencerdwallace.github.io/sorting_algorithms/', 'Sorting Algorithms (Mobile Friendly)', "_self");
     sorting.style('font-size', height1/40 + 'px');
 
+    photoAlbum = createA('https://spencerdwallace.github.io/PhotoAlbum/', 'Photo Album - In Progress, (Last update: 10/24/21)', "_self");
+    photoAlbum.style('font-size', height1/40 + 'px');
+
+
     if(mobile) {
         projectHeader.position(_width * 0.025, _height * 0.15 + imgHeight*2);
         spaceGame.position(_width * 0.025, _height * 0.25 + imgHeight*2);
         raycast.position(_width * 0.025, _height * 0.3 + imgHeight*2);
         sorting.position(_width * 0.025, _height * 0.35 + imgHeight*2);
+        photoAlbum.position(_width * 0.025, _height * 0.4 + imgHeight*2);
     }
     else{
         projectHeader.position(_width * 0.025, _height * 0.15 + imgHeight);
         spaceGame.position(_width * 0.025, _height * 0.25 + imgHeight);
         raycast.position(_width * 0.025, _height * 0.3 + imgHeight);
         sorting.position(_width * 0.025, _height * 0.35 + imgHeight);
+        photoAlbum.position(_width * 0.025, _height * 0.4 + imgHeight);
     }
 }
 
@@ -185,7 +217,7 @@ function emailBox()
     greeting.style('font-size', eleFont + 'px');
 
     sender = createInput();
-    sender.size(width1/2, _height * 0.08);
+    sender.size(width1*0.5, _height * 0.08);
     sender.value('Please enter your email: ');
 
     sender.style('font-size', eleFont*0.5 + 'px');
@@ -193,10 +225,11 @@ function emailBox()
     input = createInput();
     input.size(width1/2, _height*0.2);
     input.style('font-size', eleFont*0.5 + 'px');
+    input.value('(In progress)');
 
     button = createButton('send');
     if(browserZoomLevel > 1 && mobile)
-        button.size(browserZoomLevel * 0.8 * _width/50, _height/40);
+        button.size(browserZoomLevel * 1 * _width/50, _height/40);
     else
         button.size(eleFont*1.25, _height/40);
     button.style('font-size', eleFont*0.30 + 'px');
@@ -209,10 +242,10 @@ function emailBox()
     }
     else //mobile
     {
-        greeting.position(width1 * 0.25, _height * 0.65 + imgHeight);
-        sender.position(width1 * 0.25, _height * 0.65 + imgHeight + eleFont * 2);
-        input.position(width1 * 0.25, _height * 0.7 + imgHeight + eleFont * 4);
-        button.position(width1 * 0.25 + (eleFont/3)*(sender.value().length), _height * 0.595 + imgHeight + eleFont * 2 + _width/100);
+        greeting.position(width1 * 0.35, _height * 0.7 + imgHeight);
+        sender.position(width1 * 0.35, _height * 0.7 + imgHeight + eleFont * 2);
+        input.position(width1 * 0.35, _height * 0.75 + imgHeight + eleFont * 4);
+        button.position(width1 * 0.35 + (eleFont/3)*(sender.value().length), _height * 0.645 + imgHeight + eleFont * 2 + _width/100);
     }
     textAlign(CENTER);
 }
@@ -225,11 +258,16 @@ function sendEmail()
         let validAdd = ValidateEmail(sender.value())
 
         if(validAdd) {
-            user.numEmails--;
-            let emailMsg = sender.value() + '\n\nMessage: ' + input.value();
-            $.post("https://formspree.io/f/meqvgzgo", {emailMsg});
-            input.value('');
-            alert('Email sent!');
+            if(input.value() != '')
+            {
+                user.numEmails--;
+                let emailMsg = sender.value() + '\n\nMessage: ' + input.value();
+                $.post("https://formspree.io/f/meqvgzgo", {emailMsg});
+                input.value('');
+                alert('Email sent!');
+            }
+            else
+                alert('Invalid message.');
         }
         else
         {
@@ -249,6 +287,7 @@ function keyPressed()
 
         input.input(detectNewline());
     }
+
 }
 function detectNewline()
 {
@@ -275,7 +314,7 @@ function ball(){
         if(circleBounceCount >= 20)
             circleBounceCount = 0;
     }
-    if(y > height1*0.08 - ballSize/2)
+    if(y > height1*0.08 - ballSize/2 - 23/browserZoomLevel)
         yGrowth = -1*yGrowth;
     if(y < ballSize/2)
         yGrowth = -1*yGrowth;

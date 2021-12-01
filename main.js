@@ -157,7 +157,7 @@ function projects(){
     sorting = createA('https://spencerdwallace.github.io/sorting_algorithms/', 'Sorting Algorithms (Mobile Friendly)', "_self");
     sorting.style('font-size', height1/40 + 'px');
 
-    IB_KNN = createA('./CSE_5160_Project_Fall_2021___Letter_Classification__Naive_Bayes_and_KNN_.pdf', 'Paper on Ierative Bayes and K-Nearest Neighbors<br>' +
+    IB_KNN = createA('./CSE_5160_Project_Fall_2021___Letter_Classification__Naive_Bayes_and_KNN_.pdf', 'Paper on Iterative Bayes and K-Nearest Neighbors<br>' +
         ' for Letter Classification', "_blank");
     IB_KNN.style('font-size', height1/40 + 'px');
 
@@ -172,10 +172,10 @@ function projects(){
     }
     else{*/
     projectHeader.position(_width * 0.025, _height * 0.15 + ih);
-    spaceGame.position(_width * 0.025, _height * 0.25 + ih);
-    raycast.position(_width * 0.025, _height * 0.3 + ih);
-    sorting.position(_width * 0.025, _height * 0.35 + ih);
-    IB_KNN.position(_width * 0.025, _height * 0.4 + ih);
+    spaceGame.position(_width * 0.025, _height * 0.25 + ih + 0.02*mobile);
+    raycast.position(_width * 0.025, _height * 0.3 + ih + 0.04*mobile);
+    sorting.position(_width * 0.025, _height * 0.35 + ih + 0.06*mobile);
+    IB_KNN.position(_width * 0.025, _height * 0.4 + ih + 0.08*mobile);
     //}
 }
 

@@ -2,18 +2,20 @@ let width1 = $(window).width()*0.98; let height1 = $(window).height()*0.97;
 var imgWidth; var imgHeight; var browserZoomLevel; var eleFont;
 var ttl; let x; let y; let xGrowth = 5; let yGrowth = 1; var mobile;
 var photo; var bio; var circleColor = [20]; var circleBounceCount = 0; var ballSize;
-var fontsize; var spaceGame; var raycast; var sorting; var projectHeader;
+var fontsize; var spaceGame; var raycast; var sorting; var IB_KNN; var projectHeader;
 var button; var input; var sender; var greeting; var numOfEmailsRemaining; var userAddress;
 var user; let _width; let _height; var inp; var res = 970/828;  var emailNotClicked = true;
 
 function getUserID() {
-
+/*
     $.getJSON("https://api.ipify.org?format=json", async function (data) {
         userAddress = data.ip;
         //alert("IP address is: " + userAddress);
         user = {address: userAddress, numEmails: 3};
         var _id = JSON.stringify( userAddress )
     });
+
+*/
 }
 
 
@@ -155,18 +157,26 @@ function projects(){
     sorting = createA('https://spencerdwallace.github.io/sorting_algorithms/', 'Sorting Algorithms (Mobile Friendly)', "_self");
     sorting.style('font-size', height1/40 + 'px');
 
-    if(mobile) {
+    IB_KNN = createA('./CSE_5160_Project_Fall_2021___Letter_Classification__Naive_Bayes_and_KNN_.pdf', 'Paper on Ierative Bayes and K-Nearest Neighbors<br>' +
+        ' for Letter Classification', "_blank");
+    IB_KNN.style('font-size', height1/40 + 'px');
+
+    let ih = imgHeight;
+    ih = ih + ih*mobile;
+    /*if(mobile) {
         projectHeader.position(_width * 0.025, _height * 0.15 + imgHeight*2);
         spaceGame.position(_width * 0.025, _height * 0.25 + imgHeight*2);
         raycast.position(_width * 0.025, _height * 0.3 + imgHeight*2);
         sorting.position(_width * 0.025, _height * 0.35 + imgHeight*2);
+        IB_KNN.position(_width * 0.025, _height * 0.4 + imgHeight*2);
     }
-    else{
+    else{*/
         projectHeader.position(_width * 0.025, _height * 0.15 + imgHeight);
         spaceGame.position(_width * 0.025, _height * 0.25 + imgHeight);
         raycast.position(_width * 0.025, _height * 0.3 + imgHeight);
         sorting.position(_width * 0.025, _height * 0.35 + imgHeight);
-    }
+        IB_KNN.position(_width * 0.025, _height * 0.4 + imgHeight);
+    //}
 }
 
 function emailBox()

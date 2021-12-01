@@ -219,10 +219,10 @@ function emailBox()
     }
     else //mobile
     {
-        greeting.position(width1 * 0.25, _height * 0.65 + imgHeight);
-        sender.position(width1 * 0.25, _height * 0.65 + imgHeight + eleFont * 2);
-        input.position(width1 * 0.25, _height * 0.7 + imgHeight + eleFont * 4);
-        button.position(width1 * 0.25 + (eleFont/3)*(sender.value().length), _height * 0.595 + imgHeight + eleFont * 2 + _width/100);
+        greeting.position(width1 * 0.25, _height * 0.7 + imgHeight);
+        sender.position(width1 * 0.25, _height * 0.7 + imgHeight + eleFont * 2);
+        input.position(width1 * 0.25, _height * 0.75 + imgHeight + eleFont * 4);
+        button.position(width1 * 0.25 + (eleFont/3)*(sender.value().length), _height * 0.645 + imgHeight + eleFont * 2 + _width/100);
     }
     textAlign(CENTER);
 }

@@ -7,15 +7,15 @@ var button; var input; var sender; var greeting; var numOfEmailsRemaining; var u
 var user; let _width; let _height; var inp; var res = 970/828;  var emailNotClicked = true;
 
 function getUserID() {
-/*
-    $.getJSON("https://api.ipify.org?format=json", async function (data) {
-        userAddress = data.ip;
-        //alert("IP address is: " + userAddress);
-        user = {address: userAddress, numEmails: 3};
-        var _id = JSON.stringify( userAddress )
-    });
+    /*
+        $.getJSON("https://api.ipify.org?format=json", async function (data) {
+            userAddress = data.ip;
+            //alert("IP address is: " + userAddress);
+            user = {address: userAddress, numEmails: 3};
+            var _id = JSON.stringify( userAddress )
+        });
 
-*/
+    */
 }
 
 
@@ -118,7 +118,7 @@ function _header_bio(){
     if(mobile)
         rect(width1*0.25, height1*0.08, width1*0.74, imgHeight*2);
     else
-    rect(width1*0.25, height1*0.08, width1*0.74, imgHeight);
+        rect(width1*0.25, height1*0.08, width1*0.74, imgHeight);
 
     fill(255);
     textStyle(BOLD);
@@ -171,11 +171,11 @@ function projects(){
         IB_KNN.position(_width * 0.025, _height * 0.4 + imgHeight*2);
     }
     else{*/
-        projectHeader.position(_width * 0.025, _height * 0.15 + imgHeight);
-        spaceGame.position(_width * 0.025, _height * 0.25 + imgHeight);
-        raycast.position(_width * 0.025, _height * 0.3 + imgHeight);
-        sorting.position(_width * 0.025, _height * 0.35 + imgHeight);
-        IB_KNN.position(_width * 0.025, _height * 0.4 + imgHeight);
+    projectHeader.position(_width * 0.025, _height * 0.15 + imgHeight);
+    spaceGame.position(_width * 0.025, _height * 0.25 + imgHeight);
+    raycast.position(_width * 0.025, _height * 0.3 + imgHeight);
+    sorting.position(_width * 0.025, _height * 0.35 + imgHeight);
+    IB_KNN.position(_width * 0.025, _height * 0.4 + imgHeight);
     //}
 }
 
@@ -268,7 +268,7 @@ function keyPressed()
 }
 function detectNewline()
 {
-        input.value(input.value() + '\n');
+    input.value(input.value() + '\n');
 }
 
 function ball(){

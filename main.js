@@ -147,7 +147,7 @@ function projects(){
     }
     projectHeader = createElement('h1', "Projects");
     projectHeader.style('font-size', eleFont + 'px')
-
+    height1 = height1 - mobile*(height1/20);
     spaceGame = createA('https://spencerdwallace.github.io/UnitySpaceGame/', 'Space Game using Unity', "_self");
     spaceGame.style('font-size', height1/40 + 'px');
 

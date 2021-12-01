@@ -171,11 +171,11 @@ function projects(){
         IB_KNN.position(_width * 0.025, _height * 0.4 + imgHeight*2);
     }
     else{*/
-    projectHeader.position(_width * 0.025, _height * 0.15 + imgHeight);
-    spaceGame.position(_width * 0.025, _height * 0.25 + imgHeight);
-    raycast.position(_width * 0.025, _height * 0.3 + imgHeight);
-    sorting.position(_width * 0.025, _height * 0.35 + imgHeight);
-    IB_KNN.position(_width * 0.025, _height * 0.4 + imgHeight);
+    projectHeader.position(_width * 0.025, _height * 0.15 + ih);
+    spaceGame.position(_width * 0.025, _height * 0.25 + ih);
+    raycast.position(_width * 0.025, _height * 0.3 + ih);
+    sorting.position(_width * 0.025, _height * 0.35 + ih);
+    IB_KNN.position(_width * 0.025, _height * 0.4 + ih);
     //}
 }
 

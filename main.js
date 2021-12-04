@@ -157,7 +157,7 @@ function projects(){
     sorting = createA('https://spencerdwallace.github.io/sorting_algorithms/', 'Sorting Algorithms (Mobile Friendly)', "_self");
     sorting.style('font-size', height1/40 + 'px');
 
-    IB_KNN = createA('./CSE_5160_Project_Fall_2021___Letter_Classification__Naive_Bayes_and_KNN_.pdf', 'Paper on Iterative Bayes and K-Nearest Neighbors<br>' +
+    IB_KNN = createA('./letter_classification.pdf', 'Paper on Iterative Bayes and K-Nearest Neighbors<br>' +
         ' for Letter Classification', "_blank");
     IB_KNN.style('font-size', height1/40 + 'px');
 

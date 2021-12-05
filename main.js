@@ -91,7 +91,7 @@ function draw() {
 
 function mouseClicked()
 {
-    if(mouseX > width1*0.347 && mouseX < width*0.35 + width1/2 && mouseY > input.y - _height*0.097 && mouseY < input.y - _height*0.01)
+    if(mouseX > width1*0.347 && mouseX < width*0.35 + width1/2 && mouseY > sender.y - eleFont*browserZoomLevel/6 && mouseY < sender.y + sender.height - eleFont*browserZoomLevel/6)
     {
         if(emailNotClicked){
             sender.value('');
@@ -266,10 +266,10 @@ function keyPressed()
     }
 
 }
-function detectNewline()
+/*function detectNewline()
 {
     input.value(input.value() + '\n');
-}
+}*/
 
 function ball(){
 

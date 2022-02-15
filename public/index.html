@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spencer Wallace - Home Directory</title>
+
+<link rel="stylesheet" href="styles/normalize.css" />
+<!-- main css -->
+<link rel="stylesheet" href="styles/main.css" />
+
+    <style>
+        img {
+            margin: auto;
+            margin-top: 1%;
+            margin-bottom: 1%;
+            display: table;
+            text-align: center;
+            border: .3vw double #ccc;
+            border-radius: .1vw;
+            width: 12vw;
+        }
+        img.pThumb {
+            margin: auto;
+            margin-top: 1%;
+            margin-bottom: 1%;
+            display: table;
+            text-align: center;
+            border: .15vmax ridge rgba(195, 202, 226, 0.42);
+            border-radius: .05vmax;
+            width: 8vmax;
+        }
+        figure.item {
+            /* To correctly align image, regardless of content height: */
+            vertical-align: top;
+            display: inline-block;
+            /* To horizontally center images and caption */
+            text-align: center;
+            /* The width of the container also implies margin around the images. */
+            /*width: 120px;*/
+        }
+        figure.item:hover{
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+        .btn {
+            .width: 8vmax;
+            cursor: pointer;
+            appearance: none;
+            color: #222;
+            font-weight: bold;
+            background: #ccc;
+            border: none;
+            border-radius: .2vmax;
+            letter-spacing: var(--letterSpacing);
+            padding: 0.375rem 0.75rem;
+            box-shadow: var(--shadow-1);
+            transition: var(--transition);
+            text-transform: capitalize;
+            font-size: .8vmax;
+        }
+        .btn:hover {
+        }
+
+        .caption {
+            /* Make the caption a block so it occupies its own line. */
+            display: block;
+        }
+    </style>
+
+</head>
+<body>
+<div class="topnav">
+    <a class = "active" href="./index.html">Home</a>
+    <a href="./login.html">Resume</a>
+    <a href="./register.html">Photos</a>
+    <a  href="./about.html">Contact</a>
+</div>
+<div class="welcome-message">
+    <form class = "user-form">
+        <img src="photos/wedding_jacket_tryon.jpeg" alt="Photo">
+        My name is Spencer Wallace, I am a fourth-year computer science major at Cal State San Bernardino.  <br>
+        I am interested in graphics and rendering techniques, game programming, and machine learning. <br>
+        Outside of programming my hobbies include rock-climbing, hiking, camping, playing piano, <br>
+        and spending time with my wife, our chickens, and our dog. Listed below are some of <br>
+        my projects with links to their demos.<br>
+        <br>
+    </form>
+</div>
+<div style = "text-align: center; margin:auto; margin-top: 2%">
+
+        <figure class="item">
+            <img class = "pThumb" src="photos/raycast.png"/>
+            <a href = "./raycast/raycast.html" target="_blank" class="btn">Javascript Raycasting</a>
+        </figure>
+
+        <figure class="item">
+            <img class = "pThumb" src="photos/sort.png"/>
+            <a href = "./sort/index.html" class="btn">Sorting Algorithms</a>
+        </figure>
+
+        <figure class="item">
+            <img class = "pThumb" src="photos/unity-sg.png"/>
+            <a href = "https://spencerdwallace.github.io/UnitySpaceGame/" target="_blank" class="btn">Unity Game</a>
+        </figure>
+
+        <figure class="item">
+            <img class = "pThumb" src="photos/tasks.png"/>
+            <a href = "https://task-manager-swall.herokuapp.com" target="_blank" class="btn" style = "min-width: .8vmax;">Task Manager</a>
+        </figure>
+</div>
+
+<script type = text/javascript src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="Dependencies/p5.js"></script>
+
+</script>
+<!--
+<div>
+    <script type = text/javascript src="./main.js"></script>
+
+</div> -->
+
+</body>
+</html>

@@ -526,14 +526,13 @@ welcome message
   margin-left: auto;
   margin-right: auto;
   margin-top: 1%;
-  font-size: max(0.72vw, .85vh);
   text-align: center;
   color: #000033;
 
 }
 .welcome-message h4{
   text-decoration: none;
-  font-size: 24px;
+  font-size: max(1vw, 1.2vh);
   text-align: center;
 }
 /*

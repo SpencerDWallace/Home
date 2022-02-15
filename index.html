@@ -110,7 +110,7 @@
             </a>
         </figure>
 
-        <figure class="item">
+        <figure id = "unity" class="item">
             <a href = "https://spencerdwallace.github.io/UnitySpaceGame/" target="_blank" >
             <img class = "pThumb" src="photos/unity-sg.png"/>
             <button class="btn">Unity Game</button>
@@ -129,11 +129,15 @@
 <script src="Dependencies/p5.js"></script>
 
 </script>
-<!--
-<div>
-    <script type = text/javascript src="./main.js"></script>
+<script>
+    if( $(window).width() < $(window).height() ) {
+        document.getElementById('unity').hidden = true
+    }
 
-</div> -->
+</script>
+<!--
+    <script type = text/javascript src="./main.js"></script>
+-->
 
 </body>
 </html>

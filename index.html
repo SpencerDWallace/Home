@@ -27,7 +27,7 @@
             text-align: center;
             border: .15vmax ridge rgba(195, 202, 226, 0.42);
             border-radius: .05vmax;
-            width: 10vmax;
+            width: max(12vw, 16vh);
         }
         /*figure.item {
             !* To correctly align image, regardless of content height: *!
@@ -48,8 +48,33 @@
             color: white;
         }
 
+        .arrow{
+            position: relative;
+            transform: translateY(150%);
+            cursor: pointer;
+            height: fit-content;
+            appearance: none;
+            color: #222;
+            font-weight: bold;
+            background: #ccc;
+            border: none;
+            border-radius: .1vmax;
+            letter-spacing: var(--letterSpacing);
+            /*padding: 0.375rem 0.75rem;*/
+            box-shadow: var(--shadow-1);
+            transition: var(--transition);
+            text-transform: capitalize;
+            font-size: max(3vw, 5.5vh);
+        }
+        .arrow:hover{
+            /*transform: scale(1.1);*/
+            cursor: pointer;
+            background-color: #566CBB7E;
+            color: white;
+        }
+
         .btn {
-            width: 9.9vmax;
+            width: max(12vw, 16vh);
             cursor: pointer;
             appearance: none;
             color: #222;
@@ -94,15 +119,16 @@
         (In Progress)<br>
     </form>
 </div>
-<div style = "display: flex; justify-content: center; margin-top: 2%">
-
+<div id = "project-slide" style = "display: flex; justify-content: center; margin-top: 2%">
+        <button type = "click" id = "left-pthumb" class = "arrow"> < </button>
         <figure class="item">
             <a href = "./raycast/raycast.html" target="_blank" >
-            <img class = "pThumb" src="photos/raycast.png"/>
-            <button class="btn">Javascript Raycasting</button>
+            <img id ="project-photo" class = "pThumb" src="photos/raycast.png"/>
+            <button id = "project-caption" class="btn">Javascript Raycasting</button>
             </a>
         </figure>
-
+        <button type = "click" id = "right-pthumb" class = "arrow"> > </button>
+    <!--
         <figure class="item">
             <a href = "./sort/index.html">
             <img class = "pThumb" src="photos/sort.png"/>
@@ -123,6 +149,7 @@
             <button class="btn" style = "min-width: .8vmax;">Task Manager</button>
             </a>
         </figure>
+    -->
 </div>
 
 <script type = text/javascript src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -135,9 +162,9 @@
     }
 
 </script>
-<!--
+
     <script type = text/javascript src="./main.js"></script>
--->
+
 
 </body>
 </html>

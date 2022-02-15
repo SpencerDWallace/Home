@@ -180,7 +180,7 @@ button.block {
 form {
   margin: auto;
   text-align: center;
-  width: 90vw;
+  width: 70vw;
   background: var(--white);
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-2);
@@ -337,7 +337,6 @@ form > :last-child {
 }
 .tasks-container {
   width: 100%;
-  width: 90vw;
   max-width: var(--fixed-width);
   margin: 0 auto;
   margin-top: 2rem;

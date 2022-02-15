@@ -24,7 +24,9 @@ projectRightArrow.addEventListener("click", async(e) => {
 });
 
 
+let slideAnimation = () =>{
 
+}
 
 
 createArrays = () => {

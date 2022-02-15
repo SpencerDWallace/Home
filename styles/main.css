@@ -293,7 +293,7 @@ form > :last-child {
   height: 6rem;
   border-radius: 50%;
   border: 3px solid #ccc;
-  border-top-color: var(--clr-primary-5);
+  border-top-color: mintcream;
   animation: spinner 0.6s linear infinite;
 }
 .loading {
@@ -325,7 +325,7 @@ form > :last-child {
   height: 6rem;
   border-radius: 50%;
   border: 3px solid #ccc;
-  border-top-color: var(--clr-primary-5);
+  border-top-color: mintcream;
   animation: spinner 0.6s linear infinite;
 }
 
@@ -527,7 +527,7 @@ welcome message
   margin-left: auto;
   margin-right: auto;
   margin-top: 1%;
-  font-size: 0.72vmax;
+  font-size: max(0.72vw, 10.2vmax);
   text-align: center;
   color: #000033;
 

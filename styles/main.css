@@ -471,7 +471,7 @@ navbar and forgot password
   box-shadow: var(--shadow-1);
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: max(.8vw, 1.3vh);
   border: none;
   border-radius: var(--borderRadius);
   letter-spacing: var(--letterSpacing);

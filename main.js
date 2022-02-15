@@ -36,12 +36,3 @@ let updateProjectSlide = () =>{
 let slideAnimation = () =>{
 
 }
-
-
-createArrays = () => {
-
-}
-
-// const projectPhotos = ["photos/raycast.png", "photos/sort.png", "photos/unity-sg.png", "photos/tasks.png"];
-// const projectCaptions = ["Javascript Raycasting", "Sorting Algorithms", "Unity Game", "Task Manager"];
-// const numPhotos = 4;

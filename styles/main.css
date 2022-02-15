@@ -527,7 +527,7 @@ welcome message
   margin-left: auto;
   margin-right: auto;
   margin-top: 1%;
-  font-size: max(0.72vw, 10.2vmax);
+  font-size: max(0.72vw, .85vh);
   text-align: center;
   color: #000033;
 

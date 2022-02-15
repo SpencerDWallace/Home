@@ -17,9 +17,6 @@ function algos(){
     fill(25);
     textStyle(NORMAL);
 
-
-    let projectHeader = createElement('h1', "Sorting Algorithms");
-    projectHeader.position(_width*0.01, 0)
     quickSort = createA('https://spencerdwallace.github.io/sorting_algorithms/Quick%20Sort/', 'Quick Sort', "_self");
     quickSort.position(_width*0.01, _height* 0.1);
     selSort = createA('https://spencerdwallace.github.io/sorting_algorithms/Selection%20Sort/', 'Selection Sort', "_self");

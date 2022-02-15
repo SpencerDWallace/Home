@@ -3,26 +3,35 @@ let projectLeftArrow = projectSlideDOM.querySelector("#left-pthumb");
 let projectRightArrow = projectSlideDOM.querySelector("#right-pthumb");
 let projectPhoto = projectSlideDOM.querySelector("#project-photo");
 let projectCaption = projectSlideDOM.querySelector("#project-caption");
+let projectLink = projectSlideDOM.querySelector("#project-link");
 
-const projectPhotos = ["photos/raycast.png", "photos/sort.png", "photos/unity-sg.png", "photos/tasks.png"];
-const projectCaptions = ["Javascript Raycasting", "Sorting Algorithms", "Unity Game", "Task Manager"];
-const numPhotos = 4; let currentPhoto = 0;
+const projectSlide = {
+    projectPhotos:["photos/raycast.png", "photos/sort.png", "photos/unity-sg.png", "photos/tasks.png"],
+    projectCaptions:["Javascript Raycasting", "Sorting Algorithms", "Unity Game", "Task Manager"],
+    projectLinks:["./raycast/raycast.html", "./sort/index.html", "https://spencerdwallace.github.io/UnitySpaceGame/", "https://task-manager-swall.herokuapp.com"],
+    numPhotos:4,
+}
+let currentProject = 0;
 
 projectLeftArrow.addEventListener("click", async(e) => {
-    if(currentPhoto - 1 >= 0){
-        currentPhoto--;
-        projectPhoto.src = projectPhotos[currentPhoto]
+    if(currentProject - 1 >= 0){
+        currentProject--;
+        updateProjectSlide();
     }
 });
 
 projectRightArrow.addEventListener("click", async(e) => {
-    if(currentPhoto + 1 < numPhotos){
-        currentPhoto++;
-        projectPhoto.src = projectPhotos[currentPhoto];
-        projectCaption.textContent = projectCaptions[currentPhoto]
+    if(currentProject + 1 < projectSlide.numPhotos){
+        currentProject++;
+        updateProjectSlide();
     }
 });
 
+let updateProjectSlide = () =>{
+    projectPhoto.src = projectSlide.projectPhotos[currentProject];
+    projectCaption.textContent = projectSlide.projectCaptions[currentProject];
+    projectLink.href = projectSlide.projectLinks[currentProject]
+}
 
 let slideAnimation = () =>{
 
@@ -32,3 +41,7 @@ let slideAnimation = () =>{
 createArrays = () => {
 
 }
+
+// const projectPhotos = ["photos/raycast.png", "photos/sort.png", "photos/unity-sg.png", "photos/tasks.png"];
+// const projectCaptions = ["Javascript Raycasting", "Sorting Algorithms", "Unity Game", "Task Manager"];
+// const numPhotos = 4;

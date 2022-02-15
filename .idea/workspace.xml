@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba6443a1-3904-4cfb-9f0f-31a77dba1720" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/getData.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/letter_classification_IB_KNN.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p5.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_del_date.tsv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wedding_jacket_tryon.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wedding_jacket_tryon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +57,7 @@
       <option name="presentableId" value="Default" />
       <updated>1622150264180</updated>
       <workItem from="1622150265809" duration="5000" />
-      <workItem from="1644898086305" duration="10285000" />
+      <workItem from="1644898086305" duration="10324000" />
     </task>
     <servers />
   </component>

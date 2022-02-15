@@ -16,14 +16,14 @@ let currentProject = 0;
 projectLeftArrow.addEventListener("click", async(e) => {
     if(currentProject - 1 >= 0){
         currentProject--;
-        updateProjectSlide();
+        await updateProjectSlide();
     }
 });
 
 projectRightArrow.addEventListener("click", async(e) => {
     if(currentProject + 1 < projectSlide.numPhotos){
         currentProject++;
-        updateProjectSlide();
+        await updateProjectSlide();
     }
 });
 

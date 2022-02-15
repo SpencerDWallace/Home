@@ -14,17 +14,13 @@ const projectSlide = {
 let currentProject = 0;
 
 projectLeftArrow.addEventListener("click", async(e) => {
-    if(currentProject - 1 >= 0){
-        currentProject--;
-        await updateProjectSlide();
-    }
+    currentProject = (currentProject - 1 + projectSlide.numPhotos) % projectSlide.numPhotos;
+    await updateProjectSlide();
 });
 
 projectRightArrow.addEventListener("click", async(e) => {
-    if(currentProject + 1 < projectSlide.numPhotos){
-        currentProject++;
-        await updateProjectSlide();
-    }
+    currentProject = (currentProject + 1) % projectSlide.numPhotos;
+    await updateProjectSlide();
 });
 
 let updateProjectSlide = () =>{

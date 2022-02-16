@@ -14,18 +14,18 @@ function setup() {
         arr[i] = _height * Math.random();
         state[i] = -1;
     }
-    let h = createElement('h1', 'Selection Sort');
+    let h = createElement('h1', 'Insertion Sort');
     h.style('color', '#222222');
     h.position(_width*0.01, 0);
     h.size(_width, _height/5)
     button = createButton('Restart Sort (sort must be completed)');
     button.position(10, 70);
 
-    backToSA = createA('https://spencerdwallace.github.io/sorting_algorithms', 'Back to Sorting Algorithms', '_self');
+    backToSA = createA('../index.html', 'Back to Sorting Algorithms', '_self');
     backToSA.position(_width/2 - textWidth('Back to Sorting Algorithms')/2,30);
     currTime = Date.now() / 1000;
     sortTime = 0;
-    selectionSort(arr, start, end);
+    insertionSort(arr, start, end);
 }
 
 function draw() {
@@ -70,56 +70,37 @@ function sleep(ms) {
 
 async function swap(arr, n1, n2)
 {
-    await sleep(75);
+    await sleep(15);
     let temp = arr[n1];
     arr[n1] = arr[n2];
     arr[n2] = temp;
-/*
-    let tempN1 = n1; let valN1 = arr[n1];
-    let tempN2 = n2; let valN2 = arr[n2];
-    state[n2] = 1;
-    state[n1] = 0;
-    //let n1prev = arr[n1], n2prev = arr[n2];
-    for(n1; n1 < tempN2 || n2 > tempN1;){
-        if(n1 < tempN2){
-            arr[n1] = arr[n1+1];
-            n1++;
-            arr[n1] = valN1;
-       }
-        if(n2 > tempN1){
-            arr[n2] = arr[n2-1];
-            n2--;
-            arr[n2] = valN2;
-        }
-        console.log("made it.");
-        state[n2] = -1;
-
-    }*/
-
 }
 
-async function selectionSort(arr, start, end)
-{
+async function insertionSort(arr, start, end) {
 
     sorting = true;
-    for(let i = end; i > start; i--)
-    {
-        let high = i;
-        for(let s = start; s < i; s++)
-        {
-            if(arr[s] > arr[high])
-            {
-                state[s] = 0;
-                high = s;
-            }
 
+    for (let s = 1; s <= end; ++s) {
+        let curr = arr[s];
+        let j = s - 1;
+        state[s] = 0;
+        // find location where selected sould be inseretd
+        let loc = await binarySearch(arr, curr, 0, j);
+
+        // Move all elements after location to create space
+        while (j >= loc) {
+            await sleep(1);
+            arr[j + 1] = arr[j];
+            state[j + 1] = 1;
+            state[j] = 0;
+            j--;
         }
-        await swap(arr, high, i, 1);
-        state[i] = 1;
-    }
+        arr[j + 1] = curr;
 
+
+
+    }
     sorting = false;
-    await sleep(100);
 
     for(let i = 0; i <= end; i++)
         state[i] = -1;
@@ -129,5 +110,29 @@ async function selectionSort(arr, start, end)
         await sleep(10);
         state[i] = 1;
     }
+
+
 }
+
+    async function binarySearch(arr, num, low, high) {
+        if (high <= low)
+            if (num > arr[low])
+                return low + 1;
+            else
+                return low;
+
+
+        let mid = Math.floor((low + high) / 2);
+
+        if (num == arr[mid])
+            return mid + 1;
+
+        if (num > arr[mid])
+            return binarySearch(arr, num,
+                mid + 1, high);
+        return binarySearch(arr, num, low,
+            mid - 1);
+    }
+
+
 

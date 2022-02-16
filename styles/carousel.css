@@ -12,7 +12,7 @@
     height: 80%;
     object-fit:cover;
     text-align: center;
-    margin: 0 auto;
+    margin: 0;
 }
 .carousel_image:hover{
     cursor: pointer;
@@ -43,6 +43,11 @@
     background: #71a2c6;
     color: white;
 }
+.carousel_slide button:hover{
+    background: #71a2c6;
+    color: white;
+}
+
 .carousel_button{
     position: absolute;
     top: 50%;

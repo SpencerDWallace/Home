@@ -13,6 +13,7 @@
     object-fit:cover;
     text-align: center;
     margin: 0;
+    padding: 0px;
 }
 .carousel_image:hover{
     cursor: pointer;
@@ -22,6 +23,7 @@
     height: 100%;
     position: relative;
     overflow: hidden;
+    padding: 0px;
 }
 
 .carousel_track{
@@ -38,6 +40,7 @@
     top: 0;
     bottom: 0;
     width: 100%;
+    padding: 0px;
 }
 .carousel_slide img:hover + button{
     background: #71a2c6;
@@ -54,6 +57,7 @@
     transform: translateY(-50%) scale(1.5);
     background: transparent;
     border: none;
+    padding: 0px;
 }
 .carousel_button:hover{
     transform: translateY(-50%) scale(2.2);

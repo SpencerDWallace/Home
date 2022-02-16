@@ -61,15 +61,15 @@
 }
 
 .carousel_button--left{
-    left: -6vmax;
+    left: min(-6vw, -8vh);
 }
 
 .carousel_button--right{
-    right: -6vmax;
+    right: min(-6vw, -8vh);
 }
 
 .carousel_button img{
-    width: 5vmax;
+    width: max(5vmax, 4vh);
     padding: 0;
 }
 

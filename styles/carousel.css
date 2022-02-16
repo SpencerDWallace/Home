@@ -85,6 +85,7 @@
     height: .45vmax;
     background: #00000044;
     margin: 0.7vmax 1.05vmax 0.7vmax 1.05vmax;
+    padding: 0px;
 }
 .carousel_indicator.active{
     background: #000000BB;

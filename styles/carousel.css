@@ -81,8 +81,8 @@
 .carousel_indicator{
     border: 0;
     border-radius: 50%;
-    width: .45vmax;
-    height: .45vmax;
+    width: .45vw;
+    height: .45vw;
     background: #00000044;
     margin: 0.7vmax 1.05vmax;
 }

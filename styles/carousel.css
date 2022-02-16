@@ -81,13 +81,14 @@
 .carousel_indicator{
     border: 0;
     border-radius: 50%;
-    width: .45vw;
-    height: .45vw;
+    width: .45vmax;
+    height: .45vmax;
     background: #00000044;
-    margin: 0.7vmax 1.05vmax;
+    margin: 0.7vmax 1.05vmax 0.7vmax 1.05vmax;
 }
 .carousel_indicator.active{
     background: #000000BB;
+    transform: scale(1.35);
 }
 
 .is-hidden{

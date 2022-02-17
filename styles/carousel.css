@@ -185,8 +185,6 @@
         border: none;
         border-radius: .1vmax;
         letter-spacing: var(--letterSpacing);
-        box-shadow: var(--shadow-1);
-        transition: var(--transition);
         text-transform: capitalize;
         font-size: 1.2rem;
     }

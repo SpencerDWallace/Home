@@ -38,7 +38,7 @@ const nextButton = document.querySelector('.carousel_button--right');
 const prevButton = document.querySelector('.carousel_button--left');
 const dotsNav = document.querySelector('.carousel_nav')
 const dots = Array.from(dotsNav.children);
-const slideWidth = slides[0].getBoundingClientRect().width;
+let slideWidth = slides[0].getBoundingClientRect().width;
 let lastSlide = document.cookie;
 let slidesMoved = false;
 
@@ -167,3 +167,8 @@ sideMenuButton.addEventListener('click', (e)=>{
 const updateSideMenuButton = ()=>{
     (sideMenuOpen) ? sideMenuButton.textContent = sideMenuExitSymbol : sideMenuButton.textContent = sideMenuOpenSymbol;
 }
+
+$( window ).resize(function() {
+    slideWidth = slides[0].getBoundingClientRect().width;
+    init()
+  });

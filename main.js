@@ -188,10 +188,12 @@ $(window).scroll(function() {
 });
 
 $( window ).resize(function() {
-    slideWidth = slides[0].getBoundingClientRect().width;
-    init();    
-    if(sideMenuOpen){
-    slideSideMenu(false);
-    sideMenuOpen = false;
+    if(window.safari === undefined){
+        slideWidth = slides[0].getBoundingClientRect().width;
+        init();    
+        if(sideMenuOpen){
+        slideSideMenu(false);
+        sideMenuOpen = false;
+        }
     }
 });

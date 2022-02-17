@@ -142,33 +142,56 @@ const init = async() => {
 
 init();
 
-const sideMenuButton = document.querySelector('.topnav_sandwich');
-const sideMenu = document.querySelector('.sidemenu')
-const sideMenuOpenSymbol = sideMenuButton.textContent;
-const sideMenuExitSymbol = document.querySelector('#exit-symbol').textContent;
+
+const sideMenuOpenButton = document.querySelector('.topnav_sandwich');
+const sideMenuExitButton = document.querySelector('.sidemenu-close-button');
+const sideMenu = document.querySelector('.sidemenu');
+let sideMenuOffset = sideMenu.getBoundingClientRect().left;
+// const sideMenuOpenSymbol = sideMenuButton.textContent;
+// const sideMenuExitSymbol = document.querySelector('#exit-symbol').textContent;
 const navbar = document.querySelector('.topnav-container');
 let sideMenuOpen = false;
 
-sideMenuButton.addEventListener('click', (e)=>{
+sideMenuOpenButton.addEventListener('click', (e)=>{
     (sideMenuOpen) ? sideMenuOpen = false: sideMenuOpen = true;
+    slideSideMenu(sideMenuOpen);
+})
+
+sideMenuExitButton.addEventListener('click', (e)=>{
+    (sideMenuOpen) ? sideMenuOpen = false: sideMenuOpen = true;
+    slideSideMenu(sideMenuOpen);
+})
+
+const slideSideMenu = (open)=>{
     let pixels;
-    if(sideMenuOpen){
+    if(open){
         navbar.classList.add('is-hidden');
+        sideMenuOpenButton.classList.add('is-hidden');
+        sideMenuExitButton.classList.remove('is-hidden');
         pixels = -1*sideMenu.getBoundingClientRect().left;
     }
     else{
         navbar.classList.remove('is-hidden');
+        sideMenuOpenButton.classList.remove('is-hidden');
+        sideMenuExitButton.classList.add('is-hidden');
         pixels = 0;
     }
     sideMenu.style.transform = 'translateX(' + pixels  + 'px)';
-    updateSideMenuButton();
-})
-
-const updateSideMenuButton = ()=>{
-    (sideMenuOpen) ? sideMenuButton.textContent = sideMenuExitSymbol : sideMenuButton.textContent = sideMenuOpenSymbol;
 }
+
+// const updateSideMenuButton = ()=>{
+//    (sideMenuOpen) ? sideMenuButton.textContent = sideMenuExitSymbol : sideMenuButton.textContent = sideMenuOpenSymbol;
+//}
+
+$(window).scroll(function() { 
+    $('#sidemenu').css('top', $(this).scrollTop());
+});
 
 $( window ).resize(function() {
     slideWidth = slides[0].getBoundingClientRect().width;
-    init()
-  });
+    init();    
+    if(sideMenuOpen){
+    slideSideMenu(false);
+    sideMenuOpen = false;
+    }
+});

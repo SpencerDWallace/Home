@@ -135,6 +135,10 @@
         height: 20rem;
         /*margin: 0 auto;*/
     }
+    .carousel_button:hover{
+        transform: translateY(-50%) scale(1.7);
+        cursor: pointer;
+    }
 
     .carousel_track-container{
         height: 100%;

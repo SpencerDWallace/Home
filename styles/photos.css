@@ -1,0 +1,182 @@
+.photo-album{
+
+    width: 40vw;
+    height: 70vh;
+    background: rgba(236, 225, 210, 0.16);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: none;
+    border-radius: .4%;
+    margin-right: -50%;
+    box-shadow:  0 20px 25px -5px rgba(0, 0, 0, 0.2),
+    -20px 20px 20px -10px rgba(0, 0, 0, 0.2);
+    transform: translate(-50%, -50%);
+
+}
+.album-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.album-frame{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    max-width: 65%;
+    object-fit:cover;
+    margin: 5% auto;
+    padding: 0px;
+}
+
+.album-photo{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    object-fit: cover;
+    margin: 0 auto;
+    padding: 0px;
+    border: none;
+    box-shadow:  0 20px 25px -5px rgba(0, 0, 0, 0.2),
+    -20px 20px 20px -10px rgba(0, 0, 0, 0.2);
+    border-radius: 2%;
+}
+
+.button-container{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 17.5%;
+}
+
+.button-container--left{
+    left: 17.5%;
+}
+
+.button-container--right{
+    right: 17.5%;
+}
+
+.photo-button{
+    position: relative;
+    margin: 0 auto;
+    background: transparent;
+    border: none;
+    padding: 0px;
+    font-size: 14rem;
+    width: fit-content;
+    height: fit-content;
+    color: #444444CC
+}
+.photo-button:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+    color: black;
+}
+
+
+.sidemenu{
+    position: absolute;
+    width: max(20vw, 30vh);
+    min-width: 20%;
+    left: min(-30vw, -40vh);
+    height: 100%;
+    background: #dcdcdc;
+    box-shadow:  0px 40px 40px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 300ms ease-in;
+}
+
+.sidemenu-container{
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 80%;
+    left: 10%;
+    margin: 0 0 0 0;
+    background: transparent;
+}
+
+.sidemenu-link-container{
+    text-align: center;
+    top: 5%;
+    width: 100%;
+    height: 30%;
+    position: relative;
+    margin: 0 auto;
+    background: transparent;
+    border: none;
+    padding: 0px;
+    display: inline-block;
+}
+
+.sidemenu-link-container li{
+    text-align: center;
+    margin: 0 auto 5%;
+    list-style: none;
+    width: 50%;
+    background-color: #fff;
+    color: black;
+    box-shadow: var(--shadow-1);
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: max(.8vw, 1.3vh);
+    border: none;
+    border-radius: var(--borderRadius);
+    letter-spacing: var(--letterSpacing);
+}
+
+.sidemenu-link-container li.active {
+    background-color: #333;
+    color: white;
+}
+
+.sidemenu-link-container li:hover{
+    transform: scale(1.1);
+    box-shadow:  0px -5px 40px -5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    color: white;
+    background: rgba(140, 176, 201, 0.7);
+    font-weight: bold;
+}
+
+
+
+
+
+
+.is-hidden{
+    opacity: 0;
+}
+
+@media only screen and (max-width: 768px){
+    .topnav-container{
+    visibility: hidden;
+    }
+
+    .photo-album{
+        width: 90vw;
+        height: 60vh;
+        background: rgba(236, 225, 210, 0.16);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border: none;
+        border-radius: .4%;
+        margin-right: -50%;
+        box-shadow:  0 20px 25px -5px rgba(0, 0, 0, 0.2),
+        -20px 20px 20px -10px rgba(0, 0, 0, 0.2);
+        transform: translate(-50%, -50%);
+    }
+    .sidemenu{
+        position: absolute;
+        width: 70vw;
+        left: -75vw;
+        height: 100%;
+        background: #dcdcdc;
+        box-shadow:  0px 40px 40px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 300ms ease-in;
+    }
+}

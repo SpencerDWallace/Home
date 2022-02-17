@@ -38,18 +38,19 @@ const nextButton = document.querySelector('.carousel_button--right');
 const prevButton = document.querySelector('.carousel_button--left');
 const dotsNav = document.querySelector('.carousel_nav')
 const dots = Array.from(dotsNav.children);
-
 const slideWidth = slides[0].getBoundingClientRect().width;
+let lastSlide = document.cookie;
+let slidesMoved = false;
 
-const setSlidePosition = (slide, index) =>{
-    slide.style.left = slideWidth*index + 'px';
-};
 
-slides.forEach(setSlidePosition);
-
-const moveToSlide = (track, currentSlide, targetSlide) => {
+const moveToSlide = (track, currentSlide, targetSlide, preset) => {
     try {
-        track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+        if(preset)
+            track.style.left = '-' + targetSlide.style.left;
+        else {
+            const dif = -1 * (Number(targetSlide.style.left.split('p', 1)[0]) + Number(track.style.left.split('p', 1)[0]));
+            (slidesMoved) ? track.style.transform = 'translateX(' + dif + 'px)' : track.style.left = '-' + targetSlide.style.left;
+        }
         currentSlide.classList.remove('active');
         targetSlide.classList.add('active');
         const nextIndex = slides.findIndex(slide => slide === targetSlide)
@@ -64,6 +65,9 @@ const updateDots = (currentDot, targetDot) =>{
     try {
         currentDot.classList.remove('active');
         targetDot.classList.add('active');
+        const targetDotIndex = dots.findIndex(dot => dot === targetDot);
+        setCookie("slide", targetDotIndex, 1);
+        slidesMoved = true;
     }
     catch(e){
         console.error(e);
@@ -87,7 +91,7 @@ const arrowsController = (slides, prevButton, nextButton, index) =>{
 nextButton.addEventListener('click', e => {
     const currentSlide = track.querySelector('.active');
     const nextSlide = currentSlide.nextElementSibling;
-    moveToSlide(track, currentSlide, nextSlide);
+    moveToSlide(track, currentSlide, nextSlide, false);
 
     const currentDot = dotsNav.querySelector('.active');
     updateDots(currentDot, currentDot.nextElementSibling);
@@ -96,7 +100,7 @@ nextButton.addEventListener('click', e => {
 prevButton.addEventListener('click', e => {
     const currentSlide = track.querySelector('.active');
     const prevSlide = currentSlide.previousElementSibling;
-    moveToSlide(track, currentSlide, prevSlide);
+    moveToSlide(track, currentSlide, prevSlide, false);
 
     const currentDot = dotsNav.querySelector('.active');
     updateDots(currentDot, currentDot.previousElementSibling);
@@ -110,8 +114,30 @@ dotsNav.addEventListener('click', e =>{
     const currentDot = dotsNav.querySelector('.active');
     const targetIndex = dots.findIndex(dot => dot === targetDot);
     const targetSlide = slides[targetIndex];
-    moveToSlide(track, currentSlide, targetSlide)
+    moveToSlide(track, currentSlide, targetSlide, false)
     updateDots(currentDot, targetDot);
     arrowsController(slides, prevButton, nextButton, targetIndex)
 
 })
+
+function setCookie(cName, cValue, expDays) {
+    let date = new Date();
+    date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
+}
+
+const setSlidePosition = async (slide, index) =>{
+    slide.style.left = slideWidth*index + 'px';
+};
+
+const init = async() => {
+    await slides.forEach(setSlidePosition)
+    if (lastSlide) {
+        const lastSlideAsNum = Number(lastSlide.split('=').pop());
+        moveToSlide(track, slides[0], slides[lastSlideAsNum], true);
+        updateDots(dots[0], dots[lastSlideAsNum])
+    }
+}
+
+init();

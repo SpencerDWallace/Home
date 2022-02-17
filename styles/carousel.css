@@ -66,15 +66,17 @@
 }
 
 .carousel_button--left{
-    left: min(-6vw, -8vh);
+    left: min(-5vw, -7vh);
+    padding: 0px;
 }
 
 .carousel_button--right{
-    right: min(-6vw, -8vh);
+    right: min(-5vw, -7vh);
+    padding: 0px;
 }
 
 .carousel_button img{
-    width: max(5vmax, 4vh);
+    width: max(2.5vmax, 2vh);
     padding: 0;
 }
 
@@ -95,6 +97,10 @@
 .carousel_indicator.active{
     background: #000000BB;
     transform: scale(1.35);
+}
+.carousel_indicator:hover{
+    transform: scale(1.35);
+    cursor: pointer;
 }
 
 .is-hidden{

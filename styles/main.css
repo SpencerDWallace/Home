@@ -456,16 +456,35 @@ form > :last-child {
 navbar and forgot password
 **************************/
 .topnav {
+  position: relative;
+  display: inline-block;
   text-align: center;
   overflow:hidden;
+  width: 100%;
+  background: transparent;
+}
+
+.topnav-container{
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
   background-color: #f3f3f3;
   border-style: none none groove none;
   border-width: 3px;
-  border-color: #fff;
+  border-color: rgba(177, 177, 177, 0.46);
+}
+
+.topnav-container--links{
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: fit-content;
 }
 
 .topnav a {
   display: inline-block;
+  text-align: center;
   background-color: #fff;
   color: black;
   box-shadow: var(--shadow-1);
@@ -477,6 +496,19 @@ navbar and forgot password
   letter-spacing: var(--letterSpacing);
   box-shadow: var(--shadow-1);
   transition: var(--transition);
+}
+
+.topnav_sandwich{
+  position: absolute;
+  left: 1%;
+  top: 50%;
+  z-index:1;
+  transform: translateY(-50%);
+  color: black;
+}
+.topnav_sandwich:hover{
+  cursor: pointer;
+  transform: translateY(-50%) scale(1.2);
 }
 
 .topnav a:hover {

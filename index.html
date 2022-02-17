@@ -9,36 +9,6 @@
     <link rel="stylesheet" href="./styles/carousel.css" />
     <link rel="stylesheet" href="./styles/photos.css" />
 
-
-    <style>
-        .mugshot {
-            margin: auto;
-            margin-top: 1%;
-            margin-bottom: 1%;
-            display: table;
-            text-align: center;
-            border: none;
-            border-radius: 1.5vmax;
-            width: max(11vw, 14vh);
-        }
-
-        .btn {
-            width: 100%;
-            cursor: pointer;
-            appearance: none;
-            color: #222;
-            font-weight: bold;
-            background: #ccc;
-            border: none;
-            border-radius: .1vmax;
-            letter-spacing: var(--letterSpacing);
-            box-shadow: var(--shadow-1);
-            transition: var(--transition);
-            text-transform: capitalize;
-            font-size: max(1vw, 1.3vh);
-        }
-    </style>
-
 </head>
 <body>
 <div class = "sidemenu">
@@ -72,8 +42,8 @@
 </div>
 <h6 id = "exit-symbol" class = "is-hidden"> &#10005 </h6>
 
-    <div class="welcome-message">
-        <form style = "width: min(70vmax, 90vw); font-size: max(0.72vw, 1.2vh);">
+    <div class="welcome-message-contaier">
+        <form class = "welcome-message" style = "width: min(70vmax, 90vw);">
             <img class = "mugshot" src="photos/wedding_jacket_tryon.jpeg" alt="Photo">
             My name is Spencer Wallace, I am a fourth-year computer science major at Cal State San Bernardino.
             My interests and experience includes computer graphics and rendering techniques, game programming, and machine learning.
@@ -103,28 +73,28 @@
                 <li class="carousel_slide active">
                     <a href = "./raycast/raycast.html" target="_blank" >
                         <img class = "carousel_image" src="photos/raycast.png"/>
-                        <button class = "btn"> Raycasting JS </button>
+                        <button class = "carousel-btn"> Raycasting JS </button>
                     </a>
                 </li>
 
                 <li class="carousel_slide">
                     <a href = "https://task-manager-swall.herokuapp.com/" target="_blank" >
                         <img class = "carousel_image" src="photos/tasks.png"/>
-                        <button class = "btn"> Task Manager </button>
+                        <button class = "carousel-btn"> Task Manager </button>
                     </a>
                 </li>
 
                 <li class="carousel_slide" >
                     <a href = "./sort/index.html" >
                         <img class = "carousel_image" src="photos/sort.png"/>
-                        <button class = "btn"> Sorting Algorithms </button>
+                        <button class = "carousel-btn"> Sorting Algorithms </button>
                     </a>
                 </li>
 
                 <li class="carousel_slide" >
                     <a href = "https://spencerdwallace.github.io/UnitySpaceGame/" target="_blank" >
                         <img class = "carousel_image"   src="photos/unity-sg.png"/>
-                        <button class="btn">Unity Game</button>
+                        <button class="carousel-btn">Unity Game</button>
                     </a>
                 </li>
             </ul>

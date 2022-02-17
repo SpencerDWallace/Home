@@ -81,9 +81,8 @@
 .sidemenu{
     z-index: 5;
     position: absolute;
-    width: max(20vw, 30vh);
-    min-width: 20%;
-    left: min(-30vw, -40vh);
+    width: 25rem;
+    left: -30rem;
     height: 100%;
     background: #dcdcdc;
     box-shadow:  0px 40px 40px 15px rgba(0, 0, 0, 0.3);
@@ -123,7 +122,7 @@
     box-shadow: var(--shadow-1);
     padding: 14px 16px;
     text-decoration: none;
-    font-size: max(.8vw, 1.3vh);
+    font-size: 0.8rem;
     border: none;
     border-radius: var(--borderRadius);
     letter-spacing: var(--letterSpacing);
@@ -175,8 +174,8 @@
     }
     .sidemenu{
         position: absolute;
-        width: 70vw;
-        left: -75vw;
+        width: 25rem;
+        left: -30rem;
         height: 100%;
         background: #dcdcdc;
         box-shadow:  0px 40px 40px 15px rgba(0, 0, 0, 0.3);
@@ -186,7 +185,7 @@
 
 .sidemenu-link-container{
     text-align: center;
-    top: 15%;
+    top: 3rem;
     width: 100%;
     height: 30%;
     position: relative;

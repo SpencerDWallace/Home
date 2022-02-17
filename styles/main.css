@@ -554,7 +554,7 @@ navbar and forgot password
 welcome message
 ****************/
 
-.welcome-message {
+.welcome-message-container {
   margin-left: auto;
   margin-right: auto;
   margin-top: 1%;
@@ -562,9 +562,9 @@ welcome message
   color: #000033;
 
 }
-.welcome-message h4{
+.welcome-message{
   text-decoration: none;
-  font-size: max(1vw, 1.2vh);
+  font-size: .8rem;
   text-align: center;
 }
 /*
@@ -573,3 +573,7 @@ welcome message
   color: rgb(0, 0, 0);
 }
 */
+@media only screen and (max-width: 1000px){
+
+
+}

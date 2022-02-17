@@ -1,5 +1,5 @@
 .carousel{
-
+    z-index: 1;
     margin: 1% auto;
     position: relative;
     width: max(14vw, 18vh);
@@ -43,14 +43,16 @@
     width: 100%;
     padding: 0px;
 }
-.carousel_slide img:hover + button{
-    background: #71a2c6;
+.carousel_slide img:hover + button, .carousel_slide button:hover{
+    background: rgba(140, 176, 201, 0.7);
     color: white;
 }
+/*
 .carousel_slide button:hover{
-    background: #71a2c6;
+    background: rgba(140, 176, 201, 0.7);
     color: white;
 }
+*/
 
 .carousel_button{
     position: absolute;
@@ -103,6 +105,17 @@
     cursor: pointer;
 }
 
-.is-hidden{
-    display: none;
+/*.is-hidden{*/
+/*    display: none;*/
+/*}*/
+
+@media only screen and (max-width: 768px){
+.carousel{
+    z-index: 1;
+    margin: 5% auto;
+    position: relative;
+    width: 45vw;
+    height: 25vh;
+    /*margin: 0 auto;*/
+}
 }

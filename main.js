@@ -183,9 +183,9 @@ const slideSideMenu = (open)=>{
 //    (sideMenuOpen) ? sideMenuButton.textContent = sideMenuExitSymbol : sideMenuButton.textContent = sideMenuOpenSymbol;
 //}
 
-$(window).scroll(function() { 
-    $('#sidemenu').css('top', $(this).scrollTop());
-});
+// $(window).scroll(function() { 
+//     $('#sidemenu').css('top', $(this).scrollTop());
+// });
 
 $( window ).resize(function() {
     if(window.safari === undefined){

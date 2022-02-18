@@ -80,7 +80,7 @@
 
 .sidemenu{
     z-index: 5;
-    position: absolute;
+    position: fixed;
     width: 25rem;
     left: -30rem;
     height: 100vh;

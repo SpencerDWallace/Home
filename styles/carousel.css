@@ -120,11 +120,8 @@
     box-shadow: var(--shadow-1);
     transition: var(--transition);
     text-transform: capitalize;
-    font-size: max(1vw, 1.3vh);
+    font-size: 1rem;
 }
-/*.is-hidden{*/
-/*    display: none;*/
-/*}*/
 
 @media only screen and (max-width: 1000px){
     .carousel{
@@ -133,127 +130,10 @@
         position: relative;
         width: min(60%, 18rem);
         height: 20rem;
-        /*margin: 0 auto;*/
     }
     .carousel_button:hover{
         transform: translateY(-50%) scale(1.7);
         cursor: pointer;
-    }
-
-    .carousel_track-container{
-        height: 100%;
-        position: relative;
-        overflow: hidden;
-        padding: 0px;
-    }
-    
-    .carousel_track{
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        position: relative;
-        height: 100%;
-        transition: transform 300ms ease-in;
-    }
-    
-    .carousel_slide{
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-        padding: 0px;
-    }
-
-    .carousel_image{
-        position: relative;
-        width: 100%;
-        height: 80%;
-        object-fit:cover;
-        text-align: center;
-        margin: 0;
-        padding: 0px;
-        border: 3px groove white;
-    }
-    .carousel_image:hover{
-        cursor: pointer;
-    }
-    
-    .carousel-btn {
-        width: 100%;
-        cursor: pointer;
-        appearance: none;
-        color: #222;
-        font-weight: bold;
-        background: #ccc;
-        border: none;
-        border-radius: .1vmax;
-        letter-spacing: var(--letterSpacing);
-        text-transform: capitalize;
-        font-size: 1.2rem;
-    }
-
-}
-
-@media only screen and (min-width: 2000px){
-    .carousel{
-        z-index: 1;
-        margin: 5% auto;
-        position: relative;
-        width: min(60%, 18rem);
-        height: 20rem;
-        /*margin: 0 auto;*/
-    }
-
-    .carousel_track-container{
-        height: 100%;
-        position: relative;
-        overflow: hidden;
-        padding: 0px;
-    }
-    
-    .carousel_track{
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        position: relative;
-        height: 100%;
-        transition: transform 300ms ease-in;
-    }
-    
-    .carousel_slide{
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-        padding: 0px;
-    }
-
-    .carousel_image{
-        position: relative;
-        width: 100%;
-        height: 80%;
-        object-fit:cover;
-        text-align: center;
-        margin: 0;
-        padding: 0px;
-        border: 3px groove white;
-    }
-    .carousel_image:hover{
-        cursor: pointer;
-    }
-    
-    .carousel-btn {
-        width: 100%;
-        cursor: pointer;
-        appearance: none;
-        color: #222;
-        font-weight: bold;
-        background: #ccc;
-        border: none;
-        border-radius: .1vmax;
-        letter-spacing: var(--letterSpacing);
-        text-transform: capitalize;
-        font-size: 1.2rem;
     }
 
 }

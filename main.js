@@ -142,13 +142,9 @@ const init = async() => {
 
 init();
 
-
 const sideMenuOpenButton = document.querySelector('.topnav_sandwich');
 const sideMenuExitButton = document.querySelector('.sidemenu-close-button');
 const sideMenu = document.querySelector('.sidemenu');
-let sideMenuOffset = sideMenu.getBoundingClientRect().left;
-// const sideMenuOpenSymbol = sideMenuButton.textContent;
-// const sideMenuExitSymbol = document.querySelector('#exit-symbol').textContent;
 const navbar = document.querySelector('.topnav-container');
 let sideMenuOpen = false;
 
@@ -179,16 +175,13 @@ const slideSideMenu = (open)=>{
     sideMenu.style.transform = 'translateX(' + pixels  + 'px)';
 }
 
-// const updateSideMenuButton = ()=>{
-//    (sideMenuOpen) ? sideMenuButton.textContent = sideMenuExitSymbol : sideMenuButton.textContent = sideMenuOpenSymbol;
-//}
-
-// $(window).scroll(function() { 
-//     $('#sidemenu').css('top', $(this).scrollTop());
-// });
+let width = $(window).width();
+let height = $(window).height();
 
 $( window ).resize(function() {
-    if(window.safari === undefined){
+    if ($(window).width() != width || $(window).height() != height) {
+        width = $(window).width();
+        height = $(window).height();
         slideWidth = slides[0].getBoundingClientRect().width;
         init();    
         if(sideMenuOpen){
@@ -197,3 +190,10 @@ $( window ).resize(function() {
         }
     }
 });
+
+
+// const sideMenuOpenSymbol = sideMenuButton.textContent;
+// const sideMenuExitSymbol = document.querySelector('#exit-symbol').textContent;
+// const updateSideMenuButton = ()=>{
+//    (sideMenuOpen) ? sideMenuButton.textContent = sideMenuExitSymbol : sideMenuButton.textContent = sideMenuOpenSymbol;
+//}

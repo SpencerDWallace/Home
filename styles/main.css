@@ -582,6 +582,28 @@ welcome message
   font-size: .8rem;
   text-align: center;
 }
+
+.arr {
+  display: inline-block;
+  padding: 1.2em;
+  box-shadow: 8px 8px 0 2px #BBB inset;
+}
+.arr--left {
+  transform: rotate(-45deg);
+}
+.arr--right {
+  transform: rotate(135deg);
+}
+.arr--left:hover {
+  box-shadow: 8px 8px 0 2px #000 inset;
+  transform: scale(1.2) rotate(-45deg);
+  cursor: pointer;
+}
+.arr--right:hover{
+  box-shadow: 8px 8px 0 2px #000 inset;
+  transform: scale(1.2) rotate(135deg);
+  cursor: pointer;
+}
 /*
 .welcome-message form:hover {
   background-color: #c7d6f1;

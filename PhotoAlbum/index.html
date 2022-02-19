@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../styles/main.css" />
     <link rel="stylesheet" href="../styles/photos.css" />
     <link rel="stylesheet" href="../styles/carousel.css" />
+    <link rel="stylesheet" href="../styles/slider.scss" />
 
 </head>
 <body style = "height: 100%; width: 100%;">
@@ -58,13 +59,22 @@
          <div class = "album-frame">
              <h4 id = "photo-counter"> 0/0 </h4>
              <img class = "album-photo" id = "albumPhoto">
+
          </div>
           <div class = "button-container">
             <div id = "photo-button--right" type = "click" class = "arr arr--right"></div>
           </div>
       </div>
+      <div class = "slider"> 
+          <div class = "slider-container">
+                <div class="range-slider" >
+                    <input class="range-slider__range" type="range" value="1" min="0" max="1">
+                    <span class="range-slider__value">0</span>
+                </div>
+            </div>
+        </div>
     </div>
-    
+
     <script type = text/javascript src="./body-scroll-lock/lib/bodyScrollLock.min.js"></script>
     <script type = text/javascript src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type = text/javascript src="./main.js"></script>

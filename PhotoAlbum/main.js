@@ -9,7 +9,7 @@ let currentAlbum = {};
 
 let summer20 = {
     path: "./summer20/",
-    numPhotos: 25,
+    numPhotos: 20,
     type: ".png",
     currentPhoto: 1,
 };
@@ -47,20 +47,30 @@ const updatePhotoAlbum = (newAlbum)=>{
     updatePhoto();
 }
 
-nextButton.addEventListener('click', (e)=>{
+const incrementPhoto = () =>{
     if(currentAlbum.currentPhoto >= currentAlbum.numPhotos) return;
     currentAlbum.currentPhoto++;
     updatePhoto();
-})
+}
 
-prevButton.addEventListener('click', (e)=>{
+const decrementPhoto = () =>{
     if(currentAlbum.currentPhoto <= 1) return;
     currentAlbum.currentPhoto--;
     updatePhoto();
-})
+}
 
+nextButton.addEventListener('click', (e)=>{ incrementPhoto(); });
+prevButton.addEventListener('click', (e)=>{ decrementPhoto(); });
 summer20AlbumButton.addEventListener('click', (e)=>{ updatePhotoAlbum(summer20); });
 summer21AlbumButton.addEventListener('click', (e)=>{ updatePhotoAlbum(summer21); });
+
+document.addEventListener('keyup', (event) => {
+    var name = event.key;
+    if(name === "ArrowRight")
+        incrementPhoto();
+    else if(name === "ArrowLeft")
+        decrementPhoto();
+}, false);
 
 var rangeSlider = function(){
     var slider = $('.range-slider'),

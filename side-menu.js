@@ -5,15 +5,10 @@ const sideMenu = document.querySelector('.sidemenu');
 const navbar = document.querySelector('.topnav-container');
 let sideMenuOpen = false;
 
-document.body.addEventListener('click', function (event) {
-    if (sideMenu.contains(event.target) || sideMenuOpenButton.contains(event.target)) {
-        console.log('clicked inside');
-    } else {
-        console.log('clicked outside');
-        if(sideMenuOpen){
-            slideSideMenu(false);
-            sideMenuOpen = false;
-        }
+document.addEventListener('click', function (event) {
+    if (!sideMenu.contains(event.target) && !sideMenuOpenButton.contains(event.target) && sideMenuOpen) {
+        slideSideMenu(false);
+        sideMenuOpen = false;
     }
 });
 

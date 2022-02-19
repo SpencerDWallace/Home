@@ -186,11 +186,6 @@
     .topnav-container{
     visibility: hidden;
     }
-    body{
-        min-width: 45rem;
-        width: auto !important;
-        width:45rem;
-      }
 
     .photo-album{
         width: 90%;

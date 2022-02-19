@@ -1,26 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
+
   <title>Spencer Wallace - Sorting Algorithms</title>
   <link rel="stylesheet" href="../styles/normalize.css" />
-  <!-- main css -->
   <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/carousel.css" />
+  <link rel="stylesheet" href="../styles/photos.css" />
+
+  <div class="topnav">
+      <div class = "topnav-container">
+          <a class = "active" >Home</a>
+          <a href = "./photos/spencer_wallace_resume.pdf" target = "_blank">Resume</a>
+          <a href = "./PhotoAlbum/index.html"> Photos</a>
+          <a>Contact</a>
+      </div>
+      <button type = "click" class = "topnav_sandwich" id = "sandwich"> &#8801 </button>
+  </div>
+
+  <div class = "sidemenu" id = "sidemenu">
+      <div class = "sidemenu-close-container">
+          <button class = "sidemenu-close-button"> &#8249; </button>
+      </div>
+      <div class = "sidemenu-container">
+          <div class = "sidemenu-link-container">
+              <a href = "../index.html">
+                <li >Home</li>
+              </a>
+              <a href = "../photos/spencer_wallace_resume.pdf" target = "_blank">
+                  <li>Resume</li>
+              </a>
+              <a href = "../PhotoAlbum/index.html">
+                  <li> Photos</li>
+              </a>
+              <li>Contact</li>
+          </div>
+      </div>
+  </div>
 </head>
-<div class="topnav">
-  <a href="../index.html">Home</a>
-  <a href = "../photos/spencer_wallace_resume.pdf" target = "_blank">Resume</a>
-  <a href = "../PhotoAlbum/index.html">Photos</a>
-  <a>Contact</a>
-</div>
+
+
 <body>
-<script type = text/javascript src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="p5.js"></script>
-
 <div>
-  <script type = text/javascript src="./main.js"></script>
-
+  <form class = "link-container"> 
+  <a class = "link" href = "insertion-sort/index.html"> Insertion Sort</a>
+  <a class = "link" href = "quick-sort/index.html"> Quick Sort</a>
+  <a class = "link" href = "seleciton-sort/index.html"> Selection Sort</a>
+  </form>
 </div>
+
+<script type = text/javascript src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type = text/javascript src="../side-menu.js"></script>
+
+
+
 
 </body>
 </html>

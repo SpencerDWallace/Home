@@ -575,12 +575,24 @@ welcome message
   margin: 1rem 0px;
   text-align: center;
   color: #000033;
-  position: relative;
+  position: fixed;
 }
 .welcome-message{
   text-decoration: none;
   font-size: .8rem;
   text-align: center;
+}
+
+.link-container{
+  width: 100%;
+  position: fixed;
+}
+
+.link{
+  display: block;
+  position: relative;
+  margin: 1rem 0;
+  padding: 10px, 20px;
 }
 
 .arr {
@@ -609,12 +621,11 @@ welcome message
   position: fixed;
 }
 
-/*
-.welcome-message form:hover {
-  background-color: #c7d6f1;
-  color: rgb(0, 0, 0);
+.is-hidden{
+  opacity: 0;
+  pointer-events: none;
 }
-*/
+
 @media only screen and (max-width: 1000px){
 .topnav_sandwich{
   font-size: 1.25rem;

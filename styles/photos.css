@@ -243,16 +243,6 @@
     text-align: center;
 }
 
-.is-hidden{
-    opacity: 0;
-    cursor: default;
-}
-
-.is-hidden a:hover{
-    opacity: 0;
-    cursor: default;
-}
-
 @media only screen and (max-width: 1000px){
     .topnav-container{
     visibility: hidden;

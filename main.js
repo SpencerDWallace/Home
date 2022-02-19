@@ -1,37 +1,3 @@
-/*let projectSlideDOM = document.getElementById('project-slide');
-let projectLeftArrow = projectSlideDOM.querySelector("#left-pthumb");
-let projectRightArrow = projectSlideDOM.querySelector("#right-pthumb");
-let projectPhoto = projectSlideDOM.querySelector("#project-photo");
-let projectCaption = projectSlideDOM.querySelector("#project-caption");
-let projectLink = projectSlideDOM.querySelector("#project-link");
-
-const projectSlide = {
-    projectPhotos:["photos/raycast.png", "photos/sort.png", "photos/unity-sg.png", "photos/tasks.png"],
-    projectCaptions:["Javascript Raycasting", "Sorting Algorithms", "Unity Game", "Task Manager"],
-    projectLinks:["./raycast/raycast.html", "./sort/index.html", "https://spencerdwallace.github.io/UnitySpaceGame/", "https://task-manager-swall.herokuapp.com"],
-    numPhotos:4,
-}
-let currentProject = 0;
-
-projectLeftArrow.addEventListener("click", async(e) => {
-    await updateProjectSlide( projectSlide.numPhotos-1 );
-});
-
-projectRightArrow.addEventListener("click", async(e) => {
-    await updateProjectSlide(1);
-});
-
-let updateProjectSlide = (n) =>{
-    currentProject = (currentProject + n) % projectSlide.numPhotos;
-    projectPhoto.src = projectSlide.projectPhotos[currentProject];
-    projectCaption.textContent = projectSlide.projectCaptions[currentProject];
-    projectLink.href = projectSlide.projectLinks[currentProject]
-}
-
-let slideAnimation = () =>{
-
-}*/
-
 const track = document.querySelector('.carousel_track');
 const slides = Array.from(track.children);
 const nextButton = document.querySelector('.carousel_button--right');
@@ -142,61 +108,61 @@ const init = async() => {
 
 init();
 
-const sideMenuOpenButton = document.querySelector('.topnav_sandwich');
-const sideMenuExitButton = document.querySelector('.sidemenu-close-button');
-const sideMenu = document.querySelector('.sidemenu');
-const body = document.body;
-const navbar = document.querySelector('.topnav-container');
-let sideMenuOpen = false;
+// const sideMenuOpenButton = document.querySelector('.topnav_sandwich');
+// const sideMenuExitButton = document.querySelector('.sidemenu-close-button');
+// const sideMenu = document.querySelector('.sidemenu');
+// const body = document.body;
+// const navbar = document.querySelector('.topnav-container');
+// let sideMenuOpen = false;
 
-sideMenuOpenButton.addEventListener('click', (e)=>{
-    (sideMenuOpen) ? sideMenuOpen = false: sideMenuOpen = true;
-    slideSideMenu(sideMenuOpen);
-})
+// sideMenuOpenButton.addEventListener('click', (e)=>{
+//     (sideMenuOpen) ? sideMenuOpen = false: sideMenuOpen = true;
+//     slideSideMenu(sideMenuOpen);
+// })
 
-sideMenuExitButton.addEventListener('click', (e)=>{
-    (sideMenuOpen) ? sideMenuOpen = false: sideMenuOpen = true;
-    slideSideMenu(sideMenuOpen);
-})
+// sideMenuExitButton.addEventListener('click', (e)=>{
+//     (sideMenuOpen) ? sideMenuOpen = false: sideMenuOpen = true;
+//     slideSideMenu(sideMenuOpen);
+// })
 
-const slideSideMenu = (open)=>{
-    let pixels;
-    if(open){
-        navbar.classList.add('is-hidden');
-        sideMenuOpenButton.classList.add('is-hidden');
-        sideMenuExitButton.classList.remove('is-hidden');
-      //  body.classList.add('scroll-lock');
-        pixels = -1*sideMenu.getBoundingClientRect().left;
-    }
-    else{
-        navbar.classList.remove('is-hidden');
-        sideMenuOpenButton.classList.remove('is-hidden');
-        sideMenuExitButton.classList.add('is-hidden');
-      //  body.classList.remove('scroll-lock');
-        pixels = 0;
-    }
-    sideMenu.style.transform = 'translateX(' + pixels  + 'px)';
-}
+// const slideSideMenu = (open)=>{
+//     let pixels;
+//     if(open){
+//         navbar.classList.add('is-hidden');
+//         sideMenuOpenButton.classList.add('is-hidden');
+//         sideMenuExitButton.classList.remove('is-hidden');
+//       //  body.classList.add('scroll-lock');
+//         pixels = -1*sideMenu.getBoundingClientRect().left;
+//     }
+//     else{
+//         navbar.classList.remove('is-hidden');
+//         sideMenuOpenButton.classList.remove('is-hidden');
+//         sideMenuExitButton.classList.add('is-hidden');
+//       //  body.classList.remove('scroll-lock');
+//         pixels = 0;
+//     }
+//     sideMenu.style.transform = 'translateX(' + pixels  + 'px)';
+// }
 
-let width = $(window).width();
-let height = $(window).height();
+// let width = $(window).width();
+// let height = $(window).height();
 
-$( window ).resize(function() {
-    if ($(window).width() != width || $(window).height() != height) {
-        width = $(window).width();
-        height = $(window).height();
-        slideWidth = slides[0].getBoundingClientRect().width;
-        init();    
-        if(sideMenuOpen){
-        slideSideMenu(false);
-        sideMenuOpen = false;
-        }
-    }
-});
+// $( window ).resize(function() {
+//     if ($(window).width() != width || $(window).height() != height) {
+//         width = $(window).width();
+//         height = $(window).height();
+//         slideWidth = slides[0].getBoundingClientRect().width;
+//         init();    
+//         if(sideMenuOpen){
+//         slideSideMenu(false);
+//         sideMenuOpen = false;
+//         }
+//     }
+// });
 
 
-// const sideMenuOpenSymbol = sideMenuButton.textContent;
-// const sideMenuExitSymbol = document.querySelector('#exit-symbol').textContent;
-// const updateSideMenuButton = ()=>{
-//    (sideMenuOpen) ? sideMenuButton.textContent = sideMenuExitSymbol : sideMenuButton.textContent = sideMenuOpenSymbol;
-//}
+// // const sideMenuOpenSymbol = sideMenuButton.textContent;
+// // const sideMenuExitSymbol = document.querySelector('#exit-symbol').textContent;
+// // const updateSideMenuButton = ()=>{
+// //    (sideMenuOpen) ? sideMenuButton.textContent = sideMenuExitSymbol : sideMenuButton.textContent = sideMenuOpenSymbol;
+// //}

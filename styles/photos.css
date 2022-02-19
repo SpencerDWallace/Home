@@ -179,6 +179,14 @@
     border-radius: var(--borderRadius);
 }
 
+.sidemenu-album-container--top{
+    margin: 20% auto 0 auto;
+}
+
+.sidemenu-album-container--end{
+    margin: 10% auto 50% auto;
+}
+
 .sidemenu-album-container:hover{
     transform: scale(1.2);
     cursor: pointer;
@@ -252,8 +260,7 @@
 
     .photo-album{
         width: 90%;
-        min-width: 500px;
-        height: 70%;
+        height: 60%;
     }
     .sidemenu{
         width: 25rem;

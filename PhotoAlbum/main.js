@@ -1,6 +1,12 @@
 let currentPhoto = 8;
-let currentAlbum = "summer20/";
-let albumPath = "./" + currentAlbum + currentPhoto + ".png";
+let currentAlbum = {};
+let summer20 = {
+    path: "./summer20/",
+    numItems: 25,
+};
+
+currentAlbum = summer20;
+let albumPath = summer20.path + currentPhoto + ".png";
 
 const nextButton = document.querySelector('#photo-button--right');
 const prevButton = document.querySelector('#photo-button--left');
@@ -14,6 +20,8 @@ nextButton.addEventListener('click', (e)=>{
 })
 
 prevButton.addEventListener('click', (e)=>{
+    if(currentPhoto <= 1)
+        return;
     currentPhoto--;
     albumPath = "./" + currentAlbum + currentPhoto + ".png";
     document.querySelector('#albumPhoto').src = albumPath;

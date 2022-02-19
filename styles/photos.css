@@ -26,6 +26,7 @@
     position: relative;
     display: inline-block;
     justify-content: center;
+    width: 65%;
     max-width: 65%;
     object-fit:cover;
     margin: 0;

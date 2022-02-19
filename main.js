@@ -1,5 +1,3 @@
-document.body.style.zoom = 1.0
-
 const track = document.querySelector('.carousel_track');
 const slides = Array.from(track.children);
 const nextButton = document.querySelector('.carousel_button--right');

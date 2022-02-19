@@ -1,12 +1,20 @@
-let currentPhoto = 8;
+const summer20AlbumButton = document.querySelector('#summer20');
+const summer21AlbumButton = document.querySelector('#summer21');
+
+
 let currentAlbum = {};
+
 let summer20 = {
     path: "./summer20/",
-    numItems: 25,
+    numPhotos: 25,
+    type: ".png",
+    currentPhoto: 1,
 };
 
+
+
 currentAlbum = summer20;
-let albumPath = summer20.path + currentPhoto + ".png";
+let albumPath = currentAlbum.path + currentAlbum.currentPhoto + currentAlbum.type;
 
 const nextButton = document.querySelector('#photo-button--right');
 const prevButton = document.querySelector('#photo-button--left');
@@ -14,18 +22,23 @@ const prevButton = document.querySelector('#photo-button--left');
 document.querySelector('#albumPhoto').src = albumPath;
 
 nextButton.addEventListener('click', (e)=>{
-    currentPhoto++;
-    albumPath = "./" + currentAlbum + currentPhoto + ".png";
+    if(currentAlbum.currentPhoto >= currentAlbum.numPhotos)
+        return;
+    currentAlbum.currentPhoto++;
+    albumPath = currentAlbum.path + currentAlbum.currentPhoto + currentAlbum.type;
     document.querySelector('#albumPhoto').src = albumPath;
 })
 
 prevButton.addEventListener('click', (e)=>{
-    if(currentPhoto <= 1)
+    if(currentAlbum.currentPhoto <= 1)
         return;
-    currentPhoto--;
-    albumPath = "./" + currentAlbum + currentPhoto + ".png";
+    currentAlbum.currentPhoto--;
+    albumPath = currentAlbum.path + currentAlbum.currentPhoto + currentAlbum.type;
     document.querySelector('#albumPhoto').src = albumPath;
 })
+
+
+/******** Side Menu ********/
 
 const sideMenuOpenButton = document.querySelector('.topnav_sandwich');
 const sideMenuExitButton = document.querySelector('.sidemenu-close-button');

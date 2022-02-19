@@ -604,6 +604,11 @@ welcome message
   transform: scale(1.2) rotate(135deg);
   cursor: pointer;
 }
+
+.scroll-lock{
+  position: fixed;
+}
+
 /*
 .welcome-message form:hover {
   background-color: #c7d6f1;

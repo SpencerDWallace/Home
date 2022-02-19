@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../styles/carousel.css" />
 
 </head>
-<body>
+<body style = "height: 100%; width: 100%;">
 
     <div class="topnav">
         <div class = "topnav-container">
@@ -38,11 +38,11 @@
                 <li class = "active"> Photos</li>
                 <li>Contact</li>
             </div>
-            <li class = "sidemenu-album-container" id = "summer20">
+            <li type = "click" class = "sidemenu-album-container" id = "summer20">
                 <img src = "./summer20/8.png">
                 <button class = "carousel-btn"> Summer 20 </button>
             </li>
-            <li class = "sidemenu-album-container" id = "summer21" style= "margin-bottom: 10%;"> <!--margin on bottom for last album-->
+            <li type = "click" class = "sidemenu-album-container" id = "summer21" style= "margin-bottom: 10%;"> <!--margin on bottom for last album-->
                 <img src = "./summer21/1.jpg">
                 <button class = "carousel-btn"> Summer 21 </button>
             </li>
@@ -56,6 +56,7 @@
               <div id = "photo-button--left" type = "click" class = "arr arr--left"></div>
           </div>
          <div class = "album-frame">
+             <h4 id = "photo-counter"> 0/0 </h4>
              <img class = "album-photo" id = "albumPhoto">
          </div>
           <div class = "button-container">

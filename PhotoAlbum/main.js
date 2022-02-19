@@ -1,6 +1,8 @@
 const summer20AlbumButton = document.querySelector('#summer20');
 const summer21AlbumButton = document.querySelector('#summer21');
-
+const photoCounterDOM = document.querySelector('#photo-counter');
+const nextButton = document.querySelector('#photo-button--right');
+const prevButton = document.querySelector('#photo-button--left');
 
 let currentAlbum = {};
 
@@ -11,32 +13,45 @@ let summer20 = {
     currentPhoto: 1,
 };
 
+let summer21 = {
+    path: "./summer21/",
+    numPhotos: 11,
+    type: ".jpg",
+    currentPhoto: 1,
+};
 
-
+//initial state
 currentAlbum = summer20;
-let albumPath = currentAlbum.path + currentAlbum.currentPhoto + currentAlbum.type;
+let albumPath;
 
-const nextButton = document.querySelector('#photo-button--right');
-const prevButton = document.querySelector('#photo-button--left');
-
-document.querySelector('#albumPhoto').src = albumPath;
-
-nextButton.addEventListener('click', (e)=>{
-    if(currentAlbum.currentPhoto >= currentAlbum.numPhotos)
-        return;
-    currentAlbum.currentPhoto++;
+const updatePhoto = ()=>{
+    photoCounterDOM.innerHTML = currentAlbum.currentPhoto + "/" + currentAlbum.numPhotos;
     albumPath = currentAlbum.path + currentAlbum.currentPhoto + currentAlbum.type;
     document.querySelector('#albumPhoto').src = albumPath;
+}
+
+updatePhoto();
+
+const updatePhotoAlbum = (newAlbum)=>{
+    if(currentAlbum == newAlbum) return;
+    currentAlbum = newAlbum;
+    updatePhoto();
+}
+
+nextButton.addEventListener('click', (e)=>{
+    if(currentAlbum.currentPhoto >= currentAlbum.numPhotos) return;
+    currentAlbum.currentPhoto++;
+    updatePhoto();
 })
 
 prevButton.addEventListener('click', (e)=>{
-    if(currentAlbum.currentPhoto <= 1)
-        return;
+    if(currentAlbum.currentPhoto <= 1) return;
     currentAlbum.currentPhoto--;
-    albumPath = currentAlbum.path + currentAlbum.currentPhoto + currentAlbum.type;
-    document.querySelector('#albumPhoto').src = albumPath;
+    updatePhoto();
 })
 
+summer20AlbumButton.addEventListener('click', (e)=>{ updatePhotoAlbum(summer20); });
+summer21AlbumButton.addEventListener('click', (e)=>{ updatePhotoAlbum(summer21); });
 
 /******** Side Menu ********/
 
@@ -45,6 +60,18 @@ const sideMenuExitButton = document.querySelector('.sidemenu-close-button');
 const sideMenu = document.querySelector('.sidemenu');
 const navbar = document.querySelector('.topnav-container');
 let sideMenuOpen = false;
+
+document.body.addEventListener('click', function (event) {
+    if (sideMenu.contains(event.target) || sideMenuOpenButton.contains(event.target)) {
+        console.log('clicked inside');
+    } else {
+        console.log('clicked outside');
+        if(sideMenuOpen){
+            slideSideMenu(false);
+            sideMenuOpen = false;
+        }
+    }
+});
 
 sideMenuOpenButton.addEventListener('click', (e)=>{
     (sideMenuOpen) ? sideMenuOpen = false: sideMenuOpen = true;
@@ -86,3 +113,6 @@ $( window ).resize(function() {
         }
     }
 });
+
+// Get arbitrary element with id "my-element"
+// Listen for click events on body

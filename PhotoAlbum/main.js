@@ -126,7 +126,6 @@ $( window ).resize(function() {
 // Get arbitrary element with id "my-element"
 // Listen for click events on body
 
-
 var rangeSlider = function(){
     var slider = $('.range-slider'),
         range = $('.range-slider__range'),

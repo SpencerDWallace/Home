@@ -80,9 +80,7 @@ body {
   font-family: var(--bodyFont);
   font-weight: 400;
   line-height: 1.75;
-  min-width:  400px;
   width: auto !important;
-  width:400px;
 }
 
 p {

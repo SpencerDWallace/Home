@@ -11,32 +11,30 @@
     <link rel="stylesheet" href="./styles/photos.css" />
 
     <div class="topnav">
-        <div class = "topnav-container">
-            <a class = "active" >Home</a>
-            <a href = "./photos/spencer_wallace_resume.pdf" target = "_blank">Resume</a>
-            <a href = "./PhotoAlbum/index.html"> Photos</a>
-            <a>Contact</a>
-        </div>
-        <button type = "click" class = "topnav_sandwich" id = "sandwich"> &#8801 </button>
+        <nav class = "topnav-container">
+            <button type = "click" class = "topnav_sandwich" id = "sandwich"> &#8801 </button>
+            <div class = "topnav-container--links">
+                <a class = "active" >Home</a>
+                <a href = "./photos/spencer_wallace_resume.pdf" target = "_blank">Resume</a>
+                <a href = "./PhotoAlbum/index.html"> Photos</a>
+                <a>Contact</a>
+            </div>
+            <button type = "click" class = "topnav_sandwich" id = "sandwich" style="opacity: 0;"> &#8801 </button>
+        </nav>
     </div>
 
     <div class = "sidemenu" id = "sidemenu">
-        <div class = "sidemenu-close-container">
-            <button class = "sidemenu-close-button"> &#8249; </button>
-        </div>
-        <div class = "sidemenu-container">
-            <div class = "sidemenu-link-container">
+        <button class = "sidemenu-close-button"> &#8249; </button>
+        <div class = "sidemenu-link-container">
+            <li class = "active sidemenu-link" >Home</li>
 
-                <li class = "active" >Home</li>
-
-                <a href = "./photos/spencer_wallace_resume.pdf" target = "_blank">
-                    <li>Resume</li>
-                </a>
-                <a href = "./PhotoAlbum/index.html">
-                    <li> Photos</li>
-                </a>
-                <li>Contact</li>
-            </div>
+            <a href = "./photos/spencer_wallace_resume.pdf" target = "_blank">
+                <li class = "sidemenu-link">Resume</li>
+            </a>
+            <a href = "./PhotoAlbum/index.html">
+                <li class = "sidemenu-link"> Photos</li>
+            </a>
+            <li class = "sidemenu-link">Contact</li>
         </div>
     </div>
 
@@ -45,17 +43,15 @@
 
 
 
-    <div class="welcome-message-contaier">
-        <form class = "welcome-message" >
-            <img class = "mugshot" src="photos/wedding_jacket_tryon.jpeg" alt="Photo">
-            My name is Spencer Wallace, I am a fourth-year computer science major at Cal State San Bernardino.
-            My interests and experience includes computer graphics and rendering techniques, game programming, and machine learning.
-            Outside of programming my hobbies include hiking, camping, playing piano, and spending time with my wife, our chickens, and our dog.
-            <br> <br>
-            Listed below are some of my projects with links to their demos.<br>
-            You can also contact me or view my resume with the links above.<br>
-            (In Progress)<br>
-        </form>
+    <div class="welcome-message-container">
+        <img class = "mugshot" src="photos/wedding_jacket_tryon.jpeg" alt="Photo">
+        My name is Spencer Wallace, I am a fourth-year computer science major at Cal State San Bernardino.
+        My interests and experience includes computer graphics and rendering techniques, game programming, and machine learning.
+        Outside of programming my hobbies include hiking, camping, playing piano, and spending time with my wife, our chickens, and our dog.
+        <br> <br>
+        Listed below are some of my projects with links to their demos.<br>
+        You can also contact me or view my resume with the links above.<br>
+        (In Progress)<br>
     </div>
 
     <div class ="carousel">

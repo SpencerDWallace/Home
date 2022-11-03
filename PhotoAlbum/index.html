@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Spencer Wallace - Photos</title>
 
     <link rel="stylesheet" href="../styles/normalize.css" />
@@ -11,34 +11,31 @@
     <link rel="stylesheet" href="../styles/carousel.css" />
     <link rel="stylesheet" href="../styles/slider.scss" />
 
-</head>
-<body style = "height: 100%; width: 100%;">
-
     <div class="topnav">
-        <div class = "topnav-container">
-            <a href="../index.html">Home</a>
-            <a href = "../photos/spencer_wallace_resume.pdf" target = "_blank">Resume</a>
-            <a class = "active"> Photos</a>
-            <a>Contact</a>
-        </div>
-        <button type = "click" class = "topnav_sandwich"> &#8801 </button>
+        <nav class = "topnav-container">
+            <button type = "click" class = "topnav_sandwich" id = "sandwich"> &#8801 </button>
+            <div class = "topnav-container--links">
+                <a href = "../index.html" >Home</a>
+                <a href = "./photos/spencer_wallace_resume.pdf" target = "_blank">Resume</a>
+                <a  class = "active"> Photos</a>
+                <a>Contact</a>
+            </div>
+            <button type = "click" class = "topnav_sandwich" id = "sandwich" style="opacity: 0;"> &#8801 </button>
+        </nav>
     </div>
 
     <div class = "sidemenu" id = "sidemenu">
-        <div class = "sidemenu-close-container">
-            <button class = "sidemenu-close-button"> &#8249; </button>
-        </div>
-        <div class = "sidemenu-container">
-            <div class = "sidemenu-link-container">
-                <a href="../index.html">
-                    <li >Home</li>
-                </a>
-                <a href = "../photos/spencer_wallace_resume.pdf" target = "_blank">
-                    <li>Resume</li>
-                </a>
-                <li class = "active"> Photos</li>
-                <li>Contact</li>
-            </div>
+        <button class = "sidemenu-close-button"> &#8249; </button>
+        <div class = "sidemenu-link-container">
+            <li class = "sidemenu-link" >Home</li>
+
+            <a href = "./photos/spencer_wallace_resume.pdf" target = "_blank">
+                <li class = "sidemenu-link">Resume</li>
+            </a>
+            <a href = "./PhotoAlbum/index.html">
+                <li class = "active sidemenu-link"> Photos</li>
+            </a>
+            <li class = "sidemenu-link">Contact</li>
             <li type = "click" class = "sidemenu-album-container" id = "summer20">
                 <img src = "./summer20/8.png">
                 <button class = "carousel-btn"> Summer 20 </button>
@@ -47,30 +44,30 @@
                 <img src = "./summer21/1.jpg">
                 <button class = "carousel-btn"> Summer 21 </button>
             </li>
-            <div></div>
         </div>
     </div>
 
+</head>
+<body style = "height: 100%; width: 100%;">
     <div class = "photo-album">
-      <div class = "album-container">
-          <div class = "button-container">
-              <div id = "photo-button--left" type = "click" class = "arr arr--left"></div>
-          </div>
-         <div class = "album-frame">
-             <h4 id = "photo-counter"> 0/0 </h4>
-             <img class = "album-photo" id = "albumPhoto">
-
-         </div>
-          <div class = "button-container">
-            <div id = "photo-button--right" type = "click" class = "arr arr--right"></div>
-          </div>
-      </div>
-      <div class = "slider"> 
-          <div class = "slider-container">
-                <div class="range-slider" >
-                    <input class="range-slider__range" type="range" value="1" min="0" max="1">
-                    <span class="range-slider__value">0</span>
-                </div>
+        <h4 id = "photo-counter"> 0/0 </h4>
+        <div class = "album-container">
+            <div class = "button-container">
+                <div id = "photo-button--left" type = "click" class = "arr arr--left"></div>
+            </div>
+            <div class = "album-frame">
+                <img class = "album-photo" id = "albumPhoto">
+            </div>
+            <div class = "button-container">
+                <div id = "photo-button--right" type = "click" class = "arr arr--right"></div>
+            </div>
+        </div>
+        <div class = "slider"> 
+            <div class = "slider-container">
+                    <div class="range-slider" >
+                        <input class="range-slider__range" type="range" value="1" min="0" max="1">
+                        <span class="range-slider__value">0</span>
+                    </div>
             </div>
         </div>
     </div>

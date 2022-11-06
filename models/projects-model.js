@@ -59,9 +59,8 @@ internalModels.projectsModel = function() {
         {
             projectName: 'Sorting Algorithms',
             imagePath: '../photos/sort.png',
-            description: 'This project was created as a practice project to implement a raycasting \
-            engine in C++ for a course in computer graphics. In the C++ implementation I continued to create \
-            a 3D snake game for the course project. The source code can be found with the link below',
+            description: 'These were created to help familiarize myself with some sorting algorithms and javascript - specifically with features \
+            such as async functions, promises, and timeouts; along with using p5.js.',
             url: {
                 path:'//sort/index.html',
                 target:''
@@ -77,9 +76,8 @@ internalModels.projectsModel = function() {
         {
             projectName: 'Unity Game',
             imagePath: '../photos/unity-sg.png',
-            description: 'This project was created as a practice project to implement a raycasting \
-            engine in C++ for a course in computer graphics. In the C++ implementation I continued to create \
-            a 3D snake game for the course project. The source code can be found with the link below',
+            description: 'This was a final project for a course in platform computing. In this project I used Unity \
+            to create a space game focusing on a procedurally generated planet and AI enemies',
             url: {
                 path:'/https://spencerdwallace.github.io/UnitySpaceGame/',
                 target:'_blank'

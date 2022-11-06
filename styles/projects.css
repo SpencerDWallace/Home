@@ -8,7 +8,6 @@ p {
     display:flex;
     flex-direction: column;
     z-index: 1;
-    gap: 2vh;
     position: relative;
     width: 100%;
     justify-content: center;
@@ -23,8 +22,8 @@ p {
     justify-content: center;
     align-items: center;
     border-top: 2px;
-    border-bottom: 2px;
     border-style: solid;
+    border-bottom: none;
     border-left: none;
     border-right: none;
     border-color: rgba(177, 177, 177, 0.8);

@@ -1,146 +1,61 @@
-/*let projectSlideDOM = document.getElementById('project-slide');
-let projectLeftArrow = projectSlideDOM.querySelector("#left-pthumb");
-let projectRightArrow = projectSlideDOM.querySelector("#right-pthumb");
-let projectPhoto = projectSlideDOM.querySelector("#project-photo");
-let projectCaption = projectSlideDOM.querySelector("#project-caption");
-let projectLink = projectSlideDOM.querySelector("#project-link");
-
-const projectSlide = {
-    projectPhotos:["photos/raycast.png", "photos/sort.png", "photos/unity-sg.png", "photos/tasks.png"],
-    projectCaptions:["Javascript Raycasting", "Sorting Algorithms", "Unity Game", "Task Manager"],
-    projectLinks:["./raycast/raycast.html", "./sort/index.html", "https://spencerdwallace.github.io/UnitySpaceGame/", "https://task-manager-swall.herokuapp.com"],
-    numPhotos:4,
+'use strict';
+/* project model
+projectName: String,
+imagePath: String,
+url: {
+    path: String,
+    target: String,
 }
-let currentProject = 0;
+*/
 
-projectLeftArrow.addEventListener("click", async(e) => {
-    await updateProjectSlide( projectSlide.numPhotos-1 );
-});
-
-projectRightArrow.addEventListener("click", async(e) => {
-    await updateProjectSlide(1);
-});
-
-let updateProjectSlide = (n) =>{
-    currentProject = (currentProject + n) % projectSlide.numPhotos;
-    projectPhoto.src = projectSlide.projectPhotos[currentProject];
-    projectCaption.textContent = projectSlide.projectCaptions[currentProject];
-    projectLink.href = projectSlide.projectLinks[currentProject]
-}
-
-let slideAnimation = () =>{
-
-}*/
-
-const track = document.querySelector('.carousel_track');
-const slides = Array.from(track.children);
-const nextButton = document.querySelector('.carousel_button--right');
-const prevButton = document.querySelector('.carousel_button--left');
-const dotsNav = document.querySelector('.carousel_nav')
-const dots = Array.from(dotsNav.children);
-let slideWidth = slides[0].getBoundingClientRect().width;
-let lastSlide = document.cookie;
-let slidesMoved = false;
+function createProject(projectInfo){
+    let newProject = document.createElement("div");
+    newProject.classList.add('project-container');
+    let projectRouter = document.createElement("a");
+    projectRouter.classList.add('project-router');
+    projectRouter.href = projectInfo.url.path;
+    projectRouter.target = projectInfo.url.target;
 
 
-const moveToSlide = (track, currentSlide, targetSlide, preset) => {
-    try {
-        if(preset)
-            track.style.left = '-' + targetSlide.style.left;
-        else {
-            const dif = -1 * (Number(targetSlide.style.left.split('p', 1)[0]) + Number(track.style.left.split('p', 1)[0]));
-            (slidesMoved) ? track.style.transform = 'translateX(' + dif + 'px)' : track.style.left = '-' + targetSlide.style.left;
-        }
-        currentSlide.classList.remove('active');
-        targetSlide.classList.add('active');
-        const nextIndex = slides.findIndex(slide => slide === targetSlide)
-        arrowsController(slides, prevButton, nextButton, nextIndex)
+    let projectImage = document.createElement("img");
+    projectImage.src = projectInfo.imagePath;
+    projectImage.classList.add('project-image')
+
+    let projectTitle = document.createElement("button")
+    projectTitle.classList.add('project-title')
+    projectTitle.textContent = projectInfo.projectName;
+
+    let projectDescription = document.createElement("p")
+    projectDescription.textContent = projectInfo.description
+    projectDescription.classList.add('project-description');
+
+    projectRouter.appendChild(projectImage);
+    projectRouter.appendChild(projectTitle);
+    newProject.appendChild(projectRouter);
+    newProject.appendChild(projectDescription);
+
+    if(projectInfo.externals.length > 0){
+        projectInfo.externals.forEach(external=>{
+            let externalLink = document.createElement("a");
+            externalLink.href = 'external.path';
+            externalLink.textContent = (external.title + ": " + external.path);
+            newProject.appendChild(externalLink);
+        })
     }
-    catch(e){
-        console.error(e);
-    }
+    return newProject;
 }
 
-const updateDots = (currentDot, targetDot) =>{
-    try {
-        currentDot.classList.remove('active');
-        targetDot.classList.add('active');
-        const targetDotIndex = dots.findIndex(dot => dot === targetDot);
-        setCookie("slide", targetDotIndex, 1);
-        slidesMoved = true;
-    }
-    catch(e){
-        console.error(e);
-    }
+function projects (parentID){
+    this.render = (projectData) => {
+        if(projectData.length === 0) return;
+        const parent = document.getElementById(parentID);
+        console.log(parent);
+        projectData.forEach(project => {
+            console.log(project)
+            parent.appendChild(createProject(project));
+        });
+    };
 }
-
-const arrowsController = (slides, prevButton, nextButton, index) =>{
-    if(index === 0) {
-        prevButton.classList.add('is-hidden');
-        nextButton.classList.remove('is-hidden');
-    }else if(index === slides.length - 1){
-        prevButton.classList.remove('is-hidden');
-        nextButton.classList.add('is-hidden');
-    }
-    else{
-        prevButton.classList.remove('is-hidden');
-        nextButton.classList.remove('is-hidden');
-    }
-}
-
-nextButton.addEventListener('click', e => {
-    const currentSlide = track.querySelector('.active');
-    const nextSlide = currentSlide.nextElementSibling;
-    moveToSlide(track, currentSlide, nextSlide, false);
-
-    const currentDot = dotsNav.querySelector('.active');
-    updateDots(currentDot, currentDot.nextElementSibling);
-})
-
-prevButton.addEventListener('click', e => {
-    const currentSlide = track.querySelector('.active');
-    const prevSlide = currentSlide.previousElementSibling;
-    moveToSlide(track, currentSlide, prevSlide, false);
-
-    const currentDot = dotsNav.querySelector('.active');
-    updateDots(currentDot, currentDot.previousElementSibling);
-})
-
-dotsNav.addEventListener('click', e =>{
-    const targetDot = e.target.closest('button');
-    if(!targetDot) return;
-
-    const currentSlide = track.querySelector('.active');
-    const currentDot = dotsNav.querySelector('.active');
-    const targetIndex = dots.findIndex(dot => dot === targetDot);
-    const targetSlide = slides[targetIndex];
-    moveToSlide(track, currentSlide, targetSlide, false)
-    updateDots(currentDot, targetDot);
-    arrowsController(slides, prevButton, nextButton, targetIndex)
-
-})
-
-function setCookie(cName, cValue, expDays) {
-    let date = new Date();
-    date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
-    const expires = "expires=" + date.toUTCString();
-    document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
-}
-
-const setSlidePosition = async (slide, index) =>{
-    slide.style.left = slideWidth*index + 'px';
-};
-
-const init = async() => {
-    await slides.forEach(setSlidePosition)
-    if (lastSlide) {
-        const lastSlideAsNum = Number(lastSlide.split('=').pop());
-        moveToSlide(track, slides[0], slides[lastSlideAsNum], true);
-        updateDots(dots[0], dots[lastSlideAsNum])
-    }
-}
-
-init();
 
 const sideMenuOpenButton = document.querySelector('.topnav_sandwich');
 const sideMenuExitButton = document.querySelector('.sidemenu-close-button');
@@ -158,6 +73,18 @@ sideMenuExitButton.addEventListener('click', (e)=>{
     (sideMenuOpen) ? sideMenuOpen = false: sideMenuOpen = true;
     slideSideMenu(sideMenuOpen);
 })
+
+document.body.addEventListener('click', function (event) {
+    if (sideMenu.contains(event.target) || sideMenuOpenButton.contains(event.target)) {
+        console.log('clicked inside');
+    } else {
+        console.log('clicked outside');
+        if(sideMenuOpen){
+            slideSideMenu(false);
+            sideMenuOpen = false;
+        }
+    }
+});
 
 const slideSideMenu = (open)=>{
     let pixels;
@@ -185,18 +112,9 @@ $( window ).resize(function() {
     if ($(window).width() != width || $(window).height() != height) {
         width = $(window).width();
         height = $(window).height();
-        slideWidth = slides[0].getBoundingClientRect().width;
-        init();    
         if(sideMenuOpen){
         slideSideMenu(false);
         sideMenuOpen = false;
         }
     }
 });
-
-
-// const sideMenuOpenSymbol = sideMenuButton.textContent;
-// const sideMenuExitSymbol = document.querySelector('#exit-symbol').textContent;
-// const updateSideMenuButton = ()=>{
-//    (sideMenuOpen) ? sideMenuButton.textContent = sideMenuExitSymbol : sideMenuButton.textContent = sideMenuOpenSymbol;
-//}

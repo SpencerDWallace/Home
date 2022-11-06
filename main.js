@@ -50,9 +50,7 @@ function projects (parentID){
     this.render = (projectData) => {
         if(projectData.length === 0) return;
         const parent = document.getElementById(parentID);
-        console.log(parent);
         projectData.forEach(project => {
-            console.log(project)
             parent.appendChild(createProject(project));
         });
     };

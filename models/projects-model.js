@@ -12,7 +12,7 @@ internalModels.projectsModel = function() {
             imagePath: './photos/raycast.png',
             description: 'This project was created as a practice project to implement a raycasting \
             engine in C++ for a course in computer graphics. In the C++ implementation I continued to create \
-            a 3D snake game for the course project. The source code can be found with the link below',
+            a 3D snake game for the course project. The source code can be found with the links below',
             url: {
                 path: './raycast/raycast.html',
                 target:'_blank'
@@ -35,7 +35,7 @@ internalModels.projectsModel = function() {
             projectName: 'Ecommerce Project',
             imagePath: './photos/ecommerce.png',
             description: 'This was created for a semester project in a software engineering course. \
-            Serveral frameworks and APIs were used such as Node.js, Express.js, React.js, MongoDB, Mongoose, Commerce.js, and Axios.\
+            Several frameworks and APIs were used such as Node.js, Express.js, React.js, MongoDB, Mongoose, Commerce.js, and Axios.\
             Multiple databases were developed - the storefront database using Commerce.js and a user database with MongoDB \
             along with an internally-built API suing Node.js, Express.js, and Mongoose.',
             url: {
@@ -103,7 +103,7 @@ internalModels.projectsModel = function() {
             projectName: 'Unity Game',
             imagePath: './photos/unity-sg.png',
             description: 'This was a final project for a course in platform computing. In this project I used Unity \
-            to create a space game focusing on a procedurally generated planet and AI enemies',
+            to create a space game focusing on a procedurally generated planet and AI enemies. <br>(Not mobile friendly)',
             url: {
                 path:'/https://spencerdwallace.github.io/UnitySpaceGame/',
                 target:'_blank'

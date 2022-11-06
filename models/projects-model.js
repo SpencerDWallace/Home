@@ -57,6 +57,33 @@ internalModels.projectsModel = function() {
             ]
         },
         {
+            projectName: 'Kicktracker Project',
+            imagePath: '/photos/kicktracker.png',
+            description: 'This was created for my wife while she was pregnant with our daughter.\
+            She wanted an app that would track the baby\'s kicks each hour and to be able to see it as a graph.\
+            For this project I again used the MERN stack, similar to the ecommerce project.\
+            To see the app with some real data (my wife\'s) use the following login: <br><br> \
+            Email: spencerdwallace@gmail.com <br> \
+            Password: 12345 <br><br> \
+            Navigate to the kicks tab and set the calendar to June of 2022 (6/22). Feel free to perform any operations - add, delete, modify, etc.; this is only a copy of my wife\'s data.',
+            url: {
+                path:'https://kick-tracker.web.app/',
+                target:'_blank'
+            },
+            externals:[
+                {
+                    title:'Source code (Frontend)',
+                    path:'https://github.com/SpencerDWallace/Kick-Tracker',
+                    target:'_blank'
+                },
+                {
+                    title:'Source code (Backend)',
+                    path:'https://github.com/SpencerDWallace/Kick-Tracker-Backend',
+                    target:'_blank'
+                },
+            ]
+        },
+        {
             projectName: 'Sorting Algorithms',
             imagePath: '/photos/sort.png',
             description: 'These were created to help familiarize myself with some sorting algorithms and javascript - specifically with features \

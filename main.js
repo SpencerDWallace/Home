@@ -26,7 +26,7 @@ function createProject(projectInfo){
     projectTitle.textContent = projectInfo.projectName;
 
     let projectDescription = document.createElement("p")
-    projectDescription.textContent = projectInfo.description
+    projectDescription.innerHTML = projectInfo.description
     projectDescription.classList.add('project-description');
 
     projectRouter.appendChild(projectImage);
@@ -39,7 +39,7 @@ function createProject(projectInfo){
             let externalLink = document.createElement("a");
             externalLink.href = external.path;
             externalLink.target = external.target;
-            externalLink.textContent = external.title;
+            externalLink.innerHTML = external.title;
             newProject.appendChild(externalLink);
         })
     }

@@ -89,7 +89,7 @@ body {
 
 p {
   margin-bottom: 1.5rem;
-  max-width: 40em;
+  max-width: 45em;
 }
 
 h1,
@@ -267,7 +267,6 @@ body{
 
 .welcome-message-container {
   min-width: 100%;
-  background: whitesmoke;
   display: flex;
   flex-direction: column;
   align-items: center;

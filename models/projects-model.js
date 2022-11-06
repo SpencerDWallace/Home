@@ -5,17 +5,16 @@ if (internalModels === undefined) {
 }
 
 
-
 internalModels.projectsModel = function() {
     return [
         {
             projectName: 'Raycasting JS',
-            imagePath: '/photos/raycast.png',
+            imagePath: './photos/raycast.png',
             description: 'This project was created as a practice project to implement a raycasting \
             engine in C++ for a course in computer graphics. In the C++ implementation I continued to create \
             a 3D snake game for the course project. The source code can be found with the link below',
             url: {
-                path:'/raycast/raycast.html',
+                path: './raycast/raycast.html',
                 target:'_blank'
             },
             externals:[
@@ -34,7 +33,7 @@ internalModels.projectsModel = function() {
         },
         {
             projectName: 'Ecommerce Project',
-            imagePath: '/photos/ecommerce.png',
+            imagePath: './photos/ecommerce.png',
             description: 'This was created for a semester project in a software engineering course. \
             Serveral frameworks and APIs were used such as Node.js, Express.js, React.js, MongoDB, Mongoose, Commerce.js, and Axios.\
             Multiple databases were developed - the storefront database using Commerce.js and a user database with MongoDB \
@@ -58,7 +57,7 @@ internalModels.projectsModel = function() {
         },
         {
             projectName: 'Kicktracker Project',
-            imagePath: '/photos/kicktracker.png',
+            imagePath: './photos/kicktracker.png',
             description: 'This was created for my wife while she was pregnant with our daughter.\
             She wanted an app that would track the baby\'s kicks each hour and to be able to see it as a graph.\
             For this project I again used the MERN stack, similar to the ecommerce project.\
@@ -85,11 +84,11 @@ internalModels.projectsModel = function() {
         },
         {
             projectName: 'Sorting Algorithms',
-            imagePath: '/photos/sort.png',
+            imagePath: './photos/sort.png',
             description: 'These were created to help familiarize myself with some sorting algorithms and javascript - specifically with features \
             such as async functions, promises, and timeouts; along with using p5.js.',
             url: {
-                path:'/sort/index.html',
+                path:'./sort/index.html',
                 target:''
             },
             externals:[
@@ -102,7 +101,7 @@ internalModels.projectsModel = function() {
         },
         {
             projectName: 'Unity Game',
-            imagePath: '/photos/unity-sg.png',
+            imagePath: './photos/unity-sg.png',
             description: 'This was a final project for a course in platform computing. In this project I used Unity \
             to create a space game focusing on a procedurally generated planet and AI enemies',
             url: {

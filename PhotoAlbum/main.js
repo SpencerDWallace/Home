@@ -1,42 +1,33 @@
-const summer20AlbumButton = document.querySelector('#summer20');
-const summer21AlbumButton = document.querySelector('#summer21');
+'use strict';
 const photoCounterDOM = document.querySelector('#photo-counter');
 const nextButton = document.querySelector('#photo-button--right');
 const prevButton = document.querySelector('#photo-button--left');
-let photoSlider = document.querySelector('.range-slider__range');
-
 let currentAlbum = {};
+/*
+name: '',
+path: "",
+photos: [],
+thumbnail: '',
+currentPhoto: num,
+*/
 
-let summer20 = {
-    path: "./summer20/",
-    numPhotos: 25,
-    type: ".png",
-    currentPhoto: 1,
-};
+let albums = window.internalModels.photoAlbumModel();
 
-let summer21 = {
-    path: "./summer21/",
-    numPhotos: 11,
-    type: ".jpg",
-    currentPhoto: 1,
-};
+albums.map(album=>{
+    album.numPhotos = album.photos.length;
+    const id = '#' + album.name
+    let albumSelect = document.querySelector(id.replace(/\s/g, ''));
+    albumSelect.addEventListener('click', (e)=>{ updatePhotoAlbum(album); });
+});
 
 //initial state
-currentAlbum = summer20;
-let albumPath;
-photoSlider.min = 1;
-photoSlider.max = currentAlbum.numPhotos;
-photoSlider.value = currentAlbum.currentPhoto;
-document.querySelector('.range-slider__value').textContent = currentAlbum.currentPhoto;
+currentAlbum = albums[0];
 
 
 const updatePhoto = ()=>{
-    photoCounterDOM.innerHTML = currentAlbum.currentPhoto + "/" + currentAlbum.numPhotos;
-    albumPath = currentAlbum.path + currentAlbum.currentPhoto + currentAlbum.type;
-    document.querySelector('#albumPhoto').src = albumPath;
-    photoSlider.max = currentAlbum.numPhotos;
-    photoSlider.value = currentAlbum.currentPhoto + "";
-    document.querySelector('.range-slider__value').textContent = currentAlbum.currentPhoto;
+    photoCounterDOM.innerHTML = (currentAlbum.currentPhoto+1) + "/" + currentAlbum.numPhotos;
+    let photoPath = currentAlbum.path + currentAlbum.photos[currentAlbum.currentPhoto];
+    document.querySelector('#albumPhoto').src = photoPath;
 }
 
 updatePhoto();
@@ -44,44 +35,18 @@ updatePhoto();
 const updatePhotoAlbum = (newAlbum)=>{
     if(currentAlbum == newAlbum) return;
     currentAlbum = newAlbum;
+    window.closeSideMenu();
     updatePhoto();
 }
 
 nextButton.addEventListener('click', (e)=>{
-    if(currentAlbum.currentPhoto >= currentAlbum.numPhotos) return;
+    if(currentAlbum.currentPhoto >= currentAlbum.numPhotos-1) return;
     currentAlbum.currentPhoto++;
     updatePhoto();
 })
 
 prevButton.addEventListener('click', (e)=>{
-    if(currentAlbum.currentPhoto <= 1) return;
+    if(currentAlbum.currentPhoto <= 0) return;
     currentAlbum.currentPhoto--;
     updatePhoto();
 })
-
-summer20AlbumButton.addEventListener('click', (e)=>{ updatePhotoAlbum(summer20); });
-summer21AlbumButton.addEventListener('click', (e)=>{ updatePhotoAlbum(summer21); });
-
-var rangeSlider = function(){
-    var slider = $('.range-slider'),
-        range = $('.range-slider__range'),
-        value = $('.range-slider__value');
-    slider.each(function(){
-  
-      value.each(function(){
-        var value = $(this).prev().attr('value');
-        console.log(value)
-        $(this).html(value);
-      });
-  
-      range.on('input', function(){
-        $(this).next(value).html(this.value);
-        console.log(value)
-        currentAlbum.currentPhoto = Number(photoSlider.value);
-        updatePhoto();
-      });
-    });
-
-  };
-  
-  rangeSlider();

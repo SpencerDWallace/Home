@@ -172,6 +172,7 @@
     box-shadow: var(--shadow-4);
     font-weight: 600;
 }
+
 .sidemenu-close-button:hover{
     cursor: pointer;
     font-weight: bolder;

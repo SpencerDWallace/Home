@@ -23,7 +23,6 @@ albums.map(album=>{
 //initial state
 currentAlbum = albums[0];
 
-
 const updatePhoto = ()=>{
     photoCounterDOM.innerHTML = (currentAlbum.currentPhoto+1) + "/" + currentAlbum.numPhotos;
     let photoPath = currentAlbum.path + currentAlbum.photos[currentAlbum.currentPhoto];

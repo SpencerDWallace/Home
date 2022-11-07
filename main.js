@@ -16,7 +16,6 @@ function createProject(projectInfo){
     projectRouter.href = projectInfo.url.path;
     projectRouter.target = projectInfo.url.target;
 
-
     let projectImage = document.createElement("img");
     projectImage.src = projectInfo.imagePath;
     projectImage.classList.add('project-image')

@@ -48,6 +48,21 @@
     border-radius: 10px;
 }
 
+.album-title {
+    cursor: pointer;
+    appearance: none;
+    color: #222;
+    font-weight: bold;
+    background: #f3f3f3;
+    border: none;
+    border-radius: 2px;
+    letter-spacing: var(--letterSpacing);
+    box-shadow: 0px 1px 2px 1px #11111155;
+    transition: var(--transition);
+    text-transform: capitalize;
+    font-size: 1rem;
+}
+
 .button-container{
     position: relative;
     display: flex;

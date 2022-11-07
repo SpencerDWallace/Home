@@ -64,9 +64,6 @@ $( window ).resize(function() {
     if ($(window).width() != width || $(window).height() != height) {
         width = $(window).width();
         height = $(window).height();
-        if(sideMenuOpen){
-        slideSideMenu(false);
-        sideMenuOpen = false;
-        }
+        closeSideMenu();
     }
 });

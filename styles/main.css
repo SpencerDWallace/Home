@@ -40,6 +40,7 @@
   --grey-1000: #333538;
   --grey-1100: #141516;
 
+  --powdery-blue: rgb(208, 214, 235);
   /* rest */
   --black: #222;
   --white: #fff;
@@ -53,7 +54,7 @@
   --bodyFont: 'Montserrat', sans-serif;
   --smallText: 0.7em;
   /* rest */
-  --backgroundColor: var(--grey-50);
+  --backgroundColor: var(--powdery-blue);
   --textColor: var(--grey-1000);
   --borderRadius: 0.25rem;
   --letterSpacing: 1px;
@@ -146,7 +147,35 @@ a {
 /**************************
 navbar and forgot password
 **************************/
+#myBtn {
+  display: none;
+  position: fixed;
+  font-size: 16px;
+  bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 99;
+  font-weight: bolder;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  color: black;
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  vertical-align: middle;
+  transform: rotate(270deg);
+}
+
+#myBtn:hover {
+  background: rgba(140, 176, 201, 0.7);
+  color: white;
+}
+
 .topnav {
+  position: fixed;
+  z-index: 50;
   text-align: center;
   overflow:hidden;
   top: 0px;
@@ -263,6 +292,7 @@ body{
 .content-container{
   margin: auto 0;
   min-width: 100vw;
+  margin-top: 6.5vh;
 }
 
 .welcome-message-container {

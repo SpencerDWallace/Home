@@ -12,6 +12,7 @@ p {
     width: 100%;
     justify-content: center;
     align-items: center;
+    padding-bottom: 4rem;
 }
 
 .project-container{

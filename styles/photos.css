@@ -73,19 +73,23 @@
 }
 
 .sidemenu{
-    z-index: 5;
+    z-index: 50;
     position: fixed;
     top: 0;
     width: 40%;
     left: -100%;
     height: 100vh;
-    background: #dcdcdc;
-    box-shadow:  0px 40px 40px 15px rgba(0, 0, 0, 0.3);
+    background: #9aaebf;
+    box-shadow:  0px 1px 1px 1px #9aaebfb4,
+    0px 120px 40px 100px rgba(0, 0, 0, 0.3);
     transition: transform 300ms ease-in;
     font-size: 18px;
     overflow-y: scroll;
     overscroll-behavior-y: contain;
-    
+    font-weight: 600;
+    border-left: 0px;
+    border-top: 0px;
+    border-bottom: 0px;
 }
 
 .sidemenu-container{
@@ -127,7 +131,7 @@
 }
 
 .sidemenu-link-container .sidemenu-link:hover{
-    box-shadow:  0px -5px 40px -5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 1px 3px 2px #1111115f;
     cursor: pointer;
     color: white;
     background: rgba(140, 176, 201, 0.7);
@@ -224,7 +228,7 @@
 
 @media only screen and (max-width: 600px){
     .sidemenu{
-        width: 73%;
+        width: 85%;
         left: -100%;
         font-size: 16px;
     }

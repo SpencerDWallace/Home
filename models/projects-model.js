@@ -36,8 +36,8 @@ internalModels.projectsModel = function() {
             imagePath: './photos/ecommerce.png',
             description: 'This was created for a semester project in a software engineering course. \
             Several frameworks and APIs were used such as Node.js, Express.js, React.js, MongoDB, Mongoose, Commerce.js, and Axios.\
-            Multiple databases were developed - the storefront database using Commerce.js and a user database with MongoDB \
-            along with an internally-built API suing Node.js, Express.js, and Mongoose.',
+            Multiple databases were maintained - the storefront database using Commerce.js and a user database with MongoDB \
+            along with an internal API suing Node.js, Express.js, and Mongoose.',
             url: {
                 path:'https://droppers-testing.web.app/store',
                 target:'_blank'

@@ -40,7 +40,7 @@
   --grey-1000: #333538;
   --grey-1100: #141516;
 
-  --powdery-blue: rgb(208, 214, 235);
+  --powdery-blue: rgb(204, 218, 233);
   /* rest */
   --black: #222;
   --white: #fff;
@@ -55,7 +55,7 @@
   --smallText: 0.7em;
   /* rest */
   --backgroundColor: var(--powdery-blue);
-  --textColor: var(--grey-1000);
+  --textColor: #060606;
   --borderRadius: 0.25rem;
   --letterSpacing: 1px;
   --transition: 0.3s ease-in-out all;
@@ -154,7 +154,7 @@ navbar and forgot password
   bottom: 1rem;
   margin-left: auto;
   margin-right: auto;
-  z-index: 99;
+  z-index: 9;
   font-weight: bolder;
   border: none;
   outline: none;
@@ -192,14 +192,19 @@ navbar and forgot password
   min-width: 100%;
   max-height: 100%;
   max-width: 100%;
-  background-color: #f3f3f3;
-  border-style: none none groove none;
-  border-width: 3px;
-  border-color: rgba(177, 177, 177, 0.46);
+  background-color: #9aaebf;
+  border-style: none none solid none;
+  border-width: 2px;
+  border-color: #33336699;
 }
 
 .topnav-container--links{
   flex: 1;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 600;
 }
 
 .topnav a {
@@ -222,7 +227,7 @@ navbar and forgot password
   margin: 0 1rem;
   align-self: center;
   z-index:5;
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: black;
   appearance: none;
   background: #CCCCCC88;
@@ -230,8 +235,10 @@ navbar and forgot password
   border-radius: var(--borderRadius);
   letter-spacing: var(--letterSpacing);
   padding: 0.375rem 0.75rem;
-  box-shadow: var(--shadow-1);
+  box-shadow: 0px 1px 2px 1px #11111133;
   font-weight: 600;
+  text-align: center;
+  vertical-align: middle;
 }
 .topnav_sandwich:hover{
   cursor: pointer;
@@ -243,6 +250,7 @@ navbar and forgot password
 .topnav a:hover {
   cursor: pointer;
   background: rgba(140, 176, 201, 0.7);
+  box-shadow: 0px 1px 3px 2px #11111155;
   color: white;
 }
 
@@ -303,7 +311,6 @@ body{
   justify-content: center;
   margin: 3rem auto;
   text-align: center;
-  color: #000033;
   position: relative;
 }
 .welcome-message-container p{
@@ -322,10 +329,9 @@ body{
   margin: 0px auto;
   margin-bottom: 1.3rem;
   text-align: center;    
-  box-shadow: 0px 1px 5px 2px #11111188;
-
-  border-radius: 9px;
-  width: 8rem;
+  box-shadow: 0px 1px 4px 2px #11111166;
+  border-radius: 7px;
+  width: 13rem;
 }
 
 .arr {
@@ -361,34 +367,43 @@ body{
 }
 */
 @media only screen and (max-width: 1000px){
-.topnav_sandwich{
-  font-size: 1.25rem;
- }
- 
+
  .topnav-container--links{
   visibility: hidden;
   }
 
-
-
 } 
+
 @media only screen and (max-width: 600px){
-.topnav-container--links{
-  max-height: 6.5vh;
-  min-height: 6.5vh;
+  .topnav-container--links{
+    max-height: 6.5vh;
+    min-height: 6.5vh;
+  }
+
+  .mugshot {
+    max-width: 11em;
+    width: 11em;
+    border-radius: 5px;
+  }
+
+  .topnav-container--links *{
+    max-height: 1px;
+    max-width: 1px;
+    padding: none;
+  }
 }
 
-.topnav-container--links *{
-  max-height: 1px;
-  max-width: 1px;
-  padding: none;
-}
-
-}
 @media only screen and (min-width: 1000px){
   html {
     font-size: 15.5px;
   }
+}
+
+@media only screen and (min-width: 1800px){
+  p{
+  max-width: 45vw;  
+  }
+  
 }
 
 @media only screen and (min-width: 2000px){
@@ -396,3 +411,4 @@ body{
     font-size: 20px;
   }
 }
+

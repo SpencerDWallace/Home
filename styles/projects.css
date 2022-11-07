@@ -27,10 +27,15 @@ p {
     border-bottom: none;
     border-left: none;
     border-right: none;
-    border-color: rgba(177, 177, 177, 0.8);
+    border-color: #33336699;
     padding-top: 5vh;
     padding-bottom: 5vh;
 
+}
+
+.project-container a{
+    font-weight: 600;
+    text-decoration: underline;
 }
 
 .project-image{
@@ -53,11 +58,11 @@ p {
     appearance: none;
     color: #222;
     font-weight: bold;
-    background: #ccc;
+    background: #f3f3f3;
     border: none;
     border-radius: .1vmax;
     letter-spacing: var(--letterSpacing);
-    box-shadow: var(--shadow-1);
+    box-shadow: 0px 1px 2px 1px #11111133;
     transition: var(--transition);
     text-transform: capitalize;
     font-size: 1rem;

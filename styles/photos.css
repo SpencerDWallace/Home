@@ -283,3 +283,7 @@
     background: rgba(140, 176, 201, 0.7);
     color: white;
 }
+
+.sidemenu-album-container:last-of-type{
+    margin-bottom: 25vh;
+}

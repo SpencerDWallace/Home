@@ -242,6 +242,7 @@ body{
 }
 
 .mugshot {
+  background-color: var(--theme-3);
   display:list-item;
   margin: 0px auto;
   margin-bottom: 1.3rem;

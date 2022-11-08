@@ -20,7 +20,7 @@
 	background-color: var(--theme-3);
 	border-style: none none solid none;
 	border-width: 2px;
-	border-color: #33336699;
+	border-color: var(--theme-1);
   }
   
   .topnav-container--links{

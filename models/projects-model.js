@@ -105,7 +105,7 @@ internalModels.projectsModel = function() {
             description: 'This was a final project for a course in platform computing. In this project I used Unity \
             to create a space game focusing on a procedurally generated planet and AI enemies. <br>(Not mobile friendly)',
             url: {
-                path:'/https://spencerdwallace.github.io/UnitySpaceGame/',
+                path:'https://spencerdwallace.github.io/UnitySpaceGame/',
                 target:'_blank'
             },
             externals:[

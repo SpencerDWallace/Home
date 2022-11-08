@@ -30,7 +30,7 @@ p {
     border-color: #33336699;
     padding-top: 5vh;
     padding-bottom: 5vh;
-
+    color: var(--p-color);
 }
 
 .project-container a{
@@ -56,9 +56,9 @@ p {
     max-width: 500px;
     cursor: pointer;
     appearance: none;
-    color: #222;
+    background-color: var(--accent-1);
+    color: var(--p-color);
     font-weight: bold;
-    background: #f3f3f3;
     border: none;
     border-radius: 3px;
     letter-spacing: var(--letterSpacing);
@@ -69,13 +69,14 @@ p {
 }
 
 .project-description{
+    color: var(--p-color);
     font-weight: bold;
     text-align: center;
 }
 
 
-.projects-container img:hover + button, .projects-container button:hover{
-    background: rgba(140, 176, 201, 0.7);
+.project-container img:hover + button, .projects-container button:hover{
+    background: var(--theme-2);
     color: white;
 }
 

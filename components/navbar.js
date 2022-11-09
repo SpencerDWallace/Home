@@ -44,7 +44,10 @@ const lightmodeVariables = {
 const lightmodeCookieName = "lightmode"
 const lightmodeSwitch = document.getElementById('nav-switch');
 let lightmode = $.cookie(lightmodeCookieName);
-if(lightmode == 0)
+
+if(lightmode === undefined)
+    lightmode = false;
+else if(lightmode == 0)
     lightmode = false;
 else
     lightmode = true;

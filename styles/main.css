@@ -45,8 +45,8 @@
   --dark-theme-2: #203447cc;
   --dark-theme-3: #263441dd;
   --dark-theme-4: #e5eef8;
-  --dark-accent-1: #333;
-  --dark-accent-2:var(--accent-1);
+  --dark-accent-1: var(--dark-theme-1);
+  --dark-accent-2: var(--dark-theme-3);
   --dark-accent-color:#e5eef8;
   --dark-active: #f6f6f6;
   --dark-active-color: #333;
@@ -57,8 +57,8 @@
   --light-theme-2: #8CB0C9CC;
   --light-theme-3: #9aaebfdd;
   --light-theme-4: #33436699;
-  --light-accent-1: #fff;
-  --light-accent-2:var(--accent-1);
+  --light-accent-1: var(--light-theme-1);
+  --light-accent-2: #fff;
   --light-accent-color:#111;
   --light-active: #333;
   --light-active-color: #f6f6f6;

@@ -4,6 +4,10 @@ p {
     margin-right: 1rem; 
 }
 
+a{
+    color: var(--a-color);
+}
+
 .projects-container{
     display:flex;
     flex-direction: column;
@@ -17,12 +21,13 @@ p {
 
 .project-container{
     position: relative;
-    min-width: 100%;
+    min-width: 93%;
+    max-width: 93%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-top: 3px;
+    border-top: 1px;
     border-style: solid;
     border-bottom: none;
     border-left: none;

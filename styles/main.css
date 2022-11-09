@@ -41,36 +41,42 @@
   --grey-1100: #141516;
 
   /* dark and light theme colors */
-  --dark-theme-1: #567;
-  --dark-theme-2: #3C6084CC;
-  --dark-theme-3: #4a5e6fdd;
+  --dark-theme-1: #345;
+  --dark-theme-2: #203447cc;
+  --dark-theme-3: #263441dd;
+  --dark-theme-4: #e5eef8;
   --dark-accent-1: #333;
   --dark-accent-2:var(--accent-1);
   --dark-accent-color:#e5eef8;
   --dark-active: #f6f6f6;
   --dark-active-color: #333;
   --dark-p-color: #e5eef8;
+  --dark-a-color: #66c0ff;
 
-  --light-theme-1: #cde;
+  --light-theme-1: rgb(226, 235, 245);
   --light-theme-2: #8CB0C9CC;
   --light-theme-3: #9aaebfdd;
+  --light-theme-4: #33436699;
   --light-accent-1: #fff;
   --light-accent-2:var(--accent-1);
   --light-accent-color:#111;
   --light-active: #333;
   --light-active-color: #f6f6f6;
   --light-p-color: black;
+  --light-a-color: #0055bb;
+
 
   --theme-1: var(--light-theme-1);
   --theme-2: var(--light-theme-2);
   --theme-3: var(--light-theme-3);
-  --theme-4: #33436699;
+  --theme-4: var(--light-theme-4);
   --accent-1: var(--light-accent-1);
   --accent-2: var(--light-accent-2);
   --accent-color: var(--light-accent-color);
   --active: var(--light-active);
   --active-color: var(--light-active-color);
   --p-color: var(--light-p-color);
+  --a-color: var(--light-a-color);
 /* end of dark and light theme colors */
 
 
@@ -84,7 +90,7 @@
 
   /* typography */
   --headingFont: 'Inconsolata', monospace;
-  --bodyFont: 'Montserrat', sans-serif;
+  --bodyFont: Raleway, Roboto, Lato, Montserrat, sans-serif;
   --smallText: 0.7em;
   /* rest */
   --backgroundColor: var(--theme-1);

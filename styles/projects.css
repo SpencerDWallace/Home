@@ -22,12 +22,12 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-top: 2px;
+    border-top: 3px;
     border-style: solid;
     border-bottom: none;
     border-left: none;
     border-right: none;
-    border-color: #33336699;
+    border-color: var(--theme-4);
     padding-top: 5vh;
     padding-bottom: 5vh;
     color: var(--p-color);
@@ -48,7 +48,10 @@ p {
     text-align: center;
     margin: 0;
     padding: 0px;
-    border: 3px groove white;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0px 1px 5px 1px #11111188;
+    margin-bottom: 0.5rem;
 }
 
 .project-title {

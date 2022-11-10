@@ -254,7 +254,7 @@ body{
   margin: 0px auto;
   margin-bottom: 1.3rem;
   text-align: center;    
-  box-shadow: 0px 1px 4px 2px #11111166;
+  box-shadow: -1px 2px 4px 2px #0007;
   border-radius: 7px;
   width: 13rem;
 }

@@ -4,7 +4,6 @@ const sideMenuAlbumsClass = 'sidemenu-album-container'
 const photoCounterDOM = document.querySelector('#photo-counter');
 const nextButton = document.querySelector('#photo-button--right');
 const prevButton = document.querySelector('#photo-button--left');
-let currentAlbum = {};
 /*
 name: '',
 path: "",
@@ -18,14 +17,15 @@ const buildPath = (album, photo) => {
 
 let albums = window.internalModels.photoAlbumModel();
 const createSideMenuAlbum = (album) => {
-    let newAlbum = document.createElement("li");
+    const newAlbum = document.createElement("li");
     newAlbum.classList.add(sideMenuAlbumsClass);
     newAlbum.id = album.name.replace(/\s/g, '');
-    let albumThumbnail = document.createElement("img");
+
+    const albumThumbnail = document.createElement("img");
     console.log(buildPath(album, album.thumbnail));
     albumThumbnail.src = buildPath(album, album.thumbnail);
 
-    let albumTitle = document.createElement("button")
+    const albumTitle = document.createElement("button")
     albumTitle.classList.add('project-title')
     albumTitle.textContent = album.name.charAt(0).toUpperCase() + album.name.slice(1);
 
@@ -38,12 +38,12 @@ const createSideMenuAlbum = (album) => {
 albums.map(album=>{
     album.numPhotos = album.photos.length;
     const id = createSideMenuAlbum(album);
-    let albumSelect = document.getElementById(id);
+    const albumSelect = document.getElementById(id);
     albumSelect?.addEventListener('click', (e)=>{ updatePhotoAlbum(album); });
 });
 
-//initial state
-currentAlbum = albums[0];
+//initial state of album/photo display
+let currentAlbum = albums[0];
 
 const updatePhoto = ()=>{
     photoCounterDOM.innerHTML = (currentAlbum.currentPhoto+1) + "/" + currentAlbum.numPhotos;

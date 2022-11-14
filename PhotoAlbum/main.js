@@ -1,5 +1,6 @@
 'use strict';
 const parentOfSideMenuAlbumsID = 'sidemenu-links'
+const albumSelectID = 'album-select'
 const sideMenuAlbumsClass = 'sidemenu-album-container'
 const photoCounterDOM = document.querySelector('#photo-counter');
 const nextButton = document.querySelector('#photo-button--right');
@@ -31,15 +32,17 @@ const createSideMenuAlbum = (album) => {
 
     newAlbum.appendChild(albumThumbnail);
     newAlbum.appendChild(albumTitle);
+    newAlbum.addEventListener('click', (e)=>{ updatePhotoAlbum(album); });
     document.getElementById(parentOfSideMenuAlbumsID)?.appendChild(newAlbum);
-    return album.name.replace(/\s/g, '');
+
+    const bottomAlbumSelectNewAlbum = newAlbum.cloneNode(true)
+    bottomAlbumSelectNewAlbum.addEventListener('click', (e)=>{ updatePhotoAlbum(album); });
+    document.getElementById(albumSelectID)?.appendChild(bottomAlbumSelectNewAlbum);
 }
 
 albums.map(album=>{
     album.numPhotos = album.photos.length;
-    const id = createSideMenuAlbum(album);
-    const albumSelect = document.getElementById(id);
-    albumSelect?.addEventListener('click', (e)=>{ updatePhotoAlbum(album); });
+    createSideMenuAlbum(album);
 });
 
 //initial state of album/photo display
@@ -54,7 +57,12 @@ updatePhoto();
 
 const updatePhotoAlbum = (newAlbum)=>{
     window.closeSideMenu();
-    if(currentAlbum == newAlbum) return;
+    if(currentAlbum == newAlbum) 
+    {
+        currentAlbum.currentPhoto = 0;
+        updatePhoto();
+        return;
+    }
     currentAlbum = newAlbum;
     updatePhoto();
 }

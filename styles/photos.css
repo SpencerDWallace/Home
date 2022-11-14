@@ -3,6 +3,7 @@
     height: 60%;
     border: none;
     margin: auto 0;
+    margin-top: 10vh;
 }
 
 .photo-album > h4{
@@ -52,7 +53,7 @@
 .album-title, .sidemenu-album-container > button {
     cursor: pointer;
     appearance: none;
-    background-color: var(--accent-1);
+	background-color: var(--accent-2);
     color: var(--accent-color);
     font-weight: bold;
     border: none;
@@ -95,6 +96,15 @@
     color: black;
 }
 
+.album-select-container{
+    margin-top: 2rem;
+    width: 60vw;
+    display: grid;
+    grid-template-areas: 
+    "a a b b c c"
+    "a a b b c c";
+}
+
 .is-hidden{
     opacity: 0;
     cursor: default;
@@ -105,10 +115,21 @@
     cursor: default;
 }
 
+@media only screen and (min-width: 1500px){
+    .album-photo{
+        max-height: 55vh;
+    }
+}
+
 @media only screen and (max-width: 1500px){
     .album-photo{
         max-width: 65vw;
     }
+
+    .album-select-container{
+        width: 80vw;
+    }
+
 }
 
 @media only screen and (max-width: 1000px){
@@ -130,6 +151,11 @@
         box-shadow: var(--shadow-4);
         font-weight: 600;
         top: calc(40% + 0.4rem);
+    }
+
+    .album-select-container{
+        grid-template-areas: 
+        "a";
     }
 
 }
@@ -177,6 +203,9 @@
     aspect-ratio: 4/3;
 }
 
+.sidemenu-album-container img:hover{
+    cursor: pointer;
+}
 
 .sidemenu-album-container img:hover + button, .sidemenu-album-container button:hover{
     cursor: pointer;
@@ -188,3 +217,8 @@
 .sidemenu-album-container:last-of-type{
     margin-bottom: 25vh;
 }
+
+.album-select-container > .sidemenu-album-container:last-of-type{
+    margin-bottom: 5vh;
+}
+

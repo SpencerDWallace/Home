@@ -98,7 +98,7 @@
 
 .album-select-container{
     margin-top: 2rem;
-    width: 60vw;
+    width: 47vw;
     display: grid;
     grid-template-areas: 
     "a a b b c c"
@@ -127,7 +127,7 @@
     }
 
     .album-select-container{
-        width: 80vw;
+        width: 70vw;
     }
 
 }
@@ -222,3 +222,6 @@
     margin-bottom: 5vh;
 }
 
+.album-select-container > *{
+width: 80%;
+}

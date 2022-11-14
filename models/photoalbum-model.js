@@ -31,7 +31,7 @@ internalModels.photoAlbumModel = function() {
             name: 'Ruby Wallace',
             path: "./ruby/",
             photos: [
-                'IMG_0278.JPG', 'IMG_1489.jpg', 'IMG_1620.JPG', 'IMG_1649.JPG', 'IMG_1658.JPG', 
+                'IMG_1489.jpg', 'IMG_0278.JPG', 'IMG_1620.JPG', 'IMG_1649.JPG', 'IMG_1658.JPG', 
                 'IMG_1884.JPG', 'IMG_1885.JPG', 'IMG_2086.JPG', 'IMG_2173.JPG', 'IMG_2277.JPG',
             ],
             thumbnail: 'IMG_1489.JPG',

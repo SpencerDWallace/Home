@@ -1,4 +1,6 @@
 'use strict';
+const parentOfSideMenuAlbumsID = 'sidemenu-links'
+const sideMenuAlbumsClass = 'sidemenu-album-container'
 const photoCounterDOM = document.querySelector('#photo-counter');
 const nextButton = document.querySelector('#photo-button--right');
 const prevButton = document.querySelector('#photo-button--left');
@@ -10,14 +12,34 @@ photos: [],
 thumbnail: '',
 currentPhoto: num,
 */
+const buildPath = (album, photo) => {
+ return String(album.path + photo);
+}
 
 let albums = window.internalModels.photoAlbumModel();
+const createSideMenuAlbum = (album) => {
+    let newAlbum = document.createElement("li");
+    newAlbum.classList.add(sideMenuAlbumsClass);
+    newAlbum.id = album.name.replace(/\s/g, '');
+    let albumThumbnail = document.createElement("img");
+    console.log(buildPath(album, album.thumbnail));
+    albumThumbnail.src = buildPath(album, album.thumbnail);
+
+    let albumTitle = document.createElement("button")
+    albumTitle.classList.add('project-title')
+    albumTitle.textContent = album.name.charAt(0).toUpperCase() + album.name.slice(1);
+
+    newAlbum.appendChild(albumThumbnail);
+    newAlbum.appendChild(albumTitle);
+    document.getElementById(parentOfSideMenuAlbumsID)?.appendChild(newAlbum);
+    return album.name.replace(/\s/g, '');
+}
 
 albums.map(album=>{
     album.numPhotos = album.photos.length;
-    const id = '#' + album.name
-    let albumSelect = document.querySelector(id.replace(/\s/g, ''));
-    albumSelect.addEventListener('click', (e)=>{ updatePhotoAlbum(album); });
+    const id = createSideMenuAlbum(album);
+    let albumSelect = document.getElementById(id);
+    albumSelect?.addEventListener('click', (e)=>{ updatePhotoAlbum(album); });
 });
 
 //initial state
@@ -25,16 +47,15 @@ currentAlbum = albums[0];
 
 const updatePhoto = ()=>{
     photoCounterDOM.innerHTML = (currentAlbum.currentPhoto+1) + "/" + currentAlbum.numPhotos;
-    let photoPath = currentAlbum.path + currentAlbum.photos[currentAlbum.currentPhoto];
-    document.querySelector('#albumPhoto').src = photoPath;
+    document.querySelector('#albumPhoto').src = buildPath(currentAlbum, currentAlbum.photos[currentAlbum.currentPhoto]);
 }
 
 updatePhoto();
 
 const updatePhotoAlbum = (newAlbum)=>{
+    window.closeSideMenu();
     if(currentAlbum == newAlbum) return;
     currentAlbum = newAlbum;
-    window.closeSideMenu();
     updatePhoto();
 }
 
